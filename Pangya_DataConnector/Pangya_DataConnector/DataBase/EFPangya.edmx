@@ -1,0 +1,1703 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PangyaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Pangya_Character">
+          <Key>
+            <PropertyRef Name="CID" />
+          </Key>
+          <Property Name="CID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UID" Type="int" Nullable="false" />
+          <Property Name="TYPEID" Type="int" Nullable="false" />
+          <Property Name="GIFT_FLAG" Type="tinyint" />
+          <Property Name="HAIR_COLOR" Type="tinyint" />
+          <Property Name="POWER" Type="tinyint" />
+          <Property Name="CONTROL" Type="tinyint" />
+          <Property Name="IMPACT" Type="tinyint" />
+          <Property Name="SPIN" Type="tinyint" />
+          <Property Name="CURVE" Type="tinyint" />
+          <Property Name="CUTIN" Type="int" />
+        </EntityType>
+        <EntityType Name="Pangya_Character_Equip">
+          <Key>
+            <PropertyRef Name="CHAR_IDX" />
+          </Key>
+          <Property Name="EQUIP_IDX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UID" Type="int" Nullable="false" />
+          <Property Name="CHAR_IDX" Type="int" Nullable="false" />
+          <Property Name="PART_TYPEID_1" Type="int" />
+          <Property Name="PART_TYPEID_2" Type="int" />
+          <Property Name="PART_TYPEID_3" Type="int" />
+          <Property Name="PART_TYPEID_4" Type="int" />
+          <Property Name="PART_TYPEID_5" Type="int" />
+          <Property Name="PART_TYPEID_6" Type="int" />
+          <Property Name="PART_TYPEID_7" Type="int" />
+          <Property Name="PART_TYPEID_8" Type="int" />
+          <Property Name="PART_TYPEID_9" Type="int" />
+          <Property Name="PART_TYPEID_10" Type="int" />
+          <Property Name="PART_TYPEID_11" Type="int" />
+          <Property Name="PART_TYPEID_12" Type="int" />
+          <Property Name="PART_TYPEID_13" Type="int" />
+          <Property Name="PART_TYPEID_14" Type="int" />
+          <Property Name="PART_TYPEID_15" Type="int" />
+          <Property Name="PART_TYPEID_16" Type="int" />
+          <Property Name="PART_TYPEID_17" Type="int" />
+          <Property Name="PART_TYPEID_18" Type="int" />
+          <Property Name="PART_TYPEID_19" Type="int" />
+          <Property Name="PART_TYPEID_20" Type="int" />
+          <Property Name="PART_TYPEID_21" Type="int" />
+          <Property Name="PART_TYPEID_22" Type="int" />
+          <Property Name="PART_TYPEID_23" Type="int" />
+          <Property Name="PART_TYPEID_24" Type="int" />
+          <Property Name="PART_IDX_1" Type="int" />
+          <Property Name="PART_IDX_2" Type="int" />
+          <Property Name="PART_IDX_3" Type="int" />
+          <Property Name="PART_IDX_4" Type="int" />
+          <Property Name="PART_IDX_5" Type="int" />
+          <Property Name="PART_IDX_6" Type="int" />
+          <Property Name="PART_IDX_7" Type="int" />
+          <Property Name="PART_IDX_8" Type="int" />
+          <Property Name="PART_IDX_9" Type="int" />
+          <Property Name="PART_IDX_10" Type="int" />
+          <Property Name="PART_IDX_11" Type="int" />
+          <Property Name="PART_IDX_12" Type="int" />
+          <Property Name="PART_IDX_13" Type="int" />
+          <Property Name="PART_IDX_14" Type="int" />
+          <Property Name="PART_IDX_15" Type="int" />
+          <Property Name="PART_IDX_16" Type="int" />
+          <Property Name="PART_IDX_17" Type="int" />
+          <Property Name="PART_IDX_18" Type="int" />
+          <Property Name="PART_IDX_19" Type="int" />
+          <Property Name="PART_IDX_20" Type="int" />
+          <Property Name="PART_IDX_21" Type="int" />
+          <Property Name="PART_IDX_22" Type="int" />
+          <Property Name="PART_IDX_23" Type="int" />
+          <Property Name="PART_IDX_24" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Pangya.dbo.Pangya_Game_Macro' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Pangya_Game_Macro">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="int" Nullable="false" />
+          <Property Name="Macro1" Type="varchar" MaxLength="45" />
+          <Property Name="Macro2" Type="varchar" MaxLength="45" />
+          <Property Name="Macro3" Type="varchar" MaxLength="45" />
+          <Property Name="Macro4" Type="varchar" MaxLength="45" />
+          <Property Name="Macro5" Type="varchar" MaxLength="45" />
+          <Property Name="Macro6" Type="varchar" MaxLength="45" />
+          <Property Name="Macro7" Type="varchar" MaxLength="45" />
+          <Property Name="Macro8" Type="varchar" MaxLength="45" />
+          <Property Name="Macro9" Type="varchar" MaxLength="45" />
+          <Property Name="Macro10" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="Pangya_Member">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDState" Type="tinyint" />
+          <Property Name="FirstSet" Type="tinyint" />
+          <Property Name="LastLogonTime" Type="datetime" />
+          <Property Name="Logon" Type="tinyint" />
+          <Property Name="Nickname" Type="varchar" MaxLength="16" />
+          <Property Name="Sex" Type="tinyint" />
+          <Property Name="IPAddress" Type="varchar" MaxLength="50" />
+          <Property Name="LogonCount" Type="int" />
+          <Property Name="Capabilities" Type="tinyint" />
+          <Property Name="RegDate" Type="datetime" />
+          <Property Name="AuthKey_Login" Type="varchar" MaxLength="7" />
+          <Property Name="AuthKey_Game" Type="varchar" MaxLength="7" />
+          <Property Name="GUILDINDEX" Type="int" />
+          <Property Name="DailyLoginCount" Type="int" />
+        </EntityType>
+        <EntityType Name="Pangya_Personal">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="int" Nullable="false" />
+          <Property Name="CookieAmt" Type="int" />
+          <Property Name="PangLockerAmt" Type="int" />
+          <Property Name="LockerPwd" Type="varchar" MaxLength="4" />
+        </EntityType>
+        <EntityType Name="Pangya_Server">
+          <Key>
+            <PropertyRef Name="ServerID" />
+          </Key>
+          <Property Name="ServerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IP" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Port" Type="smallint" Nullable="false" />
+          <Property Name="ImgNo" Type="tinyint" Nullable="false" />
+          <Property Name="ImgEvent" Type="smallint" Nullable="false" />
+          <Property Name="ServerType" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pangya_User_Equip">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="int" Nullable="false" />
+          <Property Name="CHARACTER_ID" Type="int" />
+          <Property Name="CLUB_ID" Type="int" />
+          <Property Name="BALL_ID" Type="int" />
+          <Property Name="MASCOT_ID" Type="int" />
+          <Property Name="CADDIE" Type="int" />
+          <Property Name="TITLE_TYPEID" Type="int" />
+          <Property Name="ITEM_SLOT_1" Type="int" />
+          <Property Name="ITEM_SLOT_2" Type="int" />
+          <Property Name="ITEM_SLOT_3" Type="int" />
+          <Property Name="ITEM_SLOT_4" Type="int" />
+          <Property Name="ITEM_SLOT_5" Type="int" />
+          <Property Name="ITEM_SLOT_6" Type="int" />
+          <Property Name="ITEM_SLOT_7" Type="int" />
+          <Property Name="ITEM_SLOT_8" Type="int" />
+          <Property Name="ITEM_SLOT_9" Type="int" />
+          <Property Name="ITEM_SLOT_10" Type="int" />
+          <Property Name="POSTER_1" Type="int" />
+          <Property Name="POSTER_2" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Pangya.dbo.Pangya_User_Statistics' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Pangya_User_Statistics">
+          <Key>
+            <PropertyRef Name="UID" />
+            <PropertyRef Name="Drive" />
+            <PropertyRef Name="Putt" />
+            <PropertyRef Name="Playtime" />
+            <PropertyRef Name="Longest" />
+            <PropertyRef Name="Distance" />
+            <PropertyRef Name="Pangya" />
+            <PropertyRef Name="Hole" />
+            <PropertyRef Name="TeamHole" />
+            <PropertyRef Name="Holeinone" />
+            <PropertyRef Name="OB" />
+            <PropertyRef Name="Bunker" />
+            <PropertyRef Name="Fairway" />
+            <PropertyRef Name="Albatross" />
+            <PropertyRef Name="Holein" />
+            <PropertyRef Name="Pang" />
+            <PropertyRef Name="Timeout" />
+            <PropertyRef Name="Game_Level" />
+            <PropertyRef Name="Game_Point" />
+            <PropertyRef Name="PuttIn" />
+            <PropertyRef Name="LongestPuttIn" />
+            <PropertyRef Name="LongestChipIn" />
+            <PropertyRef Name="NoMannerGameCount" />
+            <PropertyRef Name="ShotTime" />
+            <PropertyRef Name="GameCount" />
+            <PropertyRef Name="DisconnectGames" />
+            <PropertyRef Name="wTeamWin" />
+            <PropertyRef Name="wTeamGames" />
+            <PropertyRef Name="LadderPoint" />
+            <PropertyRef Name="LadderWin" />
+            <PropertyRef Name="LadderLose" />
+            <PropertyRef Name="LadderDraw" />
+            <PropertyRef Name="ComboCount" />
+            <PropertyRef Name="MaxComboCount" />
+            <PropertyRef Name="TotalScore" />
+            <PropertyRef Name="BestScore0" />
+            <PropertyRef Name="BestScore1" />
+            <PropertyRef Name="BestScore2" />
+            <PropertyRef Name="BestScore3" />
+            <PropertyRef Name="BESTSCORE4" />
+            <PropertyRef Name="SumPang" />
+            <PropertyRef Name="LadderHole" />
+            <PropertyRef Name="GameCountSeason" />
+            <PropertyRef Name="SkinsPang" />
+            <PropertyRef Name="SkinsWin" />
+            <PropertyRef Name="SkinsLose" />
+            <PropertyRef Name="SkinsRunHoles" />
+            <PropertyRef Name="SkinsStrikePoint" />
+            <PropertyRef Name="SkinsAllinCount" />
+            <PropertyRef Name="EventValue" />
+            <PropertyRef Name="EventFlag" />
+          </Key>
+          <Property Name="UID" Type="int" Nullable="false" />
+          <Property Name="Drive" Type="int" Nullable="false" />
+          <Property Name="Putt" Type="int" Nullable="false" />
+          <Property Name="Playtime" Type="int" Nullable="false" />
+          <Property Name="Longest" Type="real" Nullable="false" />
+          <Property Name="Distance" Type="int" Nullable="false" />
+          <Property Name="Pangya" Type="int" Nullable="false" />
+          <Property Name="Hole" Type="int" Nullable="false" />
+          <Property Name="TeamHole" Type="int" Nullable="false" />
+          <Property Name="Holeinone" Type="int" Nullable="false" />
+          <Property Name="OB" Type="int" Nullable="false" />
+          <Property Name="Bunker" Type="int" Nullable="false" />
+          <Property Name="Fairway" Type="int" Nullable="false" />
+          <Property Name="Albatross" Type="int" Nullable="false" />
+          <Property Name="Holein" Type="int" Nullable="false" />
+          <Property Name="Pang" Type="int" Nullable="false" />
+          <Property Name="Timeout" Type="int" Nullable="false" />
+          <Property Name="Game_Level" Type="smallint" Nullable="false" />
+          <Property Name="Game_Point" Type="int" Nullable="false" />
+          <Property Name="PuttIn" Type="int" Nullable="false" />
+          <Property Name="LongestPuttIn" Type="real" Nullable="false" />
+          <Property Name="LongestChipIn" Type="real" Nullable="false" />
+          <Property Name="NoMannerGameCount" Type="int" Nullable="false" />
+          <Property Name="ShotTime" Type="int" Nullable="false" />
+          <Property Name="GameCount" Type="int" Nullable="false" />
+          <Property Name="DisconnectGames" Type="int" Nullable="false" />
+          <Property Name="wTeamWin" Type="int" Nullable="false" />
+          <Property Name="wTeamGames" Type="int" Nullable="false" />
+          <Property Name="LadderPoint" Type="smallint" Nullable="false" />
+          <Property Name="LadderWin" Type="smallint" Nullable="false" />
+          <Property Name="LadderLose" Type="smallint" Nullable="false" />
+          <Property Name="LadderDraw" Type="smallint" Nullable="false" />
+          <Property Name="ComboCount" Type="int" Nullable="false" />
+          <Property Name="MaxComboCount" Type="int" Nullable="false" />
+          <Property Name="TotalScore" Type="int" Nullable="false" />
+          <Property Name="BestScore0" Type="smallint" Nullable="false" />
+          <Property Name="BestScore1" Type="smallint" Nullable="false" />
+          <Property Name="BestScore2" Type="smallint" Nullable="false" />
+          <Property Name="BestScore3" Type="smallint" Nullable="false" />
+          <Property Name="BESTSCORE4" Type="smallint" Nullable="false" />
+          <Property Name="MaxPang0" Type="int" />
+          <Property Name="MaxPang1" Type="int" />
+          <Property Name="MaxPang2" Type="int" />
+          <Property Name="MaxPang3" Type="int" />
+          <Property Name="MAXPANG4" Type="int" />
+          <Property Name="SumPang" Type="int" Nullable="false" />
+          <Property Name="LadderHole" Type="smallint" Nullable="false" />
+          <Property Name="GameCountSeason" Type="int" Nullable="false" />
+          <Property Name="SkinsPang" Type="bigint" Nullable="false" />
+          <Property Name="SkinsWin" Type="int" Nullable="false" />
+          <Property Name="SkinsLose" Type="int" Nullable="false" />
+          <Property Name="SkinsRunHoles" Type="int" Nullable="false" />
+          <Property Name="SkinsStrikePoint" Type="int" Nullable="false" />
+          <Property Name="SkinsAllinCount" Type="int" Nullable="false" />
+          <Property Name="EventValue" Type="int" Nullable="false" />
+          <Property Name="EventFlag" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pangya_Warehouse">
+          <Key>
+            <PropertyRef Name="item_id" />
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="item_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UID" Type="int" Nullable="false" />
+          <Property Name="TYPEID" Type="int" Nullable="false" />
+          <Property Name="C0" Type="smallint" />
+          <Property Name="C1" Type="smallint" />
+          <Property Name="C2" Type="smallint" />
+          <Property Name="C3" Type="smallint" />
+          <Property Name="C4" Type="smallint" />
+          <Property Name="RegDate" Type="datetime" />
+          <Property Name="DateEnd" Type="datetime" />
+          <Property Name="VALID" Type="tinyint" Nullable="false" />
+          <Property Name="ItemType" Type="tinyint" />
+          <Property Name="Flag" Type="tinyint" />
+        </EntityType>
+        <Function Name="ProcGet_UserInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ProcGetCaddies" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ProcGetCard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ProcGetCharacter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ProcGetGameServer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ProcGetItemWarehouse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ProcGetMascot" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ProcGetMessengerServer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ProcGetToolbar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ProcGuildGetPlayerData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UID" Type="int" Mode="In" />
+          <Parameter Name="GUILDID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_FIRST_CREATION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UID" Type="int" Mode="In" />
+          <Parameter Name="CHAR_TYPEID" Type="int" Mode="In" />
+          <Parameter Name="HAIRCOLOUR" Type="tinyint" Mode="In" />
+          <Parameter Name="NICKNAME" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="USP_GAME_LOGIN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="USERID" Type="varchar" Mode="In" />
+          <Parameter Name="UID" Type="int" Mode="In" />
+          <Parameter Name="Code1" Type="varchar" Mode="In" />
+          <Parameter Name="Code2" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="USP_NICKNAME_CHECK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NICKNAME" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="PangyaModelStoreContainer">
+          <EntitySet Name="Pangya_Character" EntityType="Self.Pangya_Character" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pangya_Character_Equip" EntityType="Self.Pangya_Character_Equip" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pangya_Member" EntityType="Self.Pangya_Member" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pangya_Personal" EntityType="Self.Pangya_Personal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pangya_Server" EntityType="Self.Pangya_Server" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pangya_User_Equip" EntityType="Self.Pangya_User_Equip" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pangya_Warehouse" EntityType="Self.Pangya_Warehouse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pangya_Game_Macro" EntityType="Self.Pangya_Game_Macro" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Pangya_Game_Macro].[UID] AS [UID], 
+    [Pangya_Game_Macro].[Macro1] AS [Macro1], 
+    [Pangya_Game_Macro].[Macro2] AS [Macro2], 
+    [Pangya_Game_Macro].[Macro3] AS [Macro3], 
+    [Pangya_Game_Macro].[Macro4] AS [Macro4], 
+    [Pangya_Game_Macro].[Macro5] AS [Macro5], 
+    [Pangya_Game_Macro].[Macro6] AS [Macro6], 
+    [Pangya_Game_Macro].[Macro7] AS [Macro7], 
+    [Pangya_Game_Macro].[Macro8] AS [Macro8], 
+    [Pangya_Game_Macro].[Macro9] AS [Macro9], 
+    [Pangya_Game_Macro].[Macro10] AS [Macro10]
+    FROM [dbo].[Pangya_Game_Macro] AS [Pangya_Game_Macro]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Pangya_User_Statistics" EntityType="Self.Pangya_User_Statistics" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Pangya_User_Statistics].[UID] AS [UID], 
+    [Pangya_User_Statistics].[Drive] AS [Drive], 
+    [Pangya_User_Statistics].[Putt] AS [Putt], 
+    [Pangya_User_Statistics].[Playtime] AS [Playtime], 
+    [Pangya_User_Statistics].[Longest] AS [Longest], 
+    [Pangya_User_Statistics].[Distance] AS [Distance], 
+    [Pangya_User_Statistics].[Pangya] AS [Pangya], 
+    [Pangya_User_Statistics].[Hole] AS [Hole], 
+    [Pangya_User_Statistics].[TeamHole] AS [TeamHole], 
+    [Pangya_User_Statistics].[Holeinone] AS [Holeinone], 
+    [Pangya_User_Statistics].[OB] AS [OB], 
+    [Pangya_User_Statistics].[Bunker] AS [Bunker], 
+    [Pangya_User_Statistics].[Fairway] AS [Fairway], 
+    [Pangya_User_Statistics].[Albatross] AS [Albatross], 
+    [Pangya_User_Statistics].[Holein] AS [Holein], 
+    [Pangya_User_Statistics].[Pang] AS [Pang], 
+    [Pangya_User_Statistics].[Timeout] AS [Timeout], 
+    [Pangya_User_Statistics].[Game_Level] AS [Game_Level], 
+    [Pangya_User_Statistics].[Game_Point] AS [Game_Point], 
+    [Pangya_User_Statistics].[PuttIn] AS [PuttIn], 
+    [Pangya_User_Statistics].[LongestPuttIn] AS [LongestPuttIn], 
+    [Pangya_User_Statistics].[LongestChipIn] AS [LongestChipIn], 
+    [Pangya_User_Statistics].[NoMannerGameCount] AS [NoMannerGameCount], 
+    [Pangya_User_Statistics].[ShotTime] AS [ShotTime], 
+    [Pangya_User_Statistics].[GameCount] AS [GameCount], 
+    [Pangya_User_Statistics].[DisconnectGames] AS [DisconnectGames], 
+    [Pangya_User_Statistics].[wTeamWin] AS [wTeamWin], 
+    [Pangya_User_Statistics].[wTeamGames] AS [wTeamGames], 
+    [Pangya_User_Statistics].[LadderPoint] AS [LadderPoint], 
+    [Pangya_User_Statistics].[LadderWin] AS [LadderWin], 
+    [Pangya_User_Statistics].[LadderLose] AS [LadderLose], 
+    [Pangya_User_Statistics].[LadderDraw] AS [LadderDraw], 
+    [Pangya_User_Statistics].[ComboCount] AS [ComboCount], 
+    [Pangya_User_Statistics].[MaxComboCount] AS [MaxComboCount], 
+    [Pangya_User_Statistics].[TotalScore] AS [TotalScore], 
+    [Pangya_User_Statistics].[BestScore0] AS [BestScore0], 
+    [Pangya_User_Statistics].[BestScore1] AS [BestScore1], 
+    [Pangya_User_Statistics].[BestScore2] AS [BestScore2], 
+    [Pangya_User_Statistics].[BestScore3] AS [BestScore3], 
+    [Pangya_User_Statistics].[BESTSCORE4] AS [BESTSCORE4], 
+    [Pangya_User_Statistics].[MaxPang0] AS [MaxPang0], 
+    [Pangya_User_Statistics].[MaxPang1] AS [MaxPang1], 
+    [Pangya_User_Statistics].[MaxPang2] AS [MaxPang2], 
+    [Pangya_User_Statistics].[MaxPang3] AS [MaxPang3], 
+    [Pangya_User_Statistics].[MAXPANG4] AS [MAXPANG4], 
+    [Pangya_User_Statistics].[SumPang] AS [SumPang], 
+    [Pangya_User_Statistics].[LadderHole] AS [LadderHole], 
+    [Pangya_User_Statistics].[GameCountSeason] AS [GameCountSeason], 
+    [Pangya_User_Statistics].[SkinsPang] AS [SkinsPang], 
+    [Pangya_User_Statistics].[SkinsWin] AS [SkinsWin], 
+    [Pangya_User_Statistics].[SkinsLose] AS [SkinsLose], 
+    [Pangya_User_Statistics].[SkinsRunHoles] AS [SkinsRunHoles], 
+    [Pangya_User_Statistics].[SkinsStrikePoint] AS [SkinsStrikePoint], 
+    [Pangya_User_Statistics].[SkinsAllinCount] AS [SkinsAllinCount], 
+    [Pangya_User_Statistics].[EventValue] AS [EventValue], 
+    [Pangya_User_Statistics].[EventFlag] AS [EventFlag]
+    FROM [dbo].[Pangya_User_Statistics] AS [Pangya_User_Statistics]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PangyaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Pangya_Member">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IDState" Type="Byte" />
+          <Property Name="FirstSet" Type="Byte" />
+          <Property Name="LastLogonTime" Type="DateTime" Precision="3" />
+          <Property Name="Logon" Type="Byte" />
+          <Property Name="Nickname" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="Sex" Type="Byte" />
+          <Property Name="IPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LogonCount" Type="Int32" />
+          <Property Name="Capabilities" Type="Byte" />
+          <Property Name="RegDate" Type="DateTime" Precision="3" />
+          <Property Name="AuthKey_Login" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="AuthKey_Game" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="GUILDINDEX" Type="Int32" />
+          <Property Name="DailyLoginCount" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="PangyaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Pangya_Member" EntityType="Self.Pangya_Member" />
+          <FunctionImport Name="ProcGetGameServer" ReturnType="Collection(PangyaModel.ProcGetGameServer_Result)" />
+          <FunctionImport Name="ProcGetMessengerServer" ReturnType="Collection(PangyaModel.ProcGetMessengerServer_Result)" />
+          <FunctionImport Name="USP_FIRST_CREATION" ReturnType="Collection(Byte)">
+            <Parameter Name="UID" Mode="In" Type="Int32" />
+            <Parameter Name="CHAR_TYPEID" Mode="In" Type="Int32" />
+            <Parameter Name="HAIRCOLOUR" Mode="In" Type="Byte" />
+            <Parameter Name="NICKNAME" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="USP_NICKNAME_CHECK" ReturnType="Collection(Int32)">
+          <Parameter Name="NICKNAME" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Pangya_Game_Macro" EntityType="PangyaModel.Pangya_Game_Macro" />
+          <EntitySet Name="Pangya_User_Statistics" EntityType="PangyaModel.Pangya_User_Statistics" />
+          <FunctionImport Name="ProcGetItemWarehouse" ReturnType="Collection(PangyaModel.ProcGetItemWarehouse_Result)">
+          <Parameter Name="UID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ProcGetToolbar" ReturnType="Collection(PangyaModel.ProcGetToolbar_Result)">
+          <Parameter Name="UID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Pangya_Warehouse" EntityType="PangyaModel.Pangya_Warehouse" />
+          <EntitySet Name="Pangya_Server" EntityType="PangyaModel.Pangya_Server" />
+          <FunctionImport Name="ProcGetCaddies" ReturnType="Collection(PangyaModel.ProcGetCaddies_Result)">
+          <Parameter Name="UID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ProcGetCard" ReturnType="Collection(PangyaModel.ProcGetCard_Result)">
+          <Parameter Name="UID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Pangya_Character_Equip" EntityType="PangyaModel.Pangya_Character_Equip" />
+          <FunctionImport Name="ProcGetCharacter" ReturnType="Collection(PangyaModel.ProcGetCharacter_Result)">
+          <Parameter Name="UID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Pangya_Character" EntityType="PangyaModel.Pangya_Character" />
+          <FunctionImport Name="ProcGetMascot" ReturnType="Collection(PangyaModel.ProcGetMascot_Result)">
+          <Parameter Name="UID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ProcGet_UserInfo" ReturnType="Collection(PangyaModel.ProcGet_UserInfo_Result)">
+          <Parameter Name="UID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Pangya_User_Equip" EntityType="PangyaModel.Pangya_User_Equip" />
+          <EntitySet Name="Pangya_Personal" EntityType="PangyaModel.Pangya_Personal" />
+          <FunctionImport Name="ProcGuildGetPlayerData" ReturnType="Collection(PangyaModel.ProcGuildGetPlayerData_Result)">
+            <Parameter Name="UID" Mode="In" Type="Int32" />
+            <Parameter Name="GUILDID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_GAME_LOGIN" ReturnType="Collection(PangyaModel.USP_GAME_LOGIN_Result)">
+            <Parameter Name="USERID" Mode="In" Type="String" />
+            <Parameter Name="UID" Mode="In" Type="Int32" />
+            <Parameter Name="Code1" Mode="In" Type="String" />
+            <Parameter Name="Code2" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="ProcGetGameServer_Result">
+          <Property Type="Int32" Name="ServerID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="IP" Nullable="false" MaxLength="50" />
+          <Property Type="Int16" Name="Port" Nullable="false" />
+          <Property Type="Byte" Name="ImgNo" Nullable="false" />
+          <Property Type="Int16" Name="ImgEvent" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="ProcGetMessengerServer_Result">
+          <Property Type="Int32" Name="ServerID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="IP" Nullable="false" MaxLength="50" />
+          <Property Type="Int16" Name="Port" Nullable="false" />
+          <Property Type="Byte" Name="ImgNo" Nullable="false" />
+          <Property Type="Int16" Name="ImgEvent" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Pangya_Game_Macro">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="Int32" Nullable="false" />
+          <Property Name="Macro1" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Macro2" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Macro3" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Macro4" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Macro5" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Macro6" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Macro7" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Macro8" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Macro9" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Macro10" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Pangya_User_Statistics">
+          <Key>
+            <PropertyRef Name="UID" />
+            <PropertyRef Name="Drive" />
+            <PropertyRef Name="Putt" />
+            <PropertyRef Name="Playtime" />
+            <PropertyRef Name="Longest" />
+            <PropertyRef Name="Distance" />
+            <PropertyRef Name="Pangya" />
+            <PropertyRef Name="Hole" />
+            <PropertyRef Name="TeamHole" />
+            <PropertyRef Name="Holeinone" />
+            <PropertyRef Name="OB" />
+            <PropertyRef Name="Bunker" />
+            <PropertyRef Name="Fairway" />
+            <PropertyRef Name="Albatross" />
+            <PropertyRef Name="Holein" />
+            <PropertyRef Name="Pang" />
+            <PropertyRef Name="Timeout" />
+            <PropertyRef Name="Game_Level" />
+            <PropertyRef Name="Game_Point" />
+            <PropertyRef Name="PuttIn" />
+            <PropertyRef Name="LongestPuttIn" />
+            <PropertyRef Name="LongestChipIn" />
+            <PropertyRef Name="NoMannerGameCount" />
+            <PropertyRef Name="ShotTime" />
+            <PropertyRef Name="GameCount" />
+            <PropertyRef Name="DisconnectGames" />
+            <PropertyRef Name="wTeamWin" />
+            <PropertyRef Name="wTeamGames" />
+            <PropertyRef Name="LadderPoint" />
+            <PropertyRef Name="LadderWin" />
+            <PropertyRef Name="LadderLose" />
+            <PropertyRef Name="LadderDraw" />
+            <PropertyRef Name="ComboCount" />
+            <PropertyRef Name="MaxComboCount" />
+            <PropertyRef Name="TotalScore" />
+            <PropertyRef Name="BestScore0" />
+            <PropertyRef Name="BestScore1" />
+            <PropertyRef Name="BestScore2" />
+            <PropertyRef Name="BestScore3" />
+            <PropertyRef Name="BESTSCORE4" />
+            <PropertyRef Name="SumPang" />
+            <PropertyRef Name="LadderHole" />
+            <PropertyRef Name="GameCountSeason" />
+            <PropertyRef Name="SkinsPang" />
+            <PropertyRef Name="SkinsWin" />
+            <PropertyRef Name="SkinsLose" />
+            <PropertyRef Name="SkinsRunHoles" />
+            <PropertyRef Name="SkinsStrikePoint" />
+            <PropertyRef Name="SkinsAllinCount" />
+            <PropertyRef Name="EventValue" />
+            <PropertyRef Name="EventFlag" />
+          </Key>
+          <Property Name="UID" Type="Int32" Nullable="false" />
+          <Property Name="Drive" Type="Int32" Nullable="false" />
+          <Property Name="Putt" Type="Int32" Nullable="false" />
+          <Property Name="Playtime" Type="Int32" Nullable="false" />
+          <Property Name="Longest" Type="Single" Nullable="false" />
+          <Property Name="Distance" Type="Int32" Nullable="false" />
+          <Property Name="Pangya" Type="Int32" Nullable="false" />
+          <Property Name="Hole" Type="Int32" Nullable="false" />
+          <Property Name="TeamHole" Type="Int32" Nullable="false" />
+          <Property Name="Holeinone" Type="Int32" Nullable="false" />
+          <Property Name="OB" Type="Int32" Nullable="false" />
+          <Property Name="Bunker" Type="Int32" Nullable="false" />
+          <Property Name="Fairway" Type="Int32" Nullable="false" />
+          <Property Name="Albatross" Type="Int32" Nullable="false" />
+          <Property Name="Holein" Type="Int32" Nullable="false" />
+          <Property Name="Pang" Type="Int32" Nullable="false" />
+          <Property Name="Timeout" Type="Int32" Nullable="false" />
+          <Property Name="Game_Level" Type="Int16" Nullable="false" />
+          <Property Name="Game_Point" Type="Int32" Nullable="false" />
+          <Property Name="PuttIn" Type="Int32" Nullable="false" />
+          <Property Name="LongestPuttIn" Type="Single" Nullable="false" />
+          <Property Name="LongestChipIn" Type="Single" Nullable="false" />
+          <Property Name="NoMannerGameCount" Type="Int32" Nullable="false" />
+          <Property Name="ShotTime" Type="Int32" Nullable="false" />
+          <Property Name="GameCount" Type="Int32" Nullable="false" />
+          <Property Name="DisconnectGames" Type="Int32" Nullable="false" />
+          <Property Name="wTeamWin" Type="Int32" Nullable="false" />
+          <Property Name="wTeamGames" Type="Int32" Nullable="false" />
+          <Property Name="LadderPoint" Type="Int16" Nullable="false" />
+          <Property Name="LadderWin" Type="Int16" Nullable="false" />
+          <Property Name="LadderLose" Type="Int16" Nullable="false" />
+          <Property Name="LadderDraw" Type="Int16" Nullable="false" />
+          <Property Name="ComboCount" Type="Int32" Nullable="false" />
+          <Property Name="MaxComboCount" Type="Int32" Nullable="false" />
+          <Property Name="TotalScore" Type="Int32" Nullable="false" />
+          <Property Name="BestScore0" Type="Int16" Nullable="false" />
+          <Property Name="BestScore1" Type="Int16" Nullable="false" />
+          <Property Name="BestScore2" Type="Int16" Nullable="false" />
+          <Property Name="BestScore3" Type="Int16" Nullable="false" />
+          <Property Name="BESTSCORE4" Type="Int16" Nullable="false" />
+          <Property Name="MaxPang0" Type="Int32" />
+          <Property Name="MaxPang1" Type="Int32" />
+          <Property Name="MaxPang2" Type="Int32" />
+          <Property Name="MaxPang3" Type="Int32" />
+          <Property Name="MAXPANG4" Type="Int32" />
+          <Property Name="SumPang" Type="Int32" Nullable="false" />
+          <Property Name="LadderHole" Type="Int16" Nullable="false" />
+          <Property Name="GameCountSeason" Type="Int32" Nullable="false" />
+          <Property Name="SkinsPang" Type="Int64" Nullable="false" />
+          <Property Name="SkinsWin" Type="Int32" Nullable="false" />
+          <Property Name="SkinsLose" Type="Int32" Nullable="false" />
+          <Property Name="SkinsRunHoles" Type="Int32" Nullable="false" />
+          <Property Name="SkinsStrikePoint" Type="Int32" Nullable="false" />
+          <Property Name="SkinsAllinCount" Type="Int32" Nullable="false" />
+          <Property Name="EventValue" Type="Int32" Nullable="false" />
+          <Property Name="EventFlag" Type="Int32" Nullable="false" />
+        </EntityType>
+        <ComplexType Name="ProcGetItemWarehouse_Result">
+          <Property Type="Int32" Name="IDX" Nullable="false" />
+          <Property Type="Int32" Name="TYPEID" Nullable="false" />
+          <Property Type="Int16" Name="C0" Nullable="true" />
+          <Property Type="Int16" Name="C1" Nullable="true" />
+          <Property Type="Int16" Name="C2" Nullable="true" />
+          <Property Type="Int16" Name="C3" Nullable="true" />
+          <Property Type="Int16" Name="C4" Nullable="true" />
+          <Property Type="Byte" Name="Flag" Nullable="true" />
+          <Property Type="Int32" Name="HOURLEFT" Nullable="true" />
+          <Property Type="DateTime" Name="RegDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="DateEnd" Nullable="true" Precision="23" />
+          <Property Type="String" Name="UCC_UNIQE" Nullable="true" MaxLength="8" />
+          <Property Type="Byte" Name="UCC_STATUS" Nullable="true" />
+          <Property Type="Int32" Name="UCC_COPY_COUNT" Nullable="true" />
+          <Property Type="String" Name="UCC_NAME" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="UCC_DRAWER" Nullable="true" MaxLength="16" />
+          <Property Type="Int32" Name="UCC_DRAWER_UID" Nullable="true" />
+          <Property Type="Int32" Name="CLUB_POINT" Nullable="true" />
+          <Property Type="Int32" Name="CLUB_WORK_COUNT" Nullable="true" />
+          <Property Type="Int16" Name="C0_SLOT" Nullable="true" />
+          <Property Type="Int16" Name="C1_SLOT" Nullable="true" />
+          <Property Type="Int16" Name="C2_SLOT" Nullable="true" />
+          <Property Type="Int16" Name="C3_SLOT" Nullable="true" />
+          <Property Type="Int16" Name="C4_SLOT" Nullable="true" />
+          <Property Type="Int32" Name="CLUB_SLOT_CANCEL" Nullable="true" />
+          <Property Type="Int32" Name="CLUB_POINT_TOTAL_LOG" Nullable="true" />
+          <Property Type="Int32" Name="CLUB_UPGRADE_PANG_LOG" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ProcGetToolbar_Result">
+          <Property Type="Int32" Name="CADDIE" Nullable="true" />
+          <Property Type="Int32" Name="CHARACTER_ID" Nullable="true" />
+          <Property Type="Int32" Name="CLUB_ID" Nullable="true" />
+          <Property Type="Int32" Name="BALL_ID" Nullable="true" />
+          <Property Type="Int32" Name="MASCOT_ID" Nullable="true" />
+          <Property Type="Int32" Name="ITEM_SLOT_1" Nullable="true" />
+          <Property Type="Int32" Name="ITEM_SLOT_2" Nullable="true" />
+          <Property Type="Int32" Name="ITEM_SLOT_3" Nullable="true" />
+          <Property Type="Int32" Name="ITEM_SLOT_4" Nullable="true" />
+          <Property Type="Int32" Name="ITEM_SLOT_5" Nullable="true" />
+          <Property Type="Int32" Name="ITEM_SLOT_6" Nullable="true" />
+          <Property Type="Int32" Name="ITEM_SLOT_7" Nullable="true" />
+          <Property Type="Int32" Name="ITEM_SLOT_8" Nullable="true" />
+          <Property Type="Int32" Name="ITEM_SLOT_9" Nullable="true" />
+          <Property Type="Int32" Name="ITEM_SLOT_10" Nullable="true" />
+          <Property Type="Int32" Name="TITLE_TYPEID" Nullable="true" />
+          <Property Type="Int32" Name="POSTER_1" Nullable="true" />
+          <Property Type="Int32" Name="POSTER_2" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="Pangya_Warehouse">
+          <Key>
+            <PropertyRef Name="item_id" />
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="item_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UID" Type="Int32" Nullable="false" />
+          <Property Name="TYPEID" Type="Int32" Nullable="false" />
+          <Property Name="C0" Type="Int16" />
+          <Property Name="C1" Type="Int16" />
+          <Property Name="C2" Type="Int16" />
+          <Property Name="C3" Type="Int16" />
+          <Property Name="C4" Type="Int16" />
+          <Property Name="RegDate" Type="DateTime" Precision="3" />
+          <Property Name="DateEnd" Type="DateTime" Precision="3" />
+          <Property Name="VALID" Type="Byte" Nullable="false" />
+          <Property Name="ItemType" Type="Byte" />
+          <Property Name="Flag" Type="Byte" />
+        </EntityType>
+        <EntityType Name="Pangya_Server">
+          <Key>
+            <PropertyRef Name="ServerID" />
+          </Key>
+          <Property Name="ServerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IP" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Port" Type="Int16" Nullable="false" />
+          <Property Name="ImgNo" Type="Byte" Nullable="false" />
+          <Property Name="ImgEvent" Type="Int16" Nullable="false" />
+          <Property Name="ServerType" Type="Byte" Nullable="false" />
+        </EntityType>
+        <ComplexType Name="ProcGetCaddies_Result">
+          <Property Type="Int32" Name="CID" Nullable="false" />
+          <Property Type="Int32" Name="TYPEID" Nullable="false" />
+          <Property Type="Int32" Name="EXP" Nullable="false" />
+          <Property Type="Int32" Name="SKIN_TYPEID" Nullable="true" />
+          <Property Type="Byte" Name="TriggerPay" Nullable="true" />
+          <Property Type="Byte" Name="cLevel" Nullable="false" />
+          <Property Type="Int32" Name="SKIN_HOUR_LEFT" Nullable="true" />
+          <Property Type="Int32" Name="DAY_LEFT" Nullable="true" />
+          <Property Type="DateTime" Name="END_DATE" Nullable="true" Precision="23" />
+          <Property Type="Byte" Name="RentFlag" Nullable="true" />
+          <Property Type="DateTime" Name="SKIN_END_DATE" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="ProcGetCard_Result">
+          <Property Type="Int32" Name="CARD_IDX" Nullable="false" />
+          <Property Type="Int32" Name="CARD_TYPEID" Nullable="false" />
+          <Property Type="Int32" Name="QTY" Nullable="false" />
+          <Property Type="Byte" Name="VALID" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="Pangya_Character_Equip">
+          <Key>
+            <PropertyRef Name="CHAR_IDX" />
+          </Key>
+          <Property Name="EQUIP_IDX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UID" Type="Int32" Nullable="false" />
+          <Property Name="CHAR_IDX" Type="Int32" Nullable="false" />
+          <Property Name="PART_TYPEID_1" Type="Int32" />
+          <Property Name="PART_TYPEID_2" Type="Int32" />
+          <Property Name="PART_TYPEID_3" Type="Int32" />
+          <Property Name="PART_TYPEID_4" Type="Int32" />
+          <Property Name="PART_TYPEID_5" Type="Int32" />
+          <Property Name="PART_TYPEID_6" Type="Int32" />
+          <Property Name="PART_TYPEID_7" Type="Int32" />
+          <Property Name="PART_TYPEID_8" Type="Int32" />
+          <Property Name="PART_TYPEID_9" Type="Int32" />
+          <Property Name="PART_TYPEID_10" Type="Int32" />
+          <Property Name="PART_TYPEID_11" Type="Int32" />
+          <Property Name="PART_TYPEID_12" Type="Int32" />
+          <Property Name="PART_TYPEID_13" Type="Int32" />
+          <Property Name="PART_TYPEID_14" Type="Int32" />
+          <Property Name="PART_TYPEID_15" Type="Int32" />
+          <Property Name="PART_TYPEID_16" Type="Int32" />
+          <Property Name="PART_TYPEID_17" Type="Int32" />
+          <Property Name="PART_TYPEID_18" Type="Int32" />
+          <Property Name="PART_TYPEID_19" Type="Int32" />
+          <Property Name="PART_TYPEID_20" Type="Int32" />
+          <Property Name="PART_TYPEID_21" Type="Int32" />
+          <Property Name="PART_TYPEID_22" Type="Int32" />
+          <Property Name="PART_TYPEID_23" Type="Int32" />
+          <Property Name="PART_TYPEID_24" Type="Int32" />
+          <Property Name="PART_IDX_1" Type="Int32" />
+          <Property Name="PART_IDX_2" Type="Int32" />
+          <Property Name="PART_IDX_3" Type="Int32" />
+          <Property Name="PART_IDX_4" Type="Int32" />
+          <Property Name="PART_IDX_5" Type="Int32" />
+          <Property Name="PART_IDX_6" Type="Int32" />
+          <Property Name="PART_IDX_7" Type="Int32" />
+          <Property Name="PART_IDX_8" Type="Int32" />
+          <Property Name="PART_IDX_9" Type="Int32" />
+          <Property Name="PART_IDX_10" Type="Int32" />
+          <Property Name="PART_IDX_11" Type="Int32" />
+          <Property Name="PART_IDX_12" Type="Int32" />
+          <Property Name="PART_IDX_13" Type="Int32" />
+          <Property Name="PART_IDX_14" Type="Int32" />
+          <Property Name="PART_IDX_15" Type="Int32" />
+          <Property Name="PART_IDX_16" Type="Int32" />
+          <Property Name="PART_IDX_17" Type="Int32" />
+          <Property Name="PART_IDX_18" Type="Int32" />
+          <Property Name="PART_IDX_19" Type="Int32" />
+          <Property Name="PART_IDX_20" Type="Int32" />
+          <Property Name="PART_IDX_21" Type="Int32" />
+          <Property Name="PART_IDX_22" Type="Int32" />
+          <Property Name="PART_IDX_23" Type="Int32" />
+          <Property Name="PART_IDX_24" Type="Int32" />
+        </EntityType>
+        <ComplexType Name="ProcGetCharacter_Result">
+          <Property Type="Int32" Name="UID" Nullable="false" />
+          <Property Type="Int32" Name="TYPEID" Nullable="false" />
+          <Property Type="Int32" Name="CID" Nullable="false" />
+          <Property Type="Byte" Name="HAIR_COLOR" Nullable="true" />
+          <Property Type="Byte" Name="GIFT_FLAG" Nullable="true" />
+          <Property Type="Byte" Name="POWER" Nullable="true" />
+          <Property Type="Byte" Name="CONTROL" Nullable="true" />
+          <Property Type="Byte" Name="IMPACT" Nullable="true" />
+          <Property Type="Byte" Name="SPIN" Nullable="true" />
+          <Property Type="Byte" Name="CURVE" Nullable="true" />
+          <Property Type="Int32" Name="CUTIN" Nullable="true" />
+          <Property Type="Int32" Name="PART_TYPEID_1" Nullable="true" />
+          <Property Type="Int32" Name="PART_TYPEID_2" Nullable="true" />
+          <Property Type="Int32" Name="PART_TYPEID_3" Nullable="true" />
+          <Property Type="Int32" Name="PART_TYPEID_4" Nullable="true" />
+          <Property Type="Int32" Name="PART_TYPEID_5" Nullable="true" />
+          <Property Type="Int32" Name="PART_TYPEID_6" Nullable="true" />
+          <Property Type="Int32" Name="PART_TYPEID_7" Nullable="true" />
+          <Property Type="Int32" Name="PART_TYPEID_8" Nullable="true" />
+          <Property Type="Int32" Name="PART_TYPEID_9" Nullable="true" />
+          <Property Type="Int32" Name="PART_TYPEID_10" Nullable="true" />
+          <Property Type="Int32" Name="PART_TYPEID_11" Nullable="true" />
+          <Property Type="Int32" Name="PART_TYPEID_12" Nullable="true" />
+          <Property Type="Int32" Name="PART_TYPEID_13" Nullable="true" />
+          <Property Type="Int32" Name="PART_TYPEID_14" Nullable="true" />
+          <Property Type="Int32" Name="PART_TYPEID_15" Nullable="true" />
+          <Property Type="Int32" Name="PART_TYPEID_16" Nullable="true" />
+          <Property Type="Int32" Name="PART_TYPEID_17" Nullable="true" />
+          <Property Type="Int32" Name="PART_TYPEID_18" Nullable="true" />
+          <Property Type="Int32" Name="PART_TYPEID_19" Nullable="true" />
+          <Property Type="Int32" Name="PART_TYPEID_20" Nullable="true" />
+          <Property Type="Int32" Name="PART_TYPEID_21" Nullable="true" />
+          <Property Type="Int32" Name="PART_TYPEID_22" Nullable="true" />
+          <Property Type="Int32" Name="PART_TYPEID_23" Nullable="true" />
+          <Property Type="Int32" Name="PART_TYPEID_24" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_1" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_2" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_3" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_4" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_5" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_6" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_7" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_8" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_9" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_10" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_11" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_12" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_13" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_14" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_15" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_16" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_17" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_18" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_19" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_20" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_21" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_22" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_23" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_24" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="Pangya_Character">
+          <Key>
+            <PropertyRef Name="CID" />
+          </Key>
+          <Property Name="CID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UID" Type="Int32" Nullable="false" />
+          <Property Name="TYPEID" Type="Int32" Nullable="false" />
+          <Property Name="GIFT_FLAG" Type="Byte" />
+          <Property Name="HAIR_COLOR" Type="Byte" />
+          <Property Name="POWER" Type="Byte" />
+          <Property Name="CONTROL" Type="Byte" />
+          <Property Name="IMPACT" Type="Byte" />
+          <Property Name="SPIN" Type="Byte" />
+          <Property Name="CURVE" Type="Byte" />
+          <Property Name="CUTIN" Type="Int32" />
+        </EntityType>
+        <ComplexType Name="ProcGetMascot_Result">
+          <Property Type="Int32" Name="MID" Nullable="false" />
+          <Property Type="Int32" Name="MASCOT_TYPEID" Nullable="false" />
+          <Property Type="String" Name="MESSAGE" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="DateEnd" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="END_DATE_INT" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ProcGet_UserInfo_Result">
+          <Property Type="Int32" Name="UID" Nullable="false" />
+          <Property Type="String" Name="Username" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Nickname" Nullable="true" MaxLength="16" />
+          <Property Type="Byte" Name="Capabilities" Nullable="true" />
+          <Property Type="Byte" Name="Sex" Nullable="true" />
+          <Property Type="Int32" Name="GUILDINDEX" Nullable="true" />
+          <Property Type="String" Name="GUILD_NAME" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="GUILD_IMAGE" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="GUILD_INTRODUCING" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="GUILD_NOTICE" Nullable="false" MaxLength="255" />
+          <Property Type="Int32" Name="GUILD_PANG" Nullable="false" />
+          <Property Type="Int32" Name="GUILD_POINT" Nullable="false" />
+          <Property Type="Int32" Name="GUILD_LEADER_UID" Nullable="false" />
+          <Property Type="Byte" Name="GUILD_POSITION" Nullable="false" />
+          <Property Type="Int32" Name="GUILD_TOTAL_MEMBER" Nullable="false" />
+          <Property Type="String" Name="GUILD_LEADER_NICKNAME" Nullable="false" MaxLength="16" />
+          <Property Type="DateTime" Name="GUILD_CREATE_DATE" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="TYPEID" Nullable="true" />
+          <Property Type="Int32" Name="IDX" Nullable="true" />
+          <Property Type="Byte" Name="GIFT_FLAG" Nullable="true" />
+          <Property Type="Byte" Name="HAIR_COLOR" Nullable="true" />
+          <Property Type="Byte" Name="POWER" Nullable="true" />
+          <Property Type="Byte" Name="CONTROL" Nullable="true" />
+          <Property Type="Byte" Name="IMPACT" Nullable="true" />
+          <Property Type="Byte" Name="SPIN" Nullable="true" />
+          <Property Type="Byte" Name="CURVE" Nullable="true" />
+          <Property Type="Int32" Name="CUTIN" Nullable="true" />
+          <Property Type="Int32" Name="PART1" Nullable="true" />
+          <Property Type="Int32" Name="PART2" Nullable="true" />
+          <Property Type="Int32" Name="PART3" Nullable="true" />
+          <Property Type="Int32" Name="PART4" Nullable="true" />
+          <Property Type="Int32" Name="PART5" Nullable="true" />
+          <Property Type="Int32" Name="PART6" Nullable="true" />
+          <Property Type="Int32" Name="PART7" Nullable="true" />
+          <Property Type="Int32" Name="PART8" Nullable="true" />
+          <Property Type="Int32" Name="PART9" Nullable="true" />
+          <Property Type="Int32" Name="PART10" Nullable="true" />
+          <Property Type="Int32" Name="PART11" Nullable="true" />
+          <Property Type="Int32" Name="PART12" Nullable="true" />
+          <Property Type="Int32" Name="PART13" Nullable="true" />
+          <Property Type="Int32" Name="PART14" Nullable="true" />
+          <Property Type="Int32" Name="PART15" Nullable="true" />
+          <Property Type="Int32" Name="PART16" Nullable="true" />
+          <Property Type="Int32" Name="PART17" Nullable="true" />
+          <Property Type="Int32" Name="PART18" Nullable="true" />
+          <Property Type="Int32" Name="PART19" Nullable="true" />
+          <Property Type="Int32" Name="PART20" Nullable="true" />
+          <Property Type="Int32" Name="PART21" Nullable="true" />
+          <Property Type="Int32" Name="PART22" Nullable="true" />
+          <Property Type="Int32" Name="PART23" Nullable="true" />
+          <Property Type="Int32" Name="PART24" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_1" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_2" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_3" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_4" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_5" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_6" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_7" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_8" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_9" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_10" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_11" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_12" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_13" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_14" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_15" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_16" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_17" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_18" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_19" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_20" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_21" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_22" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_23" Nullable="true" />
+          <Property Type="Int32" Name="PART_IDX_24" Nullable="true" />
+          <Property Type="Int32" Name="Drive" Nullable="true" />
+          <Property Type="Int32" Name="Putt" Nullable="true" />
+          <Property Type="Int32" Name="Playtime" Nullable="true" />
+          <Property Type="Single" Name="Longest" Nullable="true" />
+          <Property Type="Int32" Name="Distance" Nullable="true" />
+          <Property Type="Int32" Name="Pangya" Nullable="true" />
+          <Property Type="Int32" Name="Hole" Nullable="true" />
+          <Property Type="Int32" Name="TeamHole" Nullable="true" />
+          <Property Type="Int32" Name="Holeinone" Nullable="true" />
+          <Property Type="Int32" Name="OB" Nullable="true" />
+          <Property Type="Int32" Name="Bunker" Nullable="true" />
+          <Property Type="Int32" Name="Fairway" Nullable="true" />
+          <Property Type="Int32" Name="Albatross" Nullable="true" />
+          <Property Type="Int32" Name="Holein" Nullable="true" />
+          <Property Type="Int32" Name="Pang" Nullable="true" />
+          <Property Type="Int32" Name="Timeout" Nullable="true" />
+          <Property Type="Int16" Name="Game_Level" Nullable="true" />
+          <Property Type="Int32" Name="Game_Point" Nullable="true" />
+          <Property Type="Int32" Name="PuttIn" Nullable="true" />
+          <Property Type="Single" Name="LongestPuttin" Nullable="true" />
+          <Property Type="Single" Name="LongestChipIn" Nullable="true" />
+          <Property Type="Int32" Name="NoMannerGameCount" Nullable="true" />
+          <Property Type="Int32" Name="ShotTime" Nullable="true" />
+          <Property Type="Int32" Name="GameCount" Nullable="true" />
+          <Property Type="Int32" Name="DisconnectGames" Nullable="true" />
+          <Property Type="Int32" Name="wTeamWin" Nullable="true" />
+          <Property Type="Int32" Name="wTeamGames" Nullable="true" />
+          <Property Type="Int16" Name="LadderPoint" Nullable="true" />
+          <Property Type="Int16" Name="LadderWin" Nullable="true" />
+          <Property Type="Int16" Name="LadderLose" Nullable="true" />
+          <Property Type="Int16" Name="LadderDraw" Nullable="true" />
+          <Property Type="Int32" Name="ComboCount" Nullable="true" />
+          <Property Type="Int32" Name="MaxComboCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalScore" Nullable="true" />
+          <Property Type="Int16" Name="BestScore0" Nullable="true" />
+          <Property Type="Int16" Name="BestScore1" Nullable="true" />
+          <Property Type="Int16" Name="BestScore2" Nullable="true" />
+          <Property Type="Int16" Name="BestScore3" Nullable="true" />
+          <Property Type="Int16" Name="BESTSCORE4" Nullable="true" />
+          <Property Type="Int32" Name="MaxPang0" Nullable="true" />
+          <Property Type="Int32" Name="MaxPang1" Nullable="true" />
+          <Property Type="Int32" Name="MaxPang2" Nullable="true" />
+          <Property Type="Int32" Name="MaxPang3" Nullable="true" />
+          <Property Type="Int32" Name="MaxPang4" Nullable="true" />
+          <Property Type="Int32" Name="SumPang" Nullable="true" />
+          <Property Type="Int16" Name="LadderHole" Nullable="true" />
+          <Property Type="Int32" Name="GameCountSeason" Nullable="true" />
+          <Property Type="Int64" Name="SkinsPang" Nullable="true" />
+          <Property Type="Int32" Name="SkinsWin" Nullable="true" />
+          <Property Type="Int32" Name="SkinsLose" Nullable="true" />
+          <Property Type="Int32" Name="SkinsRunHoles" Nullable="true" />
+          <Property Type="Int32" Name="SkinsStrikePoint" Nullable="true" />
+          <Property Type="Int32" Name="SkinsAllinCount" Nullable="true" />
+          <Property Type="Int32" Name="EventValue" Nullable="true" />
+          <Property Type="Int32" Name="EventFlag" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="Pangya_User_Equip">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="Int32" Nullable="false" />
+          <Property Name="CHARACTER_ID" Type="Int32" />
+          <Property Name="CLUB_ID" Type="Int32" />
+          <Property Name="BALL_ID" Type="Int32" />
+          <Property Name="MASCOT_ID" Type="Int32" />
+          <Property Name="CADDIE" Type="Int32" />
+          <Property Name="TITLE_TYPEID" Type="Int32" />
+          <Property Name="ITEM_SLOT_1" Type="Int32" />
+          <Property Name="ITEM_SLOT_2" Type="Int32" />
+          <Property Name="ITEM_SLOT_3" Type="Int32" />
+          <Property Name="ITEM_SLOT_4" Type="Int32" />
+          <Property Name="ITEM_SLOT_5" Type="Int32" />
+          <Property Name="ITEM_SLOT_6" Type="Int32" />
+          <Property Name="ITEM_SLOT_7" Type="Int32" />
+          <Property Name="ITEM_SLOT_8" Type="Int32" />
+          <Property Name="ITEM_SLOT_9" Type="Int32" />
+          <Property Name="ITEM_SLOT_10" Type="Int32" />
+          <Property Name="POSTER_1" Type="Int32" />
+          <Property Name="POSTER_2" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Pangya_Personal">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="Int32" Nullable="false" />
+          <Property Name="CookieAmt" Type="Int32" />
+          <Property Name="PangLockerAmt" Type="Int32" />
+          <Property Name="LockerPwd" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="ProcGuildGetPlayerData_Result">
+          <Property Type="Int32" Name="GUILD_INDEX" Nullable="false" />
+          <Property Type="String" Name="GUILD_NAME" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="GUILD_INTRODUCING" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="GUILD_NOTICE" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="GUILD_PANG" Nullable="false" />
+          <Property Type="Int32" Name="GUILD_POINT" Nullable="false" />
+          <Property Type="Int32" Name="GUILD_LEADER_UID" Nullable="false" />
+          <Property Type="DateTime" Name="GUILD_CREATE_DATE" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="GUILD_TOTAL_MEMBER" Nullable="false" />
+          <Property Type="String" Name="GUILD_LEADER_NICKNAME" Nullable="true" MaxLength="16" />
+          <Property Type="Byte" Name="GUILD_POSITION" Nullable="false" />
+          <Property Type="String" Name="GUILD_IMAGE" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="USP_GAME_LOGIN_Result">
+          <Property Type="Int32" Name="Code" Nullable="false" />
+          <Property Type="String" Name="Username" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Nickname" Nullable="true" MaxLength="16" />
+          <Property Type="Byte" Name="Sex" Nullable="true" />
+          <Property Type="Byte" Name="Capabilities" Nullable="true" />
+          <Property Type="String" Name="LockerPwd" Nullable="true" MaxLength="4" />
+          <Property Type="Int16" Name="Game_Level" Nullable="false" />
+          <Property Type="Int32" Name="Game_Point" Nullable="false" />
+          <Property Type="Int32" Name="Cookie" Nullable="true" />
+          <Property Type="Int32" Name="PangLockerAmt" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PangyaModelStoreContainer" CdmEntityContainer="PangyaEntities">
+          <EntitySetMapping Name="Pangya_Member">
+            <EntityTypeMapping TypeName="PangyaModel.Pangya_Member">
+              <MappingFragment StoreEntitySet="Pangya_Member">
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IDState" ColumnName="IDState" />
+                <ScalarProperty Name="FirstSet" ColumnName="FirstSet" />
+                <ScalarProperty Name="LastLogonTime" ColumnName="LastLogonTime" />
+                <ScalarProperty Name="Logon" ColumnName="Logon" />
+                <ScalarProperty Name="Nickname" ColumnName="Nickname" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="LogonCount" ColumnName="LogonCount" />
+                <ScalarProperty Name="Capabilities" ColumnName="Capabilities" />
+                <ScalarProperty Name="RegDate" ColumnName="RegDate" />
+                <ScalarProperty Name="AuthKey_Login" ColumnName="AuthKey_Login" />
+                <ScalarProperty Name="AuthKey_Game" ColumnName="AuthKey_Game" />
+                <ScalarProperty Name="GUILDINDEX" ColumnName="GUILDINDEX" />
+                <ScalarProperty Name="DailyLoginCount" ColumnName="DailyLoginCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ProcGetGameServer" FunctionName="PangyaModel.Store.ProcGetGameServer">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PangyaModel.ProcGetGameServer_Result">
+                <ScalarProperty Name="ServerID" ColumnName="ServerID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="Port" ColumnName="Port" />
+                <ScalarProperty Name="ImgNo" ColumnName="ImgNo" />
+                <ScalarProperty Name="ImgEvent" ColumnName="ImgEvent" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProcGetMessengerServer" FunctionName="PangyaModel.Store.ProcGetMessengerServer">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PangyaModel.ProcGetMessengerServer_Result">
+                <ScalarProperty Name="ServerID" ColumnName="ServerID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="Port" ColumnName="Port" />
+                <ScalarProperty Name="ImgNo" ColumnName="ImgNo" />
+                <ScalarProperty Name="ImgEvent" ColumnName="ImgEvent" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_FIRST_CREATION" FunctionName="PangyaModel.Store.USP_FIRST_CREATION" />
+          <FunctionImportMapping FunctionImportName="USP_NICKNAME_CHECK" FunctionName="PangyaModel.Store.USP_NICKNAME_CHECK" />
+          <EntitySetMapping Name="Pangya_Game_Macro">
+            <EntityTypeMapping TypeName="PangyaModel.Pangya_Game_Macro">
+              <MappingFragment StoreEntitySet="Pangya_Game_Macro">
+                <ScalarProperty Name="Macro10" ColumnName="Macro10" />
+                <ScalarProperty Name="Macro9" ColumnName="Macro9" />
+                <ScalarProperty Name="Macro8" ColumnName="Macro8" />
+                <ScalarProperty Name="Macro7" ColumnName="Macro7" />
+                <ScalarProperty Name="Macro6" ColumnName="Macro6" />
+                <ScalarProperty Name="Macro5" ColumnName="Macro5" />
+                <ScalarProperty Name="Macro4" ColumnName="Macro4" />
+                <ScalarProperty Name="Macro3" ColumnName="Macro3" />
+                <ScalarProperty Name="Macro2" ColumnName="Macro2" />
+                <ScalarProperty Name="Macro1" ColumnName="Macro1" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pangya_User_Statistics">
+            <EntityTypeMapping TypeName="PangyaModel.Pangya_User_Statistics">
+              <MappingFragment StoreEntitySet="Pangya_User_Statistics">
+                <ScalarProperty Name="EventFlag" ColumnName="EventFlag" />
+                <ScalarProperty Name="EventValue" ColumnName="EventValue" />
+                <ScalarProperty Name="SkinsAllinCount" ColumnName="SkinsAllinCount" />
+                <ScalarProperty Name="SkinsStrikePoint" ColumnName="SkinsStrikePoint" />
+                <ScalarProperty Name="SkinsRunHoles" ColumnName="SkinsRunHoles" />
+                <ScalarProperty Name="SkinsLose" ColumnName="SkinsLose" />
+                <ScalarProperty Name="SkinsWin" ColumnName="SkinsWin" />
+                <ScalarProperty Name="SkinsPang" ColumnName="SkinsPang" />
+                <ScalarProperty Name="GameCountSeason" ColumnName="GameCountSeason" />
+                <ScalarProperty Name="LadderHole" ColumnName="LadderHole" />
+                <ScalarProperty Name="SumPang" ColumnName="SumPang" />
+                <ScalarProperty Name="MAXPANG4" ColumnName="MAXPANG4" />
+                <ScalarProperty Name="MaxPang3" ColumnName="MaxPang3" />
+                <ScalarProperty Name="MaxPang2" ColumnName="MaxPang2" />
+                <ScalarProperty Name="MaxPang1" ColumnName="MaxPang1" />
+                <ScalarProperty Name="MaxPang0" ColumnName="MaxPang0" />
+                <ScalarProperty Name="BESTSCORE4" ColumnName="BESTSCORE4" />
+                <ScalarProperty Name="BestScore3" ColumnName="BestScore3" />
+                <ScalarProperty Name="BestScore2" ColumnName="BestScore2" />
+                <ScalarProperty Name="BestScore1" ColumnName="BestScore1" />
+                <ScalarProperty Name="BestScore0" ColumnName="BestScore0" />
+                <ScalarProperty Name="TotalScore" ColumnName="TotalScore" />
+                <ScalarProperty Name="MaxComboCount" ColumnName="MaxComboCount" />
+                <ScalarProperty Name="ComboCount" ColumnName="ComboCount" />
+                <ScalarProperty Name="LadderDraw" ColumnName="LadderDraw" />
+                <ScalarProperty Name="LadderLose" ColumnName="LadderLose" />
+                <ScalarProperty Name="LadderWin" ColumnName="LadderWin" />
+                <ScalarProperty Name="LadderPoint" ColumnName="LadderPoint" />
+                <ScalarProperty Name="wTeamGames" ColumnName="wTeamGames" />
+                <ScalarProperty Name="wTeamWin" ColumnName="wTeamWin" />
+                <ScalarProperty Name="DisconnectGames" ColumnName="DisconnectGames" />
+                <ScalarProperty Name="GameCount" ColumnName="GameCount" />
+                <ScalarProperty Name="ShotTime" ColumnName="ShotTime" />
+                <ScalarProperty Name="NoMannerGameCount" ColumnName="NoMannerGameCount" />
+                <ScalarProperty Name="LongestChipIn" ColumnName="LongestChipIn" />
+                <ScalarProperty Name="LongestPuttIn" ColumnName="LongestPuttIn" />
+                <ScalarProperty Name="PuttIn" ColumnName="PuttIn" />
+                <ScalarProperty Name="Game_Point" ColumnName="Game_Point" />
+                <ScalarProperty Name="Game_Level" ColumnName="Game_Level" />
+                <ScalarProperty Name="Timeout" ColumnName="Timeout" />
+                <ScalarProperty Name="Pang" ColumnName="Pang" />
+                <ScalarProperty Name="Holein" ColumnName="Holein" />
+                <ScalarProperty Name="Albatross" ColumnName="Albatross" />
+                <ScalarProperty Name="Fairway" ColumnName="Fairway" />
+                <ScalarProperty Name="Bunker" ColumnName="Bunker" />
+                <ScalarProperty Name="OB" ColumnName="OB" />
+                <ScalarProperty Name="Holeinone" ColumnName="Holeinone" />
+                <ScalarProperty Name="TeamHole" ColumnName="TeamHole" />
+                <ScalarProperty Name="Hole" ColumnName="Hole" />
+                <ScalarProperty Name="Pangya" ColumnName="Pangya" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+                <ScalarProperty Name="Longest" ColumnName="Longest" />
+                <ScalarProperty Name="Playtime" ColumnName="Playtime" />
+                <ScalarProperty Name="Putt" ColumnName="Putt" />
+                <ScalarProperty Name="Drive" ColumnName="Drive" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ProcGetItemWarehouse" FunctionName="PangyaModel.Store.ProcGetItemWarehouse">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PangyaModel.ProcGetItemWarehouse_Result">
+                <ScalarProperty Name="IDX" ColumnName="IDX" />
+                <ScalarProperty Name="TYPEID" ColumnName="TYPEID" />
+                <ScalarProperty Name="C0" ColumnName="C0" />
+                <ScalarProperty Name="C1" ColumnName="C1" />
+                <ScalarProperty Name="C2" ColumnName="C2" />
+                <ScalarProperty Name="C3" ColumnName="C3" />
+                <ScalarProperty Name="C4" ColumnName="C4" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="HOURLEFT" ColumnName="HOURLEFT" />
+                <ScalarProperty Name="RegDate" ColumnName="RegDate" />
+                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+                <ScalarProperty Name="UCC_UNIQE" ColumnName="UCC_UNIQE" />
+                <ScalarProperty Name="UCC_STATUS" ColumnName="UCC_STATUS" />
+                <ScalarProperty Name="UCC_COPY_COUNT" ColumnName="UCC_COPY_COUNT" />
+                <ScalarProperty Name="UCC_NAME" ColumnName="UCC_NAME" />
+                <ScalarProperty Name="UCC_DRAWER" ColumnName="UCC_DRAWER" />
+                <ScalarProperty Name="UCC_DRAWER_UID" ColumnName="UCC_DRAWER_UID" />
+                <ScalarProperty Name="CLUB_POINT" ColumnName="CLUB_POINT" />
+                <ScalarProperty Name="CLUB_WORK_COUNT" ColumnName="CLUB_WORK_COUNT" />
+                <ScalarProperty Name="C0_SLOT" ColumnName="C0_SLOT" />
+                <ScalarProperty Name="C1_SLOT" ColumnName="C1_SLOT" />
+                <ScalarProperty Name="C2_SLOT" ColumnName="C2_SLOT" />
+                <ScalarProperty Name="C3_SLOT" ColumnName="C3_SLOT" />
+                <ScalarProperty Name="C4_SLOT" ColumnName="C4_SLOT" />
+                <ScalarProperty Name="CLUB_SLOT_CANCEL" ColumnName="CLUB_SLOT_CANCEL" />
+                <ScalarProperty Name="CLUB_POINT_TOTAL_LOG" ColumnName="CLUB_POINT_TOTAL_LOG" />
+                <ScalarProperty Name="CLUB_UPGRADE_PANG_LOG" ColumnName="CLUB_UPGRADE_PANG_LOG" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProcGetToolbar" FunctionName="PangyaModel.Store.ProcGetToolbar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PangyaModel.ProcGetToolbar_Result">
+                <ScalarProperty Name="CADDIE" ColumnName="CADDIE" />
+                <ScalarProperty Name="CHARACTER_ID" ColumnName="CHARACTER_ID" />
+                <ScalarProperty Name="CLUB_ID" ColumnName="CLUB_ID" />
+                <ScalarProperty Name="BALL_ID" ColumnName="BALL_ID" />
+                <ScalarProperty Name="MASCOT_ID" ColumnName="MASCOT_ID" />
+                <ScalarProperty Name="ITEM_SLOT_1" ColumnName="ITEM_SLOT_1" />
+                <ScalarProperty Name="ITEM_SLOT_2" ColumnName="ITEM_SLOT_2" />
+                <ScalarProperty Name="ITEM_SLOT_3" ColumnName="ITEM_SLOT_3" />
+                <ScalarProperty Name="ITEM_SLOT_4" ColumnName="ITEM_SLOT_4" />
+                <ScalarProperty Name="ITEM_SLOT_5" ColumnName="ITEM_SLOT_5" />
+                <ScalarProperty Name="ITEM_SLOT_6" ColumnName="ITEM_SLOT_6" />
+                <ScalarProperty Name="ITEM_SLOT_7" ColumnName="ITEM_SLOT_7" />
+                <ScalarProperty Name="ITEM_SLOT_8" ColumnName="ITEM_SLOT_8" />
+                <ScalarProperty Name="ITEM_SLOT_9" ColumnName="ITEM_SLOT_9" />
+                <ScalarProperty Name="ITEM_SLOT_10" ColumnName="ITEM_SLOT_10" />
+                <ScalarProperty Name="TITLE_TYPEID" ColumnName="TITLE_TYPEID" />
+                <ScalarProperty Name="POSTER_1" ColumnName="POSTER_1" />
+                <ScalarProperty Name="POSTER_2" ColumnName="POSTER_2" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Pangya_Warehouse">
+            <EntityTypeMapping TypeName="PangyaModel.Pangya_Warehouse">
+              <MappingFragment StoreEntitySet="Pangya_Warehouse">
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="ItemType" ColumnName="ItemType" />
+                <ScalarProperty Name="VALID" ColumnName="VALID" />
+                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+                <ScalarProperty Name="RegDate" ColumnName="RegDate" />
+                <ScalarProperty Name="C4" ColumnName="C4" />
+                <ScalarProperty Name="C3" ColumnName="C3" />
+                <ScalarProperty Name="C2" ColumnName="C2" />
+                <ScalarProperty Name="C1" ColumnName="C1" />
+                <ScalarProperty Name="C0" ColumnName="C0" />
+                <ScalarProperty Name="TYPEID" ColumnName="TYPEID" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="item_id" ColumnName="item_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pangya_Server">
+            <EntityTypeMapping TypeName="PangyaModel.Pangya_Server">
+              <MappingFragment StoreEntitySet="Pangya_Server">
+                <ScalarProperty Name="ServerType" ColumnName="ServerType" />
+                <ScalarProperty Name="ImgEvent" ColumnName="ImgEvent" />
+                <ScalarProperty Name="ImgNo" ColumnName="ImgNo" />
+                <ScalarProperty Name="Port" ColumnName="Port" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ServerID" ColumnName="ServerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ProcGetCaddies" FunctionName="PangyaModel.Store.ProcGetCaddies">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PangyaModel.ProcGetCaddies_Result">
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="TYPEID" ColumnName="TYPEID" />
+                <ScalarProperty Name="EXP" ColumnName="EXP" />
+                <ScalarProperty Name="SKIN_TYPEID" ColumnName="SKIN_TYPEID" />
+                <ScalarProperty Name="TriggerPay" ColumnName="TriggerPay" />
+                <ScalarProperty Name="cLevel" ColumnName="cLevel" />
+                <ScalarProperty Name="SKIN_HOUR_LEFT" ColumnName="SKIN_HOUR_LEFT" />
+                <ScalarProperty Name="DAY_LEFT" ColumnName="DAY_LEFT" />
+                <ScalarProperty Name="END_DATE" ColumnName="END_DATE" />
+                <ScalarProperty Name="RentFlag" ColumnName="RentFlag" />
+                <ScalarProperty Name="SKIN_END_DATE" ColumnName="SKIN_END_DATE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProcGetCard" FunctionName="PangyaModel.Store.ProcGetCard">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PangyaModel.ProcGetCard_Result">
+                <ScalarProperty Name="CARD_IDX" ColumnName="CARD_IDX" />
+                <ScalarProperty Name="CARD_TYPEID" ColumnName="CARD_TYPEID" />
+                <ScalarProperty Name="QTY" ColumnName="QTY" />
+                <ScalarProperty Name="VALID" ColumnName="VALID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Pangya_Character_Equip">
+            <EntityTypeMapping TypeName="PangyaModel.Pangya_Character_Equip">
+              <MappingFragment StoreEntitySet="Pangya_Character_Equip">
+                <ScalarProperty Name="PART_IDX_24" ColumnName="PART_IDX_24" />
+                <ScalarProperty Name="PART_IDX_23" ColumnName="PART_IDX_23" />
+                <ScalarProperty Name="PART_IDX_22" ColumnName="PART_IDX_22" />
+                <ScalarProperty Name="PART_IDX_21" ColumnName="PART_IDX_21" />
+                <ScalarProperty Name="PART_IDX_20" ColumnName="PART_IDX_20" />
+                <ScalarProperty Name="PART_IDX_19" ColumnName="PART_IDX_19" />
+                <ScalarProperty Name="PART_IDX_18" ColumnName="PART_IDX_18" />
+                <ScalarProperty Name="PART_IDX_17" ColumnName="PART_IDX_17" />
+                <ScalarProperty Name="PART_IDX_16" ColumnName="PART_IDX_16" />
+                <ScalarProperty Name="PART_IDX_15" ColumnName="PART_IDX_15" />
+                <ScalarProperty Name="PART_IDX_14" ColumnName="PART_IDX_14" />
+                <ScalarProperty Name="PART_IDX_13" ColumnName="PART_IDX_13" />
+                <ScalarProperty Name="PART_IDX_12" ColumnName="PART_IDX_12" />
+                <ScalarProperty Name="PART_IDX_11" ColumnName="PART_IDX_11" />
+                <ScalarProperty Name="PART_IDX_10" ColumnName="PART_IDX_10" />
+                <ScalarProperty Name="PART_IDX_9" ColumnName="PART_IDX_9" />
+                <ScalarProperty Name="PART_IDX_8" ColumnName="PART_IDX_8" />
+                <ScalarProperty Name="PART_IDX_7" ColumnName="PART_IDX_7" />
+                <ScalarProperty Name="PART_IDX_6" ColumnName="PART_IDX_6" />
+                <ScalarProperty Name="PART_IDX_5" ColumnName="PART_IDX_5" />
+                <ScalarProperty Name="PART_IDX_4" ColumnName="PART_IDX_4" />
+                <ScalarProperty Name="PART_IDX_3" ColumnName="PART_IDX_3" />
+                <ScalarProperty Name="PART_IDX_2" ColumnName="PART_IDX_2" />
+                <ScalarProperty Name="PART_IDX_1" ColumnName="PART_IDX_1" />
+                <ScalarProperty Name="PART_TYPEID_24" ColumnName="PART_TYPEID_24" />
+                <ScalarProperty Name="PART_TYPEID_23" ColumnName="PART_TYPEID_23" />
+                <ScalarProperty Name="PART_TYPEID_22" ColumnName="PART_TYPEID_22" />
+                <ScalarProperty Name="PART_TYPEID_21" ColumnName="PART_TYPEID_21" />
+                <ScalarProperty Name="PART_TYPEID_20" ColumnName="PART_TYPEID_20" />
+                <ScalarProperty Name="PART_TYPEID_19" ColumnName="PART_TYPEID_19" />
+                <ScalarProperty Name="PART_TYPEID_18" ColumnName="PART_TYPEID_18" />
+                <ScalarProperty Name="PART_TYPEID_17" ColumnName="PART_TYPEID_17" />
+                <ScalarProperty Name="PART_TYPEID_16" ColumnName="PART_TYPEID_16" />
+                <ScalarProperty Name="PART_TYPEID_15" ColumnName="PART_TYPEID_15" />
+                <ScalarProperty Name="PART_TYPEID_14" ColumnName="PART_TYPEID_14" />
+                <ScalarProperty Name="PART_TYPEID_13" ColumnName="PART_TYPEID_13" />
+                <ScalarProperty Name="PART_TYPEID_12" ColumnName="PART_TYPEID_12" />
+                <ScalarProperty Name="PART_TYPEID_11" ColumnName="PART_TYPEID_11" />
+                <ScalarProperty Name="PART_TYPEID_10" ColumnName="PART_TYPEID_10" />
+                <ScalarProperty Name="PART_TYPEID_9" ColumnName="PART_TYPEID_9" />
+                <ScalarProperty Name="PART_TYPEID_8" ColumnName="PART_TYPEID_8" />
+                <ScalarProperty Name="PART_TYPEID_7" ColumnName="PART_TYPEID_7" />
+                <ScalarProperty Name="PART_TYPEID_6" ColumnName="PART_TYPEID_6" />
+                <ScalarProperty Name="PART_TYPEID_5" ColumnName="PART_TYPEID_5" />
+                <ScalarProperty Name="PART_TYPEID_4" ColumnName="PART_TYPEID_4" />
+                <ScalarProperty Name="PART_TYPEID_3" ColumnName="PART_TYPEID_3" />
+                <ScalarProperty Name="PART_TYPEID_2" ColumnName="PART_TYPEID_2" />
+                <ScalarProperty Name="PART_TYPEID_1" ColumnName="PART_TYPEID_1" />
+                <ScalarProperty Name="CHAR_IDX" ColumnName="CHAR_IDX" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="EQUIP_IDX" ColumnName="EQUIP_IDX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ProcGetCharacter" FunctionName="PangyaModel.Store.ProcGetCharacter">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PangyaModel.ProcGetCharacter_Result">
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="TYPEID" ColumnName="TYPEID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="HAIR_COLOR" ColumnName="HAIR_COLOR" />
+                <ScalarProperty Name="GIFT_FLAG" ColumnName="GIFT_FLAG" />
+                <ScalarProperty Name="POWER" ColumnName="POWER" />
+                <ScalarProperty Name="CONTROL" ColumnName="CONTROL" />
+                <ScalarProperty Name="IMPACT" ColumnName="IMPACT" />
+                <ScalarProperty Name="SPIN" ColumnName="SPIN" />
+                <ScalarProperty Name="CURVE" ColumnName="CURVE" />
+                <ScalarProperty Name="CUTIN" ColumnName="CUTIN" />
+                <ScalarProperty Name="PART_TYPEID_1" ColumnName="PART_TYPEID_1" />
+                <ScalarProperty Name="PART_TYPEID_2" ColumnName="PART_TYPEID_2" />
+                <ScalarProperty Name="PART_TYPEID_3" ColumnName="PART_TYPEID_3" />
+                <ScalarProperty Name="PART_TYPEID_4" ColumnName="PART_TYPEID_4" />
+                <ScalarProperty Name="PART_TYPEID_5" ColumnName="PART_TYPEID_5" />
+                <ScalarProperty Name="PART_TYPEID_6" ColumnName="PART_TYPEID_6" />
+                <ScalarProperty Name="PART_TYPEID_7" ColumnName="PART_TYPEID_7" />
+                <ScalarProperty Name="PART_TYPEID_8" ColumnName="PART_TYPEID_8" />
+                <ScalarProperty Name="PART_TYPEID_9" ColumnName="PART_TYPEID_9" />
+                <ScalarProperty Name="PART_TYPEID_10" ColumnName="PART_TYPEID_10" />
+                <ScalarProperty Name="PART_TYPEID_11" ColumnName="PART_TYPEID_11" />
+                <ScalarProperty Name="PART_TYPEID_12" ColumnName="PART_TYPEID_12" />
+                <ScalarProperty Name="PART_TYPEID_13" ColumnName="PART_TYPEID_13" />
+                <ScalarProperty Name="PART_TYPEID_14" ColumnName="PART_TYPEID_14" />
+                <ScalarProperty Name="PART_TYPEID_15" ColumnName="PART_TYPEID_15" />
+                <ScalarProperty Name="PART_TYPEID_16" ColumnName="PART_TYPEID_16" />
+                <ScalarProperty Name="PART_TYPEID_17" ColumnName="PART_TYPEID_17" />
+                <ScalarProperty Name="PART_TYPEID_18" ColumnName="PART_TYPEID_18" />
+                <ScalarProperty Name="PART_TYPEID_19" ColumnName="PART_TYPEID_19" />
+                <ScalarProperty Name="PART_TYPEID_20" ColumnName="PART_TYPEID_20" />
+                <ScalarProperty Name="PART_TYPEID_21" ColumnName="PART_TYPEID_21" />
+                <ScalarProperty Name="PART_TYPEID_22" ColumnName="PART_TYPEID_22" />
+                <ScalarProperty Name="PART_TYPEID_23" ColumnName="PART_TYPEID_23" />
+                <ScalarProperty Name="PART_TYPEID_24" ColumnName="PART_TYPEID_24" />
+                <ScalarProperty Name="PART_IDX_1" ColumnName="PART_IDX_1" />
+                <ScalarProperty Name="PART_IDX_2" ColumnName="PART_IDX_2" />
+                <ScalarProperty Name="PART_IDX_3" ColumnName="PART_IDX_3" />
+                <ScalarProperty Name="PART_IDX_4" ColumnName="PART_IDX_4" />
+                <ScalarProperty Name="PART_IDX_5" ColumnName="PART_IDX_5" />
+                <ScalarProperty Name="PART_IDX_6" ColumnName="PART_IDX_6" />
+                <ScalarProperty Name="PART_IDX_7" ColumnName="PART_IDX_7" />
+                <ScalarProperty Name="PART_IDX_8" ColumnName="PART_IDX_8" />
+                <ScalarProperty Name="PART_IDX_9" ColumnName="PART_IDX_9" />
+                <ScalarProperty Name="PART_IDX_10" ColumnName="PART_IDX_10" />
+                <ScalarProperty Name="PART_IDX_11" ColumnName="PART_IDX_11" />
+                <ScalarProperty Name="PART_IDX_12" ColumnName="PART_IDX_12" />
+                <ScalarProperty Name="PART_IDX_13" ColumnName="PART_IDX_13" />
+                <ScalarProperty Name="PART_IDX_14" ColumnName="PART_IDX_14" />
+                <ScalarProperty Name="PART_IDX_15" ColumnName="PART_IDX_15" />
+                <ScalarProperty Name="PART_IDX_16" ColumnName="PART_IDX_16" />
+                <ScalarProperty Name="PART_IDX_17" ColumnName="PART_IDX_17" />
+                <ScalarProperty Name="PART_IDX_18" ColumnName="PART_IDX_18" />
+                <ScalarProperty Name="PART_IDX_19" ColumnName="PART_IDX_19" />
+                <ScalarProperty Name="PART_IDX_20" ColumnName="PART_IDX_20" />
+                <ScalarProperty Name="PART_IDX_21" ColumnName="PART_IDX_21" />
+                <ScalarProperty Name="PART_IDX_22" ColumnName="PART_IDX_22" />
+                <ScalarProperty Name="PART_IDX_23" ColumnName="PART_IDX_23" />
+                <ScalarProperty Name="PART_IDX_24" ColumnName="PART_IDX_24" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Pangya_Character">
+            <EntityTypeMapping TypeName="PangyaModel.Pangya_Character">
+              <MappingFragment StoreEntitySet="Pangya_Character">
+                <ScalarProperty Name="CUTIN" ColumnName="CUTIN" />
+                <ScalarProperty Name="CURVE" ColumnName="CURVE" />
+                <ScalarProperty Name="SPIN" ColumnName="SPIN" />
+                <ScalarProperty Name="IMPACT" ColumnName="IMPACT" />
+                <ScalarProperty Name="CONTROL" ColumnName="CONTROL" />
+                <ScalarProperty Name="POWER" ColumnName="POWER" />
+                <ScalarProperty Name="HAIR_COLOR" ColumnName="HAIR_COLOR" />
+                <ScalarProperty Name="GIFT_FLAG" ColumnName="GIFT_FLAG" />
+                <ScalarProperty Name="TYPEID" ColumnName="TYPEID" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ProcGetMascot" FunctionName="PangyaModel.Store.ProcGetMascot">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PangyaModel.ProcGetMascot_Result">
+                <ScalarProperty Name="MID" ColumnName="MID" />
+                <ScalarProperty Name="MASCOT_TYPEID" ColumnName="MASCOT_TYPEID" />
+                <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+                <ScalarProperty Name="END_DATE_INT" ColumnName="END_DATE_INT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProcGet_UserInfo" FunctionName="PangyaModel.Store.ProcGet_UserInfo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PangyaModel.ProcGet_UserInfo_Result">
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Nickname" ColumnName="Nickname" />
+                <ScalarProperty Name="Capabilities" ColumnName="Capabilities" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="GUILDINDEX" ColumnName="GUILDINDEX" />
+                <ScalarProperty Name="GUILD_NAME" ColumnName="GUILD_NAME" />
+                <ScalarProperty Name="GUILD_IMAGE" ColumnName="GUILD_IMAGE" />
+                <ScalarProperty Name="GUILD_INTRODUCING" ColumnName="GUILD_INTRODUCING" />
+                <ScalarProperty Name="GUILD_NOTICE" ColumnName="GUILD_NOTICE" />
+                <ScalarProperty Name="GUILD_PANG" ColumnName="GUILD_PANG" />
+                <ScalarProperty Name="GUILD_POINT" ColumnName="GUILD_POINT" />
+                <ScalarProperty Name="GUILD_LEADER_UID" ColumnName="GUILD_LEADER_UID" />
+                <ScalarProperty Name="GUILD_POSITION" ColumnName="GUILD_POSITION" />
+                <ScalarProperty Name="GUILD_TOTAL_MEMBER" ColumnName="GUILD_TOTAL_MEMBER" />
+                <ScalarProperty Name="GUILD_LEADER_NICKNAME" ColumnName="GUILD_LEADER_NICKNAME" />
+                <ScalarProperty Name="GUILD_CREATE_DATE" ColumnName="GUILD_CREATE_DATE" />
+                <ScalarProperty Name="TYPEID" ColumnName="TYPEID" />
+                <ScalarProperty Name="IDX" ColumnName="IDX" />
+                <ScalarProperty Name="GIFT_FLAG" ColumnName="GIFT_FLAG" />
+                <ScalarProperty Name="HAIR_COLOR" ColumnName="HAIR_COLOR" />
+                <ScalarProperty Name="POWER" ColumnName="POWER" />
+                <ScalarProperty Name="CONTROL" ColumnName="CONTROL" />
+                <ScalarProperty Name="IMPACT" ColumnName="IMPACT" />
+                <ScalarProperty Name="SPIN" ColumnName="SPIN" />
+                <ScalarProperty Name="CURVE" ColumnName="CURVE" />
+                <ScalarProperty Name="CUTIN" ColumnName="CUTIN" />
+                <ScalarProperty Name="PART1" ColumnName="PART1" />
+                <ScalarProperty Name="PART2" ColumnName="PART2" />
+                <ScalarProperty Name="PART3" ColumnName="PART3" />
+                <ScalarProperty Name="PART4" ColumnName="PART4" />
+                <ScalarProperty Name="PART5" ColumnName="PART5" />
+                <ScalarProperty Name="PART6" ColumnName="PART6" />
+                <ScalarProperty Name="PART7" ColumnName="PART7" />
+                <ScalarProperty Name="PART8" ColumnName="PART8" />
+                <ScalarProperty Name="PART9" ColumnName="PART9" />
+                <ScalarProperty Name="PART10" ColumnName="PART10" />
+                <ScalarProperty Name="PART11" ColumnName="PART11" />
+                <ScalarProperty Name="PART12" ColumnName="PART12" />
+                <ScalarProperty Name="PART13" ColumnName="PART13" />
+                <ScalarProperty Name="PART14" ColumnName="PART14" />
+                <ScalarProperty Name="PART15" ColumnName="PART15" />
+                <ScalarProperty Name="PART16" ColumnName="PART16" />
+                <ScalarProperty Name="PART17" ColumnName="PART17" />
+                <ScalarProperty Name="PART18" ColumnName="PART18" />
+                <ScalarProperty Name="PART19" ColumnName="PART19" />
+                <ScalarProperty Name="PART20" ColumnName="PART20" />
+                <ScalarProperty Name="PART21" ColumnName="PART21" />
+                <ScalarProperty Name="PART22" ColumnName="PART22" />
+                <ScalarProperty Name="PART23" ColumnName="PART23" />
+                <ScalarProperty Name="PART24" ColumnName="PART24" />
+                <ScalarProperty Name="PART_IDX_1" ColumnName="PART_IDX_1" />
+                <ScalarProperty Name="PART_IDX_2" ColumnName="PART_IDX_2" />
+                <ScalarProperty Name="PART_IDX_3" ColumnName="PART_IDX_3" />
+                <ScalarProperty Name="PART_IDX_4" ColumnName="PART_IDX_4" />
+                <ScalarProperty Name="PART_IDX_5" ColumnName="PART_IDX_5" />
+                <ScalarProperty Name="PART_IDX_6" ColumnName="PART_IDX_6" />
+                <ScalarProperty Name="PART_IDX_7" ColumnName="PART_IDX_7" />
+                <ScalarProperty Name="PART_IDX_8" ColumnName="PART_IDX_8" />
+                <ScalarProperty Name="PART_IDX_9" ColumnName="PART_IDX_9" />
+                <ScalarProperty Name="PART_IDX_10" ColumnName="PART_IDX_10" />
+                <ScalarProperty Name="PART_IDX_11" ColumnName="PART_IDX_11" />
+                <ScalarProperty Name="PART_IDX_12" ColumnName="PART_IDX_12" />
+                <ScalarProperty Name="PART_IDX_13" ColumnName="PART_IDX_13" />
+                <ScalarProperty Name="PART_IDX_14" ColumnName="PART_IDX_14" />
+                <ScalarProperty Name="PART_IDX_15" ColumnName="PART_IDX_15" />
+                <ScalarProperty Name="PART_IDX_16" ColumnName="PART_IDX_16" />
+                <ScalarProperty Name="PART_IDX_17" ColumnName="PART_IDX_17" />
+                <ScalarProperty Name="PART_IDX_18" ColumnName="PART_IDX_18" />
+                <ScalarProperty Name="PART_IDX_19" ColumnName="PART_IDX_19" />
+                <ScalarProperty Name="PART_IDX_20" ColumnName="PART_IDX_20" />
+                <ScalarProperty Name="PART_IDX_21" ColumnName="PART_IDX_21" />
+                <ScalarProperty Name="PART_IDX_22" ColumnName="PART_IDX_22" />
+                <ScalarProperty Name="PART_IDX_23" ColumnName="PART_IDX_23" />
+                <ScalarProperty Name="PART_IDX_24" ColumnName="PART_IDX_24" />
+                <ScalarProperty Name="Drive" ColumnName="Drive" />
+                <ScalarProperty Name="Putt" ColumnName="Putt" />
+                <ScalarProperty Name="Playtime" ColumnName="Playtime" />
+                <ScalarProperty Name="Longest" ColumnName="Longest" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+                <ScalarProperty Name="Pangya" ColumnName="Pangya" />
+                <ScalarProperty Name="Hole" ColumnName="Hole" />
+                <ScalarProperty Name="TeamHole" ColumnName="TeamHole" />
+                <ScalarProperty Name="Holeinone" ColumnName="Holeinone" />
+                <ScalarProperty Name="OB" ColumnName="OB" />
+                <ScalarProperty Name="Bunker" ColumnName="Bunker" />
+                <ScalarProperty Name="Fairway" ColumnName="Fairway" />
+                <ScalarProperty Name="Albatross" ColumnName="Albatross" />
+                <ScalarProperty Name="Holein" ColumnName="Holein" />
+                <ScalarProperty Name="Pang" ColumnName="Pang" />
+                <ScalarProperty Name="Timeout" ColumnName="Timeout" />
+                <ScalarProperty Name="Game_Level" ColumnName="Game_Level" />
+                <ScalarProperty Name="Game_Point" ColumnName="Game_Point" />
+                <ScalarProperty Name="PuttIn" ColumnName="PuttIn" />
+                <ScalarProperty Name="LongestPuttin" ColumnName="LongestPuttin" />
+                <ScalarProperty Name="LongestChipIn" ColumnName="LongestChipIn" />
+                <ScalarProperty Name="NoMannerGameCount" ColumnName="NoMannerGameCount" />
+                <ScalarProperty Name="ShotTime" ColumnName="ShotTime" />
+                <ScalarProperty Name="GameCount" ColumnName="GameCount" />
+                <ScalarProperty Name="DisconnectGames" ColumnName="DisconnectGames" />
+                <ScalarProperty Name="wTeamWin" ColumnName="wTeamWin" />
+                <ScalarProperty Name="wTeamGames" ColumnName="wTeamGames" />
+                <ScalarProperty Name="LadderPoint" ColumnName="LadderPoint" />
+                <ScalarProperty Name="LadderWin" ColumnName="LadderWin" />
+                <ScalarProperty Name="LadderLose" ColumnName="LadderLose" />
+                <ScalarProperty Name="LadderDraw" ColumnName="LadderDraw" />
+                <ScalarProperty Name="ComboCount" ColumnName="ComboCount" />
+                <ScalarProperty Name="MaxComboCount" ColumnName="MaxComboCount" />
+                <ScalarProperty Name="TotalScore" ColumnName="TotalScore" />
+                <ScalarProperty Name="BestScore0" ColumnName="BestScore0" />
+                <ScalarProperty Name="BestScore1" ColumnName="BestScore1" />
+                <ScalarProperty Name="BestScore2" ColumnName="BestScore2" />
+                <ScalarProperty Name="BestScore3" ColumnName="BestScore3" />
+                <ScalarProperty Name="BESTSCORE4" ColumnName="BESTSCORE4" />
+                <ScalarProperty Name="MaxPang0" ColumnName="MaxPang0" />
+                <ScalarProperty Name="MaxPang1" ColumnName="MaxPang1" />
+                <ScalarProperty Name="MaxPang2" ColumnName="MaxPang2" />
+                <ScalarProperty Name="MaxPang3" ColumnName="MaxPang3" />
+                <ScalarProperty Name="MaxPang4" ColumnName="MaxPang4" />
+                <ScalarProperty Name="SumPang" ColumnName="SumPang" />
+                <ScalarProperty Name="LadderHole" ColumnName="LadderHole" />
+                <ScalarProperty Name="GameCountSeason" ColumnName="GameCountSeason" />
+                <ScalarProperty Name="SkinsPang" ColumnName="SkinsPang" />
+                <ScalarProperty Name="SkinsWin" ColumnName="SkinsWin" />
+                <ScalarProperty Name="SkinsLose" ColumnName="SkinsLose" />
+                <ScalarProperty Name="SkinsRunHoles" ColumnName="SkinsRunHoles" />
+                <ScalarProperty Name="SkinsStrikePoint" ColumnName="SkinsStrikePoint" />
+                <ScalarProperty Name="SkinsAllinCount" ColumnName="SkinsAllinCount" />
+                <ScalarProperty Name="EventValue" ColumnName="EventValue" />
+                <ScalarProperty Name="EventFlag" ColumnName="EventFlag" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Pangya_User_Equip">
+            <EntityTypeMapping TypeName="PangyaModel.Pangya_User_Equip">
+              <MappingFragment StoreEntitySet="Pangya_User_Equip">
+                <ScalarProperty Name="POSTER_2" ColumnName="POSTER_2" />
+                <ScalarProperty Name="POSTER_1" ColumnName="POSTER_1" />
+                <ScalarProperty Name="ITEM_SLOT_10" ColumnName="ITEM_SLOT_10" />
+                <ScalarProperty Name="ITEM_SLOT_9" ColumnName="ITEM_SLOT_9" />
+                <ScalarProperty Name="ITEM_SLOT_8" ColumnName="ITEM_SLOT_8" />
+                <ScalarProperty Name="ITEM_SLOT_7" ColumnName="ITEM_SLOT_7" />
+                <ScalarProperty Name="ITEM_SLOT_6" ColumnName="ITEM_SLOT_6" />
+                <ScalarProperty Name="ITEM_SLOT_5" ColumnName="ITEM_SLOT_5" />
+                <ScalarProperty Name="ITEM_SLOT_4" ColumnName="ITEM_SLOT_4" />
+                <ScalarProperty Name="ITEM_SLOT_3" ColumnName="ITEM_SLOT_3" />
+                <ScalarProperty Name="ITEM_SLOT_2" ColumnName="ITEM_SLOT_2" />
+                <ScalarProperty Name="ITEM_SLOT_1" ColumnName="ITEM_SLOT_1" />
+                <ScalarProperty Name="TITLE_TYPEID" ColumnName="TITLE_TYPEID" />
+                <ScalarProperty Name="CADDIE" ColumnName="CADDIE" />
+                <ScalarProperty Name="MASCOT_ID" ColumnName="MASCOT_ID" />
+                <ScalarProperty Name="BALL_ID" ColumnName="BALL_ID" />
+                <ScalarProperty Name="CLUB_ID" ColumnName="CLUB_ID" />
+                <ScalarProperty Name="CHARACTER_ID" ColumnName="CHARACTER_ID" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pangya_Personal">
+            <EntityTypeMapping TypeName="PangyaModel.Pangya_Personal">
+              <MappingFragment StoreEntitySet="Pangya_Personal">
+                <ScalarProperty Name="LockerPwd" ColumnName="LockerPwd" />
+                <ScalarProperty Name="PangLockerAmt" ColumnName="PangLockerAmt" />
+                <ScalarProperty Name="CookieAmt" ColumnName="CookieAmt" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ProcGuildGetPlayerData" FunctionName="PangyaModel.Store.ProcGuildGetPlayerData">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PangyaModel.ProcGuildGetPlayerData_Result">
+                <ScalarProperty Name="GUILD_INDEX" ColumnName="GUILD_INDEX" />
+                <ScalarProperty Name="GUILD_NAME" ColumnName="GUILD_NAME" />
+                <ScalarProperty Name="GUILD_INTRODUCING" ColumnName="GUILD_INTRODUCING" />
+                <ScalarProperty Name="GUILD_NOTICE" ColumnName="GUILD_NOTICE" />
+                <ScalarProperty Name="GUILD_PANG" ColumnName="GUILD_PANG" />
+                <ScalarProperty Name="GUILD_POINT" ColumnName="GUILD_POINT" />
+                <ScalarProperty Name="GUILD_LEADER_UID" ColumnName="GUILD_LEADER_UID" />
+                <ScalarProperty Name="GUILD_CREATE_DATE" ColumnName="GUILD_CREATE_DATE" />
+                <ScalarProperty Name="GUILD_TOTAL_MEMBER" ColumnName="GUILD_TOTAL_MEMBER" />
+                <ScalarProperty Name="GUILD_LEADER_NICKNAME" ColumnName="GUILD_LEADER_NICKNAME" />
+                <ScalarProperty Name="GUILD_POSITION" ColumnName="GUILD_POSITION" />
+                <ScalarProperty Name="GUILD_IMAGE" ColumnName="GUILD_IMAGE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_GAME_LOGIN" FunctionName="PangyaModel.Store.USP_GAME_LOGIN">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PangyaModel.USP_GAME_LOGIN_Result">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Nickname" ColumnName="Nickname" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Capabilities" ColumnName="Capabilities" />
+                <ScalarProperty Name="LockerPwd" ColumnName="LockerPwd" />
+                <ScalarProperty Name="Game_Level" ColumnName="Game_Level" />
+                <ScalarProperty Name="Game_Point" ColumnName="Game_Point" />
+                <ScalarProperty Name="Cookie" ColumnName="Cookie" />
+                <ScalarProperty Name="PangLockerAmt" ColumnName="PangLockerAmt" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

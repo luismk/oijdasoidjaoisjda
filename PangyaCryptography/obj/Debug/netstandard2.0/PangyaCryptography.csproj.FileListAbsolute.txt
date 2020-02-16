@@ -1,0 +1,8 @@
+C:\PangyaDev\PangyaCryptography\bin\Debug\netstandard2.0\PangyaCryptography.deps.json
+C:\PangyaDev\PangyaCryptography\bin\Debug\netstandard2.0\PangyaCryptography.dll
+C:\PangyaDev\PangyaCryptography\bin\Debug\netstandard2.0\PangyaCryptography.pdb
+C:\PangyaDev\PangyaCryptography\obj\Debug\netstandard2.0\PangyaCryptography.AssemblyInfoInputs.cache
+C:\PangyaDev\PangyaCryptography\obj\Debug\netstandard2.0\PangyaCryptography.AssemblyInfo.cs
+C:\PangyaDev\PangyaCryptography\obj\Debug\netstandard2.0\PangyaCryptography.dll
+C:\PangyaDev\PangyaCryptography\obj\Debug\netstandard2.0\PangyaCryptography.pdb
+C:\PangyaDev\PangyaCryptography\obj\Debug\netstandard2.0\PangyaCryptography.csprojAssemblyReference.cache

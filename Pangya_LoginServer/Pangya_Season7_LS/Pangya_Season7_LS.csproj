@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D2335D00-A738-440C-A374-F78F4A236E1F}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Pangya_Season7_LS</RootNamespace>
+    <AssemblyName>LoginServer</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.30\lib\net461\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Handles\Handle_PLAYER_CONFIRM_NICKNAME.cs" />
+    <Compile Include="Handles\Handle_PLAYER_LOGIN.cs" />
+    <Compile Include="Handles\Handle_PLAYER_RECONNECT.cs" />
+    <Compile Include="Handles\Handle_PLAYER_SELECT_CHARACTER.cs" />
+    <Compile Include="Handles\Handle_PLAYER_SELECT_SERVER.cs" />
+    <Compile Include="Handles\Handle_PLAYER_SET_NICKNAME.cs" />
+    <Compile Include="Handles\Handle_Shared.cs" />
+    <Compile Include="Handles_Packet\Packet_PLAYER_CONFIRM_NICKNAME.cs" />
+    <Compile Include="Handles_Packet\Packet_PLAYER_LOGIN.cs" />
+    <Compile Include="Handles_Packet\Packet_PLAYER_RECONNECT.cs" />
+    <Compile Include="Handles_Packet\Packet_PLAYER_SELECT_CHARACTER.cs" />
+    <Compile Include="Handles_Packet\Packet_PLAYER_SELECT_SERVER.cs" />
+    <Compile Include="Handles_Packet\Packet_PLAYER_SET_NICKNAME.cs" />
+    <Compile Include="TcpServer\LoginServerTcp.cs" />
+    <Compile Include="Defines\PangyaPacketsEnum.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\PangyaAPI\PangyaAPI.csproj">
+      <Project>{a53a1b9a-46e2-453a-bd76-f2d82b710cec}</Project>
+      <Name>PangyaAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PangyaConnector\PangyaConnector.csproj">
+      <Project>{22691628-2468-4457-82a0-454d947fad94}</Project>
+      <Name>PangyaConnector</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,17 @@
+C:\PangyaDev\Pangya_GameServer\Pangya_Season7_GS\bin\Debug\Pangya_Season7_GS.exe
+C:\PangyaDev\Pangya_GameServer\Pangya_Season7_GS\bin\Debug\Pangya_Season7_GS.pdb
+C:\PangyaDev\Pangya_GameServer\Pangya_Season7_GS\bin\Debug\PangyaAPI.dll
+C:\PangyaDev\Pangya_GameServer\Pangya_Season7_GS\bin\Debug\Dapper.dll
+C:\PangyaDev\Pangya_GameServer\Pangya_Season7_GS\bin\Debug\PangyaCryptography.dll
+C:\PangyaDev\Pangya_GameServer\Pangya_Season7_GS\bin\Debug\Newtonsoft.Json.dll
+C:\PangyaDev\Pangya_GameServer\Pangya_Season7_GS\bin\Debug\netstandard.dll
+C:\PangyaDev\Pangya_GameServer\Pangya_Season7_GS\bin\Debug\PangyaAPI.pdb
+C:\PangyaDev\Pangya_GameServer\Pangya_Season7_GS\bin\Debug\PangyaAPI.dll.config
+C:\PangyaDev\Pangya_GameServer\Pangya_Season7_GS\bin\Debug\PangyaCryptography.pdb
+C:\PangyaDev\Pangya_GameServer\Pangya_Season7_GS\obj\Debug\Pangya_Season7_GS.csprojAssemblyReference.cache
+C:\PangyaDev\Pangya_GameServer\Pangya_Season7_GS\obj\Debug\Pangya_Season7_GS.csproj.CopyComplete
+C:\PangyaDev\Pangya_GameServer\Pangya_Season7_GS\obj\Debug\Pangya_Season7_GS.exe
+C:\PangyaDev\Pangya_GameServer\Pangya_Season7_GS\obj\Debug\Pangya_Season7_GS.pdb
+C:\PangyaDev\Pangya_GameServer\Pangya_Season7_GS\bin\Debug\PangyaConnector.dll
+C:\PangyaDev\Pangya_GameServer\Pangya_Season7_GS\bin\Debug\PangyaConnector.pdb
+C:\PangyaDev\Pangya_GameServer\Pangya_Season7_GS\bin\Debug\PangyaConnector.dll.config

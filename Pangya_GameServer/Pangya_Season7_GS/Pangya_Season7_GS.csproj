@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{54383325-24CF-4395-BC3F-D0E6338BD1D7}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Pangya_Season7_GS</RootNamespace>
+    <AssemblyName>Pangya_Season7_GS</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>default</LangVersion>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Device" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Handles\HandleBase.cs" />
+    <Compile Include="Handles\Handle_PLAYER_ACTION.cs" />
+    <Compile Include="Handles\Handle_PLAYER_GM_COMMAND.cs" />
+    <Compile Include="Handles\Handle_PLAYER_PAUSE_GAME.cs" />
+    <Compile Include="Handles\Handle_PLAYER_1ST_SHOT_READY.cs" />
+    <Compile Include="Handles\Handle_PLAYER_ACTION_SHOT.cs" />
+    <Compile Include="Handles\Handle_PLAYER_BUY_ITEM_GAME.cs" />
+    <Compile Include="Handles\Handle_PLAYER_CHANGE_EQUIPMENT.cs" />
+    <Compile Include="Handles\Handle_PLAYER_CHANGE_EQUIPMENTS.cs" />
+    <Compile Include="Handles\Handle_PLAYER_CHAT.cs" />
+    <Compile Include="Handles\Handle_PLAYER_CREATE_GAME.cs" />
+    <Compile Include="Handles\Handle_PLAYER_CREATE_GUILD.cs" />
+    <Compile Include="Handles\Handle_PLAYER_ENTER_TO_SHOP.cs" />
+    <Compile Include="Handles\Handle_PLAYER_GAME_ROTATE.cs" />
+    <Compile Include="Handles\Handle_PLAYER_GUILD_AVALIABLE.cs" />
+    <Compile Include="Handles\Handle_PLAYER_HOLE_INFORMATIONS.cs" />
+    <Compile Include="Handles\Handle_PLAYER_JOIN_GAME.cs" />
+    <Compile Include="Handles\Handle_PLAYER_JOIN_MULTIGAME_LIST.cs" />
+    <Compile Include="Handles\Handle_PLAYER_LEAVE_GAME.cs" />
+    <Compile Include="Handles\Handle_PLAYER_LEAVE_MULTIGAME_LIST.cs" />
+    <Compile Include="Handles\Handle_PLAYER_LOADING_INFO.cs" />
+    <Compile Include="Handles\Handle_PLAYER_LOAD_OK.cs" />
+    <Compile Include="Handles\Handle_PLAYER_LOGIN.cs" />
+    <Compile Include="Handles\Handle_PLAYER_MATCH_DATA.cs" />
+    <Compile Include="Handles\Handle_PLAYER_MATCH_HISTORY.cs" />
+    <Compile Include="Handles\Handle_PLAYER_PRESS_READY.cs" />
+    <Compile Include="Handles\Handle_PLAYER_SAVE_BAR.cs" />
+    <Compile Include="Handles\Handle_PLAYER_SELECT_LOBBY.cs" />
+    <Compile Include="Handles\Handle_PLAYER_SHOT_DATA.cs" />
+    <Compile Include="Handles\Handle_PLAYER_START_GAME.cs" />
+    <Compile Include="Handles\Handle_PLAYER_SHOT_SYNC.cs" />
+    <Compile Include="Handles\Handle_PLAYER_REQUEST_PLAYERINFO.cs" />
+    <Compile Include="Handles_Packet\IPacketTransformable.cs" />
+    <Compile Include="Handles_Packet\PacketResult.cs" />
+    <Compile Include="Handles_Packet\Packet_Handle_PLAYER_PAUSE_GAME.cs" />
+    <Compile Include="Handles_Packet\Packet_PLAYER_1ST_SHOT_READY.cs" />
+    <Compile Include="Handles_Packet\Packet_PLAYER_ACTION.cs" />
+    <Compile Include="Handles_Packet\Packet_PLAYER_ACTION_SHOT.cs" />
+    <Compile Include="Handles_Packet\Packet_PLAYER_BUY_ITEM_GAME.cs" />
+    <Compile Include="Handles_Packet\Packet_PLAYER_CHANGE_EQUIPMENT.cs" />
+    <Compile Include="Handles_Packet\Packet_PLAYER_CHANGE_EQUIPMENTS.cs" />
+    <Compile Include="Handles_Packet\Packet_PLAYER_CHAT.cs" />
+    <Compile Include="Handles_Packet\Packet_PLAYER_CREATE_GAME.cs" />
+    <Compile Include="Handles_Packet\Packet_PLAYER_CREATE_GUILD.cs" />
+    <Compile Include="Handles_Packet\Packet_PLAYER_GAME_ROTATE.cs" />
+    <Compile Include="Handles_Packet\Packet_PLAYER_GM_COMMAND.cs" />
+    <Compile Include="Handles_Packet\Packet_PLAYER_GUILD_AVALIABLE.cs" />
+    <Compile Include="Handles_Packet\Packet_PLAYER_HOLE_INFORMATIONS.cs" />
+    <Compile Include="Handles_Packet\Packet_PLAYER_JOIN_GAME.cs" />
+    <Compile Include="Handles_Packet\Packet_PLAYER_LEAVE_GAME.cs" />
+    <Compile Include="Handles_Packet\Packet_PLAYER_LOADING_INFO.cs" />
+    <Compile Include="Handles_Packet\Packet_PLAYER_LOAD_OK.cs" />
+    <Compile Include="Handles_Packet\Packet_PLAYER_LOGIN.cs" />
+    <Compile Include="Handles_Packet\Packet_PLAYER_MATCH_DATA.cs" />
+    <Compile Include="Handles_Packet\Packet_PLAYER_MATCH_HISTORY.cs" />
+    <Compile Include="Handles_Packet\Packet_PLAYER_PRESS_READY.cs" />
+    <Compile Include="Handles_Packet\Packet_PLAYER_REQUEST_PLAYERINFO.cs" />
+    <Compile Include="Handles_Packet\Packet_PLAYER_SAVE_BAR.cs" />
+    <Compile Include="Handles_Packet\Packet_PLAYER_SELECT_LOBBY.cs" />
+    <Compile Include="Handles_Packet\Packet_PLAYER_SHOT_DATA.cs" />
+    <Compile Include="Handles_Packet\Packet_PLAYER_SHOT_SYNC.cs" />
+    <Compile Include="Handles_Packet\Packet_PLAYER_START_GAME.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="TcpServer\GameServerTcp.cs" />
+    <Compile Include="Enums\PangyaEnums.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\PangyaAPI\PangyaAPI.csproj">
+      <Project>{a53a1b9a-46e2-453a-bd76-f2d82b710cec}</Project>
+      <Name>PangyaAPI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Handles_Class\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

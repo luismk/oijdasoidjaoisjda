@@ -1,0 +1,16 @@
+C:\PangyaDev\Pangya_AuthServer\Pangya_AuthServer\obj\Debug\Pangya_AuthServer.csprojAssemblyReference.cache
+C:\PangyaDev\Pangya_AuthServer\Pangya_AuthServer\bin\Debug\Pangya_AuthServer.exe.config
+C:\PangyaDev\Pangya_AuthServer\Pangya_AuthServer\bin\Debug\Pangya_AuthServer.exe
+C:\PangyaDev\Pangya_AuthServer\Pangya_AuthServer\bin\Debug\Pangya_AuthServer.pdb
+C:\PangyaDev\Pangya_AuthServer\Pangya_AuthServer\bin\Debug\Newtonsoft.Json.dll
+C:\PangyaDev\Pangya_AuthServer\Pangya_AuthServer\bin\Debug\PangyaAPI.dll
+C:\PangyaDev\Pangya_AuthServer\Pangya_AuthServer\bin\Debug\Dapper.dll
+C:\PangyaDev\Pangya_AuthServer\Pangya_AuthServer\bin\Debug\PangyaCryptography.dll
+C:\PangyaDev\Pangya_AuthServer\Pangya_AuthServer\bin\Debug\netstandard.dll
+C:\PangyaDev\Pangya_AuthServer\Pangya_AuthServer\bin\Debug\PangyaAPI.pdb
+C:\PangyaDev\Pangya_AuthServer\Pangya_AuthServer\bin\Debug\PangyaAPI.dll.config
+C:\PangyaDev\Pangya_AuthServer\Pangya_AuthServer\bin\Debug\Newtonsoft.Json.xml
+C:\PangyaDev\Pangya_AuthServer\Pangya_AuthServer\bin\Debug\PangyaCryptography.pdb
+C:\PangyaDev\Pangya_AuthServer\Pangya_AuthServer\obj\Debug\Pangya_AuthServer.csproj.CopyComplete
+C:\PangyaDev\Pangya_AuthServer\Pangya_AuthServer\obj\Debug\Pangya_AuthServer.exe
+C:\PangyaDev\Pangya_AuthServer\Pangya_AuthServer\obj\Debug\Pangya_AuthServer.pdb

@@ -1,0 +1,9 @@
+C:\PangyaDev\Pangya_LoginServer\PangyaConnector\bin\Debug\PangyaConnector.dll.config
+C:\PangyaDev\Pangya_LoginServer\PangyaConnector\bin\Debug\PangyaConnector.dll
+C:\PangyaDev\Pangya_LoginServer\PangyaConnector\bin\Debug\PangyaConnector.pdb
+C:\PangyaDev\Pangya_LoginServer\PangyaConnector\bin\Debug\Dapper.dll
+C:\PangyaDev\Pangya_LoginServer\PangyaConnector\bin\Debug\Dapper.xml
+C:\PangyaDev\Pangya_LoginServer\PangyaConnector\obj\Debug\PangyaConnector.csprojAssemblyReference.cache
+C:\PangyaDev\Pangya_LoginServer\PangyaConnector\obj\Debug\PangyaConnector.csproj.CopyComplete
+C:\PangyaDev\Pangya_LoginServer\PangyaConnector\obj\Debug\PangyaConnector.dll
+C:\PangyaDev\Pangya_LoginServer\PangyaConnector\obj\Debug\PangyaConnector.pdb
