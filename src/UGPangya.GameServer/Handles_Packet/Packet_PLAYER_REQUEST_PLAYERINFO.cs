@@ -1,0 +1,17 @@
+﻿using UGPangya.API.BinaryModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace UGPangya.GameServer.Handles_Packet
+{
+    public class Packet_PLAYER_REQUEST_PLAYERINFO : PacketResult
+    {
+        public override void Load(PangyaBinaryReader reader)
+        {
+            //throw new NotImplementedException();
+        }
+    }
+}

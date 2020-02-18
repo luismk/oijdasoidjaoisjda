@@ -3,19 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29519.87
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pangya_AuthServer", "src\Pangya_AuthServer\Pangya_AuthServer.csproj", "{9497BCC9-3167-42EB-B3F9-78185EFE953C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UGPangya.AuthServer", "src\UGPangya.AuthServer\UGPangya.AuthServer.csproj", "{9497BCC9-3167-42EB-B3F9-78185EFE953C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PangyaAPI", "src\PangyaAPI\PangyaAPI.csproj", "{A53A1B9A-46E2-453A-BD76-F2D82B710CEC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UGPangya.API", "src\UGPangya.API\UGPangya.API.csproj", "{A53A1B9A-46E2-453A-BD76-F2D82B710CEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PangyaConnector", "src\PangyaConnector\PangyaConnector.csproj", "{22691628-2468-4457-82A0-454D947FAD94}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UGPangya.Connector", "src\UGPangya.Connector\UGPangya.Connector.csproj", "{22691628-2468-4457-82A0-454D947FAD94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pangya_Season7_LS", "src\Pangya_Season7_LS\Pangya_Season7_LS.csproj", "{D2335D00-A738-440C-A374-F78F4A236E1F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UGPangya.LoginServer", "src\UGPangya.LoginServer\UGPangya.LoginServer.csproj", "{D2335D00-A738-440C-A374-F78F4A236E1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pangya_Season7_GS", "src\Pangya_Season7_GS\Pangya_Season7_GS.csproj", "{54383325-24CF-4395-BC3F-D0E6338BD1D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UGPangya.GameServer", "src\UGPangya.GameServer\UGPangya.GameServer.csproj", "{54383325-24CF-4395-BC3F-D0E6338BD1D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pangya_DataConnector", "src\Pangya_DataConnector\Pangya_DataConnector.csproj", "{EE220ED0-2095-4F45-8372-699999CC91B6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UGPangya.DataConnector", "src\UGPangya.DataConnector\UGPangya.DataConnector.csproj", "{EE220ED0-2095-4F45-8372-699999CC91B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pangya_MessengerServer", "src\Pangya_MessengerServer\Pangya_MessengerServer.csproj", "{C626CB91-BEC3-4222-A22D-C634B7A094B3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UGPangya.MessengerServer", "src\UGPangya.MessengerServer\UGPangya.MessengerServer.csproj", "{C626CB91-BEC3-4222-A22D-C634B7A094B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
