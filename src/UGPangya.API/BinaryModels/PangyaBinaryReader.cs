@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 
 namespace UGPangya.API.BinaryModels
@@ -11,7 +10,24 @@ namespace UGPangya.API.BinaryModels
         #region Construtores
 
         public PangyaBinaryReader(Stream baseStream)
-             : base(baseStream) { }
+            : base(baseStream)
+        {
+        }
+
+        #endregion
+
+        #region Leituras de Bytes
+
+        //Lê PangyaString e retorna em um array de Bytes
+        public byte[] ReadPStrBytes()
+        {
+            int size = ReadInt16();
+
+            if (short.MaxValue < size)
+                return null;
+
+            return ReadBytes(size);
+        }
 
         #endregion
 
@@ -28,7 +44,7 @@ namespace UGPangya.API.BinaryModels
         }
 
         /// <summary>
-        /// Pula bytes a partir da posição no fluxo atual
+        ///     Pula bytes a partir da posição no fluxo atual
         /// </summary>
         /// <param name="jump"></param>
         public void Skip(int jump)
@@ -38,15 +54,15 @@ namespace UGPangya.API.BinaryModels
 
         #endregion
 
-        #region Leituras de String 
-   
+        #region Leituras de String
+
         public string ReadPStr(int count)
         {
             var data = ReadBytes(count);
 
             var result = BaseStream.Read(data, 0, count);
 
-            ASCIIEncoding enc = new ASCIIEncoding();
+            var enc = new ASCIIEncoding();
             return enc.GetString(data);
         }
 
@@ -54,12 +70,13 @@ namespace UGPangya.API.BinaryModels
         {
             return ReadPStr(new ASCIIEncoding());
         }
+
         public string ReadPStr(Encoding encoding)
         {
             int size = ReadInt16();
 
-            if (Int16.MaxValue < size)
-                return String.Empty;
+            if (short.MaxValue < size)
+                return string.Empty;
 
             var result = ReadBytes(size);
 
@@ -104,42 +121,23 @@ namespace UGPangya.API.BinaryModels
 
         #endregion
 
-        #region Leituras de Bytes
-
-        //Lê PangyaString e retorna em um array de Bytes
-        public byte[] ReadPStrBytes()
-        {
-            int size = ReadInt16();
-
-            if (Int16.MaxValue < size)
-                return null;
-
-            return ReadBytes(size);
-        }
-
-        #endregion
-
         #region Leituras Numéricas
 
         public IEnumerable<uint> Read(uint[] model)
         {
-            for (int i = 0; i < model.Length; i++)
-            {
-                yield return ReadUInt32();
-            }
+            for (var i = 0; i < model.Length; i++) yield return ReadUInt32();
         }
+
         public void Read(object obj)
         {
             foreach (var property in obj.GetType().GetProperties())
             {
+                var type = property.PropertyType;
 
-                Type type = property.PropertyType;
-
-                TypeCode typeCode = Type.GetTypeCode(type);
+                var typeCode = Type.GetTypeCode(type);
 
                 switch (typeCode)
                 {
-
                     case TypeCode.Empty:
                         break;
                     case TypeCode.Object:
@@ -147,89 +145,88 @@ namespace UGPangya.API.BinaryModels
                     case TypeCode.DBNull:
                         break;
                     case TypeCode.Boolean:
-                        {
-                            property.SetValue(obj, ReadBoolean());
-                        }
+                    {
+                        property.SetValue(obj, ReadBoolean());
+                    }
                         break;
                     case TypeCode.Char:
-                        {
-                            property.SetValue(obj, ReadChar());
-                        }
+                    {
+                        property.SetValue(obj, ReadChar());
+                    }
                         break;
                     case TypeCode.SByte:
-                        {
-                            property.SetValue(obj, ReadSByte());
-                        }
+                    {
+                        property.SetValue(obj, ReadSByte());
+                    }
                         break;
 
                     case TypeCode.Byte:
-                        {
-                            property.SetValue(obj, ReadByte());
-                        }
+                    {
+                        property.SetValue(obj, ReadByte());
+                    }
                         break;
                     case TypeCode.Int16:
-                        {
-                            property.SetValue(obj, ReadInt16());
-                        }
+                    {
+                        property.SetValue(obj, ReadInt16());
+                    }
                         break;
                     case TypeCode.UInt16:
-                        {
-                            property.SetValue(obj, ReadUInt16());
-                        }
+                    {
+                        property.SetValue(obj, ReadUInt16());
+                    }
                         break;
                     case TypeCode.Int32:
-                        {
-                            property.SetValue(obj, ReadInt32());
-                        }
+                    {
+                        property.SetValue(obj, ReadInt32());
+                    }
                         break;
                     case TypeCode.UInt32:
                         property.SetValue(obj, ReadUInt32());
                         break;
                     case TypeCode.Int64:
-                        {
-                            property.SetValue(obj, ReadInt64());
-                        }
+                    {
+                        property.SetValue(obj, ReadInt64());
+                    }
                         break;
                     case TypeCode.UInt64:
-                        {
-                            property.SetValue(obj, ReadUInt64());
-                        }
+                    {
+                        property.SetValue(obj, ReadUInt64());
+                    }
                         break;
                     case TypeCode.Single:
-                        {
-                            property.SetValue(obj, ReadSingle());
-                        }
+                    {
+                        property.SetValue(obj, ReadSingle());
+                    }
                         break;
                     case TypeCode.Double:
-                        {
-                            property.SetValue(obj, ReadDouble());
-                        }
+                    {
+                        property.SetValue(obj, ReadDouble());
+                    }
                         break;
                     case TypeCode.Decimal:
-                        {
-                            property.SetValue(obj, ReadDecimal());
-                        }
+                    {
+                        property.SetValue(obj, ReadDecimal());
+                    }
                         break;
                     case TypeCode.DateTime:
-                        {
-                            //property.SetValue(obj, ReadDateTime());
-                        }
+                    {
+                        //property.SetValue(obj, ReadDateTime());
+                    }
                         break;
                     case TypeCode.String:
-                        {
-                            property.SetValue(obj, ReadPStr());
-                        }
+                    {
+                        property.SetValue(obj, ReadPStr());
+                    }
                         break;
                     default:
-                        {
-                            Console.WriteLine("Code_UN: " + typeCode);
-                        }
+                    {
+                        Console.WriteLine("Code_UN: " + typeCode);
+                    }
                         break;
                 }
             }
-
         }
-        #endregion
 
+        #endregion
     }
 }

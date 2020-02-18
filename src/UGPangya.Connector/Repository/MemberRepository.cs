@@ -1,10 +1,6 @@
-﻿using Dapper;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Dapper;
 using UGPangya.Connector.Properties;
 using UGPangya.Connector.Repository.Model;
 
@@ -26,9 +22,11 @@ namespace UGPangya.Connector.Repository
             {
                 connection.Open();
 
-                var query = "SELECT COUNT(1) FROM [Pangya].[dbo].[Pangya_Member] WHERE Username = @UserName AND SUBSTRING(sys.fn_sqlvarbasetostr(HASHBYTES('MD5', Password)), 3, 32) = @Password";
+                var query =
+                    "SELECT COUNT(1) FROM [Pangya].[dbo].[Pangya_Member] WHERE Username = @UserName AND SUBSTRING(sys.fn_sqlvarbasetostr(HASHBYTES('MD5', Password)), 3, 32) = @Password";
 
-                return connection.QuerySingle<int>(query, new { UserName = userName, Password = passwordMD5.ToLower() }) > 0;
+                return connection.QuerySingle<int>(query, new {UserName = userName, Password = passwordMD5.ToLower()}) >
+                       0;
             }
         }
 
@@ -38,9 +36,10 @@ namespace UGPangya.Connector.Repository
             {
                 connection.Open();
 
-                var query = $"SELECT COUNT(1) FROM [Pangya].[dbo].[Pangya_Member] WHERE Username = @userName AND IDState > 0";
+                var query =
+                    "SELECT COUNT(1) FROM [Pangya].[dbo].[Pangya_Member] WHERE Username = @userName AND IDState > 0";
 
-                return connection.QuerySingle<int>(query, new { userName }) == 1;
+                return connection.QuerySingle<int>(query, new {userName}) == 1;
             }
         }
 
@@ -52,7 +51,7 @@ namespace UGPangya.Connector.Repository
 
                 var query = @" SELECT * FROM [dbo].[Pangya_Member] WHERE Username = @UserName";
 
-                return connection.Query<MemberModel>(query, new { UserName = userName }).FirstOrDefault();
+                return connection.Query<MemberModel>(query, new {UserName = userName}).FirstOrDefault();
             }
         }
 
@@ -64,7 +63,7 @@ namespace UGPangya.Connector.Repository
 
                 var query = @" SELECT * FROM [dbo].[Pangya_Member] WHERE UID = @UID";
 
-                return connection.Query<MemberModel>(query, new { UID }).FirstOrDefault();
+                return connection.Query<MemberModel>(query, new {UID}).FirstOrDefault();
             }
         }
 
@@ -74,9 +73,9 @@ namespace UGPangya.Connector.Repository
             {
                 connection.Open();
 
-                var query = $"SELECT COUNT(1) FROM [Pangya].[dbo].[Pangya_Character] WHERE UID = @uid";
+                var query = "SELECT COUNT(1) FROM [Pangya].[dbo].[Pangya_Character] WHERE UID = @uid";
 
-                return connection.QuerySingle<int>(query, new { uid }) == 0;
+                return connection.QuerySingle<int>(query, new {uid}) == 0;
             }
         }
 
@@ -89,9 +88,10 @@ namespace UGPangya.Connector.Repository
                 {
                     connection.Open();
 
-                    string query = "UPDATE [dbo].[Pangya_Member] SET [AuthKey_Login] = @authKey_login, [AuthKey_Game] = @authKey_Game WHERE UID = @uid";
+                    var query =
+                        "UPDATE [dbo].[Pangya_Member] SET [AuthKey_Login] = @authKey_login, [AuthKey_Game] = @authKey_Game WHERE UID = @uid";
 
-                    var result = connection.Execute(query, new { uid, authKey_login, authKey_game });
+                    var result = connection.Execute(query, new {uid, authKey_login, authKey_game});
 
                     return result == 1;
                 }
@@ -101,6 +101,7 @@ namespace UGPangya.Connector.Repository
                 return false;
             }
         }
+
         public bool UpdateNickName(int uid, string nickname)
         {
             try
@@ -109,9 +110,9 @@ namespace UGPangya.Connector.Repository
                 {
                     connection.Open();
 
-                    string query = "UPDATE [dbo].[Pangya_Member] SET [Nickname] = @nickname WHERE UID = @uid";
+                    var query = "UPDATE [dbo].[Pangya_Member] SET [Nickname] = @nickname WHERE UID = @uid";
 
-                    var result = connection.Execute(query, new { uid, nickname });
+                    var result = connection.Execute(query, new {uid, nickname});
 
                     return result == 1;
                 }
@@ -121,8 +122,5 @@ namespace UGPangya.Connector.Repository
                 return false;
             }
         }
-
-
-
     }
 }

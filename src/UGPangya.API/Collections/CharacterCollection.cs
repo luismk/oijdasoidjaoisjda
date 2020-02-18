@@ -10,9 +10,6 @@ namespace UGPangya.API.Collections
 {
     public class CharacterCollection : List<Character>
     {
-        private Player _player { get; set; }
-        private CharacterRepository _characterRepository { get; set; }
-
         public CharacterCollection(Player player)
         {
             _player = player;
@@ -20,33 +17,33 @@ namespace UGPangya.API.Collections
             Load();
         }
 
+        private Player _player { get; }
+        private CharacterRepository _characterRepository { get; }
+
         private void Load()
         {
             AddRange(_characterRepository.GetByUid(_player.Member_Old.UID));
         }
 
         /// <summary>
-        /// Obtém os dados de todos os characters
+        ///     Obtém os dados de todos os characters
         /// </summary>
         /// <returns></returns>
         public byte[] GetCharacterData()
         {
             var result = new PangyaBinaryWriter(new MemoryStream());
 
-            result.Write(new byte[] { 0x70, 0x00 });
-            result.Write((ushort)Count); //Total Character
-            result.Write((ushort)Count); //Total Character
+            result.Write(new byte[] {0x70, 0x00});
+            result.Write((ushort) Count); //Total Character
+            result.Write((ushort) Count); //Total Character
 
-            foreach (var character in this)
-            {
-                result.Write(GetCharacterData(character.CID));
-            }
+            foreach (var character in this) result.Write(GetCharacterData(character.CID));
 
             return result.GetBytes();
         }
 
         /// <summary>
-        /// Obtém os dados de um character pelo Id
+        ///     Obtém os dados de um character pelo Id
         /// </summary>
         public byte[] GetCharacterData(int characterId)
         {
@@ -57,16 +54,20 @@ namespace UGPangya.API.Collections
             result.Write(character.CID);
             result.Write(character.HAIR_COLOR);
             result.Write(character.GIFT_FLAG);
-            for (int i = 0; i < 24; i++)
+            for (var i = 0; i < 24; i++)
             {
-                var valorPropriedade = character.CharacterEquip.GetType().GetProperty($"PART_TYPEID_{i + 1}").GetValue(character.CharacterEquip, null);
-                result.Write(Convert.ToUInt32((valorPropriedade)));
+                var valorPropriedade = character.CharacterEquip.GetType().GetProperty($"PART_TYPEID_{i + 1}")
+                    .GetValue(character.CharacterEquip, null);
+                result.Write(Convert.ToUInt32(valorPropriedade));
             }
-            for (int i = 0; i < 24; i++)
+
+            for (var i = 0; i < 24; i++)
             {
-                var valorPropriedade = character.CharacterEquip.GetType().GetProperty($"PART_IDX_{i + 1}").GetValue(character.CharacterEquip, null);
-                result.Write(Convert.ToUInt32((valorPropriedade)));
+                var valorPropriedade = character.CharacterEquip.GetType().GetProperty($"PART_IDX_{i + 1}")
+                    .GetValue(character.CharacterEquip, null);
+                result.Write(Convert.ToUInt32(valorPropriedade));
             }
+
             result.WriteEmptyBytes(216);
             result.Write(0); //character.AuxPart (UINT) 1879113856
             result.Write(0); //character.AuxPart2 (UINT) 1881210881
@@ -78,11 +79,11 @@ namespace UGPangya.API.Collections
             result.Write(character.IMPACT.Value);
             result.Write(character.SPIN.Value);
             result.Write(character.CURVE.Value);
-            result.Write((byte)100); //character.MasteryPoint
+            result.Write((byte) 100); //character.MasteryPoint
             result.WriteEmptyBytes(3);
             result.Write(character.CardEquipCollection.MapCard(character.CID), 40); //MAP CARD DATA
-            result.Write((UInt32)0);
-            result.Write((UInt32)0);
+            result.Write((uint) 0);
+            result.Write((uint) 0);
 
             return result.GetBytes();
         }
@@ -102,27 +103,28 @@ namespace UGPangya.API.Collections
             //var character = this.FirstOrDefault();
             var character = _player.GetCurrentCharacter();
 
-            if (character == null)
-            {
-                return GetZero(513);
-            }
+            if (character == null) return GetZero(513);
 
             var result = new PangyaBinaryWriter();
 
             result.Write(character.TYPEID);
             result.Write(character.CID);
-            result.Write((ushort)character.HAIR_COLOR);
-            result.Write((ushort)character.GIFT_FLAG);
-            for (int i = 0; i < 24; i++)
-                {
-                    var valorPropriedade = character.CharacterEquip.GetType().GetProperty($"PART_TYPEID_{i + 1}").GetValue(character.CharacterEquip, null);
-                    result.Write(Convert.ToUInt32((valorPropriedade)));
-                }
-                for (int i = 0; i < 24; i++)
-                {
-                    var valorPropriedade = character.CharacterEquip.GetType().GetProperty($"PART_IDX_{i + 1}").GetValue(character.CharacterEquip, null);
-                    result.Write(Convert.ToUInt32((valorPropriedade)));
-                }
+            result.Write(character.HAIR_COLOR);
+            result.Write(character.GIFT_FLAG);
+            for (var i = 0; i < 24; i++)
+            {
+                var valorPropriedade = character.CharacterEquip.GetType().GetProperty($"PART_TYPEID_{i + 1}")
+                    .GetValue(character.CharacterEquip, null);
+                result.Write(Convert.ToUInt32(valorPropriedade));
+            }
+
+            for (var i = 0; i < 24; i++)
+            {
+                var valorPropriedade = character.CharacterEquip.GetType().GetProperty($"PART_IDX_{i + 1}")
+                    .GetValue(character.CharacterEquip, null);
+                result.Write(Convert.ToUInt32(valorPropriedade));
+            }
+
             result.WriteEmptyBytes(0xD8);
             result.Write(0); //FLRingTypeID
             result.Write(0); //FRRingTypeID
@@ -137,8 +139,8 @@ namespace UGPangya.API.Collections
             result.Write(0x00); //character.MasteryPoint
             result.WriteEmptyBytes(3);
             result.Write(character.CardEquipCollection.MapCard(character.CID), 40); //MAP CARD DATA
-            result.Write((UInt32)0);
-            result.Write((UInt32)0);
+            result.Write((uint) 0);
+            result.Write((uint) 0);
 
             return result.GetBytes();
         }

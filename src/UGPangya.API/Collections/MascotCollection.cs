@@ -1,33 +1,29 @@
-﻿using UGPangya.API.Tools;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using UGPangya.API.BinaryModels;
 using UGPangya.API.Repository;
 using UGPangya.API.Repository.Models;
+using UGPangya.API.Tools;
 
 namespace UGPangya.API.Collections
 {
     public class MascotCollection : List<Mascot>
     {
-        private Player _player { get; set; }
-        private MascotRepository _mascotRepository { get; set; }
-
         public MascotCollection(Player player)
         {
             _player = player;
             _mascotRepository = new MascotRepository();
-            this.AddRange(_mascotRepository.GetByUID(player.Member_Old.UID));
+            AddRange(_mascotRepository.GetByUID(player.Member_Old.UID));
         }
+
+        private Player _player { get; }
+        private MascotRepository _mascotRepository { get; }
 
         public byte[] GetMascotData()
         {
             var result = new PangyaBinaryWriter();
 
-            result.Write(new byte[] { 0xE1, 0x00 });
-            result.Write((byte)Count); //Total Caddie
+            result.Write(new byte[] {0xE1, 0x00});
+            result.Write((byte) Count); //Total Caddie
 
             foreach (var mascot in this)
             {
@@ -35,7 +31,7 @@ namespace UGPangya.API.Collections
                 result.Write(mascot.MASCOT_TYPEID);
                 result.WriteEmptyBytes(5);
                 result.WriteStr(mascot.MESSAGE, 16);
-                result.WriteEmptyBytes(length: 14);
+                result.WriteEmptyBytes(14);
                 result.Write(mascot.END_DATE_INT.Value);
                 result.Write(mascot.DateEnd?.ToPangyaDateTime());
                 result.WriteEmptyBytes(1);

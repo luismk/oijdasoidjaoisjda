@@ -1,11 +1,5 @@
-﻿using Dapper;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.SqlClient;
+using Dapper;
 using UGPangya.API.Repository.Models;
 
 namespace UGPangya.API.Repository
@@ -19,13 +13,14 @@ namespace UGPangya.API.Repository
             _connectionString = Settings.Default.ConnectionString;
         }
 
-        public  UserEquip GetByUID(int uid)
+        public UserEquip GetByUID(int uid)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
 
-                return connection.QueryFirstOrDefault<UserEquip>("SELECT * FROM Pangya_User_Equip WHERE UID = @UID", new { UID = uid });
+                return connection.QueryFirstOrDefault<UserEquip>("SELECT * FROM Pangya_User_Equip WHERE UID = @UID",
+                    new {UID = uid});
             }
         }
 
@@ -35,7 +30,7 @@ namespace UGPangya.API.Repository
             {
                 connection.Open();
 
-                string query = @"UPDATE [dbo].[Pangya_User_Equip] SET 
+                var query = @"UPDATE [dbo].[Pangya_User_Equip] SET 
                 [CHARACTER_ID] = @CHARACTER_ID, 
                 [CLUB_ID] = @CLUB_ID, 
                 [BALL_ID] = @BALL_ID, 

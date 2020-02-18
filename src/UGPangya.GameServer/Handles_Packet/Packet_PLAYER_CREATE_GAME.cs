@@ -10,16 +10,16 @@ namespace UGPangya.GameServer.Handles_Packet
 
         public override void Load(PangyaBinaryReader reader)
         {
-            Game = new Game()
+            Game = new Game
             {
                 Un = reader.ReadByte(),
                 TimeSec = reader.ReadUInt32(),
                 TimeMin = reader.ReadUInt32(),
                 MaxPlayers = reader.ReadByte(),
-                Mode = (GameTypeEnum)reader.ReadByte(),//ok
-                Holes = reader.ReadByte(),//
-                Course = (GameMapTypeEnum)reader.ReadByte(),
-                HoleOrder = (GameModeTypeEnum)reader.ReadByte(),
+                Mode = (GameTypeEnum) reader.ReadByte(), //ok
+                Holes = reader.ReadByte(), //
+                Course = (GameMapTypeEnum) reader.ReadByte(),
+                HoleOrder = (GameModeTypeEnum) reader.ReadByte(),
                 NaturalMode = reader.ReadUInt32(),
 
                 RoomTitle = reader.ReadPStr(),

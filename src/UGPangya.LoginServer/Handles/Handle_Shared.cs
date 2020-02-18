@@ -1,7 +1,7 @@
-﻿using UGPangya.API;
-using UGPangya.Connector.Repository;
-using System;
+﻿using System;
 using System.Linq;
+using UGPangya.API;
+using UGPangya.Connector.Repository;
 
 namespace UGPangya.LoginServer.Handles
 {
@@ -24,32 +24,31 @@ namespace UGPangya.LoginServer.Handles
         {
             var gameServers = new PangyaServerRepository().GetGameServers();
 
-            player.Response.Write(new byte[] { 0x02, 0x00 });
+            player.Response.Write(new byte[] {0x02, 0x00});
             player.Response.WriteByte(gameServers.Count());
             if (gameServers.Count() > 0)
-            {
                 foreach (var servidor in gameServers)
                 {
-                    player.Response.WriteStr(servidor.Name, 40);// aqui no caso deve ser 16               
-                    player.Response.Write(servidor.ServerID);//server UID
+                    player.Response.WriteStr(servidor.Name, 40); // aqui no caso deve ser 16               
+                    player.Response.Write(servidor.ServerID); //server UID
                     player.Response.WriteUInt32(5000); //suporte maximo de jogadores no servidor simultaneamente
-                    player.Response.Write(player.Server.Players.Count); //Total de jogadores no servidor atualmente ou simultaneamente(limitador)
+                    player.Response.Write(player.Server.Players
+                        .Count); //Total de jogadores no servidor atualmente ou simultaneamente(limitador)
                     player.Response.WriteStr(servidor.IP, 18);
-                    player.Response.Write((int)servidor.Port);
+                    player.Response.Write((int) servidor.Port);
                     player.Response.WriteUInt32(2048); //imagem do grand prix 2048, manto 16               
                     player.Response.WriteUInt32(1); //Angelic Number Count
-                    player.Response.Write((ushort)servidor.ImgEvent);
-                    player.Response.Write(new byte[] { 0x00, 0x00, 0x64, 0x00, 0x00, 0x00 }); //tem alguma coisa aqui
-                    player.Response.Write((ushort)servidor.ImgNo);
+                    player.Response.Write((ushort) servidor.ImgEvent);
+                    player.Response.Write(new byte[] {0x00, 0x00, 0x64, 0x00, 0x00, 0x00}); //tem alguma coisa aqui
+                    player.Response.Write((ushort) servidor.ImgNo);
                 }
-            }
 
             player.SendResponse();
         }
 
         private void HandleLoginAuthKey(Player player)
         {
-            player.Response.Write(new byte[] { 0x10, 0x00 });
+            player.Response.Write(new byte[] {0x10, 0x00});
             player.Response.WritePStr(player.Member.AuthKey_Login);
             player.SendResponse();
         }
@@ -58,7 +57,7 @@ namespace UGPangya.LoginServer.Handles
         {
             var macros = new GameMacroRepository().GetByUID(player.Member.UID);
 
-            player.Response.Write(new byte[] { 0x06, 0x00 });
+            player.Response.Write(new byte[] {0x06, 0x00});
             player.Response.WriteStr(macros.Macro1, 64);
             player.Response.WriteStr(macros.Macro2, 64);
             player.Response.WriteStr(macros.Macro3, 64);
@@ -75,13 +74,13 @@ namespace UGPangya.LoginServer.Handles
         {
             var statistics = new UserStatisticsRepository().GetByUID(player.Member.UID);
 
-            player.Response.Write(new byte[] { 0x01, 0x00, 0x00 });
+            player.Response.Write(new byte[] {0x01, 0x00, 0x00});
             player.Response.WritePStr(player.Member.UserName);
             player.Response.Write(player.Member.UID);
             player.Response.WriteUInt32(player.Member.Sex);
-            player.Response.WriteUInt32(statistics.Game_Level);//Level, uint32
+            player.Response.WriteUInt32(statistics.Game_Level); //Level, uint32
             player.Response.WriteUInt32(10);
-            player.Response.Write((ushort)12);
+            player.Response.Write((ushort) 12);
             player.Response.WritePStr(player.Member.Nickname);
             player.SendResponse();
         }
@@ -93,26 +92,25 @@ namespace UGPangya.LoginServer.Handles
             var messengerServers = serverRepository.GetMessengerServers();
 
             //Messenger
-            player.Response.Write(new byte[] { 0x09, 0x00 });
-            player.Response.Write((byte)messengerServers.Count());
+            player.Response.Write(new byte[] {0x09, 0x00});
+            player.Response.Write((byte) messengerServers.Count());
             if (messengerServers.Count() > 0)
-            {
                 foreach (var servidor in messengerServers)
                 {
                     player.Response.WriteStr(servidor.Name, 40);
                     player.Response.Write(servidor.ServerID);
-                    player.Response.Write((UInt32)5000); //Max Users
+                    player.Response.Write((uint) 5000); //Max Users
                     player.Response.Write(player.Server.Players.ToList().Count);
                     player.Response.WriteStr(servidor.IP, 18);
-                    player.Response.Write((UInt32)servidor.Port);
-                    player.Response.Write((UInt32)4096);
+                    player.Response.Write((uint) servidor.Port);
+                    player.Response.Write((uint) 4096);
                 }
-            }
+
             player.SendResponse();
         }
 
         /// <summary>
-        /// GERA UMA CHAVE DE AUTENTIFICAÇÃO EM STRING NO TAMANHO 7 caracters
+        ///     GERA UMA CHAVE DE AUTENTIFICAÇÃO EM STRING NO TAMANHO 7 caracters
         /// </summary>
         /// <returns></returns>
         public string GenerateAuthKey()

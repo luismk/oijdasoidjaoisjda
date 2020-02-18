@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UGPangya.API.Repository.Models
+﻿namespace UGPangya.API.Repository.Models
 {
     public class CharacterEquip
     {
@@ -13,6 +7,7 @@ namespace UGPangya.API.Repository.Models
         public int CHAR_IDX { get; set; }
 
         #region PART TYPEID
+
         public int? PART_TYPEID_1 { get; set; }
         public int? PART_TYPEID_2 { get; set; }
         public int? PART_TYPEID_3 { get; set; }
@@ -37,9 +32,11 @@ namespace UGPangya.API.Repository.Models
         public int? PART_TYPEID_22 { get; set; }
         public int? PART_TYPEID_23 { get; set; }
         public int? PART_TYPEID_24 { get; set; }
+
         #endregion
 
         #region PART IDX
+
         public int? PART_IDX_1 { get; set; }
         public int? PART_IDX_2 { get; set; }
         public int? PART_IDX_3 { get; set; }
@@ -64,6 +61,7 @@ namespace UGPangya.API.Repository.Models
         public int? PART_IDX_22 { get; set; }
         public int? PART_IDX_23 { get; set; }
         public int? PART_IDX_24 { get; set; }
+
         #endregion
     }
 }

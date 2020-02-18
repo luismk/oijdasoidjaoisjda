@@ -1,24 +1,23 @@
-﻿using UGPangya.API;
+﻿using System.Collections.Generic;
+using UGPangya.API;
 using UGPangya.API.BinaryModels;
-using System.Collections.Generic;
 
 namespace UGPangya.GameServer.Handles_Packet
 {
     public class Packet_PLAYER_BUY_ITEM_GAME : PacketResult
     {
+        public List<ShopItem> BuyItens = new List<ShopItem>();
         public GameShopEnum BuyType { get; set; }
 
         public ushort BuyTotal { get; set; }
 
-        public List<ShopItem> BuyItens = new List<ShopItem>();
-
         public override void Load(PangyaBinaryReader reader)
         {
-            BuyType = (GameShopEnum)reader.ReadByte();
+            BuyType = (GameShopEnum) reader.ReadByte();
 
             BuyTotal = reader.ReadUInt16();
 
-            for (int Count = 0; Count <= BuyTotal - 1; Count++)
+            for (var Count = 0; Count <= BuyTotal - 1; Count++)
             {
                 var item = new ShopItem();
                 item.UN1 = reader.ReadInt32(); //PlayerCurrentMoney
@@ -50,5 +49,4 @@ namespace UGPangya.GameServer.Handles_Packet
             public int CookiePrice { get; set; }
         }
     }
-
 }

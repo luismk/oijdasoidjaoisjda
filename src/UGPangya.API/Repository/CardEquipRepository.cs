@@ -1,10 +1,6 @@
-﻿using Dapper;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Dapper;
 using UGPangya.API.Collections;
 using UGPangya.API.Repository.Models;
 
@@ -27,7 +23,7 @@ namespace UGPangya.API.Repository
 
                 var query = @" SELECT * FROM [Pangya_Card_Equip] WHERE UID = @UID";
 
-                return connection.Query<CardEquip>(query, new { UID = uid });
+                return connection.Query<CardEquip>(query, new {UID = uid});
             }
         }
 
@@ -39,7 +35,7 @@ namespace UGPangya.API.Repository
 
                 var query = @" SELECT * FROM [Pangya_Card_Equip] WHERE CID = @CID";
 
-                return new CardEquipCollection(connection.Query<CardEquip>(query, new { CID = characterId }));
+                return new CardEquipCollection(connection.Query<CardEquip>(query, new {CID = characterId}));
             }
         }
     }

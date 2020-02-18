@@ -7,10 +7,6 @@ namespace UGPangya.API.Managers
 {
     public class GameManager
     {
-        public List<Game> Games { get; set; }
-
-        private LobbyManager _lobby { get; set; }
-
         public GameManager(LobbyManager lobby)
         {
             _lobby = lobby;
@@ -18,23 +14,25 @@ namespace UGPangya.API.Managers
             Games = new List<Game>();
         }
 
+        public List<Game> Games { get; set; }
+
+        private LobbyManager _lobby { get; }
+
         public void List(Player player)
         {
             player.SendResponse(GameAction(Games, GameActionEnum.LIST));
         }
 
         /// <summary>
-        /// 47 00
+        ///     47 00
         /// </summary>
         /// <param name="game"></param>
         public void Create(Game game)
         {
             #region Gera ROOM_NUMBER
+
             ushort room_number = 2;
-            while (Games.Any(g => g.GameId == room_number))
-            {
-                room_number += 1;
-            }
+            while (Games.Any(g => g.GameId == room_number)) room_number += 1;
 
             //Obtém um Room_Number ainda não utilizado
             game.GameId = room_number;
@@ -57,7 +55,8 @@ namespace UGPangya.API.Managers
         {
             _lobby.Players.ToList().ForEach(player =>
             {
-                player.SendResponse(GameAction(game, GameActionEnum.UPDATE)); //Update para exibir aos jogadores a contagem 0
+                player.SendResponse(GameAction(game,
+                    GameActionEnum.UPDATE)); //Update para exibir aos jogadores a contagem 0
                 player.SendResponse(GameAction(game, GameActionEnum.DESTROY)); //Destroy
             });
 
@@ -65,7 +64,7 @@ namespace UGPangya.API.Managers
         }
 
         /// <summary>
-        /// 47 00
+        ///     47 00
         /// </summary>
         /// <param name="game"></param>
         public void Update(Game game)
@@ -77,25 +76,22 @@ namespace UGPangya.API.Managers
         {
             var result = new PangyaBinaryWriter();
 
-            result.Write(new byte[] {
+            result.Write(new byte[]
+            {
                 0x47, 0x00,
-                (byte)games.Count,
-                (byte)action,
-                0xFF, 0xFF,
+                (byte) games.Count,
+                (byte) action,
+                0xFF, 0xFF
             });
 
-            games.ForEach(game =>
-            {
-                result.Write(game.GetGameInformation());
-            });
+            games.ForEach(game => { result.Write(game.GetGameInformation()); });
 
             return result.GetBytes();
         }
 
         private byte[] GameAction(Game game, GameActionEnum action)
         {
-            return GameAction(new List<Game>() { game }, action);
+            return GameAction(new List<Game> {game}, action);
         }
-
     }
 }

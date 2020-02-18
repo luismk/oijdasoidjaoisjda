@@ -1,11 +1,6 @@
-﻿using Dapper;
-using UGPangya.API.Collections;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Dapper;
 using UGPangya.API.Repository.Models;
 
 namespace UGPangya.API.Repository
@@ -14,16 +9,16 @@ namespace UGPangya.API.Repository
     {
         private readonly string _connectionString;
 
-        private CharacterEquipRepository _characterEquipRepository { get; set; }
-
-        private CardEquipRepository _cardEquipRepository { get; set; }
-
         public CharacterRepository()
         {
             _connectionString = Settings.Default.ConnectionString;
             _characterEquipRepository = new CharacterEquipRepository();
             _cardEquipRepository = new CardEquipRepository();
         }
+
+        private CharacterEquipRepository _characterEquipRepository { get; }
+
+        private CardEquipRepository _cardEquipRepository { get; }
 
         public IEnumerable<Character> GetByUid(int uid)
         {
@@ -33,7 +28,7 @@ namespace UGPangya.API.Repository
 
                 var query = @" SELECT * FROM [dbo].[Pangya_Character] WHERE UID = @UID";
 
-                var characters = connection.Query<Character>(query, new { UID = uid });
+                var characters = connection.Query<Character>(query, new {UID = uid});
 
                 foreach (var character in characters)
                 {
@@ -43,9 +38,6 @@ namespace UGPangya.API.Repository
 
                 return characters;
             }
-
-
-
         }
     }
 }

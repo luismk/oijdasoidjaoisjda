@@ -1,7 +1,6 @@
-﻿using UGPangya.API;
+﻿using System;
+using UGPangya.API;
 using UGPangya.API.BinaryModels;
-using System;
-using System.Device.Location;
 using UGPangya.GameServer.Handles_Packet;
 
 namespace UGPangya.GameServer.Handles
@@ -10,7 +9,7 @@ namespace UGPangya.GameServer.Handles
     {
         public Handle_PLAYER_SHOT_DATA(Player player) : base(player)
         {
-            base.PacketResult.Load(player.CurrentPacket.Reader, player.Game.RoomKey);
+            PacketResult.Load(player.CurrentPacket.Reader, player.Game.RoomKey);
 
             Handle();
         }
@@ -25,7 +24,6 @@ namespace UGPangya.GameServer.Handles
             Console.WriteLine("Shot POS Z: " + PacketResult.Z);
 
 
-
             //CALCULO DE DISTÂNCIA
 
             //HSREINA: 
@@ -34,16 +32,16 @@ namespace UGPangya.GameServer.Handles
 
             //ERIC (TESTAR)
             Console.WriteLine("Testando calculo de distância......");
-            var holeDistance = Math.Abs((Math.Sqrt(Math.Pow(Player.HolePos.X - PacketResult.X, 2) + Math.Pow(Player.HolePos.Z - PacketResult.Z, 2))));
+            var holeDistance = Math.Abs(Math.Sqrt(Math.Pow(Player.HolePos.X - PacketResult.X, 2) +
+                                                  Math.Pow(Player.HolePos.Z - PacketResult.Z, 2)));
             Console.WriteLine("Distância: " + holeDistance);
 
 
             var result = new PangyaBinaryWriter();
 
-            result.Write(new byte[] { 0x64, 0x00 });
+            result.Write(new byte[] {0x64, 0x00});
             result.Write(PacketResult.ResponseShot);
             Player.Game.SendToAll(result);
         }
-
     }
 }

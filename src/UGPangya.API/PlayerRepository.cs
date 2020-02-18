@@ -1,11 +1,6 @@
-﻿using Dapper;
-using UGPangya.Connector.Repository;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Dapper;
 using UGPangya.API.Collections;
 using UGPangya.API.Repository.Models;
 
@@ -16,7 +11,7 @@ namespace UGPangya.API
         #region Public Repository Methods
 
         /// <summary>
-        /// Carrega dados do perfil do usuário
+        ///     Carrega dados do perfil do usuário
         /// </summary>
         /// <returns>Os dados MemberInfo foi carregado</returns>
         public void LoadMember(string userName)
@@ -50,7 +45,7 @@ namespace UGPangya.API
         }
 
         /// <summary>
-        /// Verifica se a senha MD5 é a mesma do usuário
+        ///     Verifica se a senha MD5 é a mesma do usuário
         /// </summary>
         public bool PasswordMD5IsValid(string password)
         {
@@ -63,9 +58,10 @@ namespace UGPangya.API
             {
                 connection.Open();
 
-                var query = $"SELECT COUNT(1) FROM[Pangya].[dbo].[Pangya_Member] WHERE Username = @UserName AND IDState > 0";
+                var query =
+                    "SELECT COUNT(1) FROM[Pangya].[dbo].[Pangya_Member] WHERE Username = @UserName AND IDState > 0";
 
-                return connection.QuerySingle<int>(query, new { Member_Old.Username }) == 1;
+                return connection.QuerySingle<int>(query, new {Member_Old.Username}) == 1;
             }
         }
 
@@ -75,9 +71,9 @@ namespace UGPangya.API
             {
                 connection.Open();
 
-                var query = $"SELECT COUNT(1) FROM [Pangya].[dbo].[Pangya_Character] WHERE UID = @UID";
+                var query = "SELECT COUNT(1) FROM [Pangya].[dbo].[Pangya_Character] WHERE UID = @UID";
 
-                return connection.QuerySingle<int>(query, new { Member_Old.UID }) == 0;
+                return connection.QuerySingle<int>(query, new {Member_Old.UID}) == 0;
             }
         }
 
@@ -86,7 +82,7 @@ namespace UGPangya.API
         {
             return _pangyaGameMacroRepository.GetByUID(Member_Old.UID);
         }
-   
+
         public Character GetCurrentCharacter()
         {
             return Characters.FirstOrDefault(c => c.CID == UserEquip.CHARACTER_ID);

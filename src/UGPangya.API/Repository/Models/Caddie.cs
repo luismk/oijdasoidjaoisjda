@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UGPangya.API.BinaryModels;
 
 namespace UGPangya.API.Repository.Models
@@ -10,12 +6,12 @@ namespace UGPangya.API.Repository.Models
     public class Caddie
     {
         /// <summary>
-        /// Caddie ID
+        ///     Caddie ID
         /// </summary>
         public int CID { get; set; }
 
         /// <summary>
-        /// Usuário ID
+        ///     Usuário ID
         /// </summary>
         public int UID { get; set; }
 
@@ -46,7 +42,6 @@ namespace UGPangya.API.Repository.Models
         public int DAY_LEFT { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <returns>Total 25 bytes</returns>
         public byte[] GetData()
@@ -58,13 +53,12 @@ namespace UGPangya.API.Repository.Models
             result.Write(cLevel);
             result.Write(EXP);
             result.Write(RentFlag.Value);
-            result.Write((ushort)DAY_LEFT);
-            result.Write((ushort)SKIN_HOUR_LEFT);
-            result.Write((byte)0x00);
-            result.Write((ushort)TriggerPay);
+            result.Write((ushort) DAY_LEFT);
+            result.Write((ushort) SKIN_HOUR_LEFT);
+            result.Write((byte) 0x00);
+            result.Write((ushort) TriggerPay);
 
             return result.GetBytes();
-
         }
     }
 }

@@ -31,7 +31,7 @@
         SHIFT_HOLENUM = 11,
         SHIFT_HOLELOCK = 12,
         SHIFT_ARTIFACT = 13, //ARTEFATO
-        SHIFT_NATURAL = 14, //ok          
+        SHIFT_NATURAL = 14 //ok          
     }
 
     public enum GameMapEnum
@@ -55,7 +55,7 @@
         Ice_Inferno = 0x12,
         Wiz_City = 0x13,
         Abbot_Mine = 0x14,
-        Grand_Zodiac = 40, //mapa especial 
+        Grand_Zodiac = 40 //mapa especial 
     }
 
   

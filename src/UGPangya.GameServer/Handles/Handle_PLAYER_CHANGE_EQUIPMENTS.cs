@@ -1,20 +1,16 @@
-﻿using UGPangya.API;
+﻿using System;
+using UGPangya.API;
 using UGPangya.API.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UGPangya.GameServer.Handles_Packet;
 
 namespace UGPangya.GameServer.Handles
 {
     /// <summary>
-    /// INCOMPLETO
+    ///     INCOMPLETO
     /// </summary>
     public class Handle_PLAYER_CHANGE_EQUIPMENTS : HandleBase<Packet_PLAYER_CHANGE_EQUIPMENTS>
     {
-        private UserEquipRepository _repository = new UserEquipRepository();
+        private readonly UserEquipRepository _repository = new UserEquipRepository();
 
 
         public Handle_PLAYER_CHANGE_EQUIPMENTS(Player player) : base(player)
@@ -31,10 +27,10 @@ namespace UGPangya.GameServer.Handles
                 case Packet_PLAYER_CHANGE_EQUIPMENTS.ChangeEquipmentEnum.SetEquip_Char:
                     break;
                 case Packet_PLAYER_CHANGE_EQUIPMENTS.ChangeEquipmentEnum.SetIndexCaddie:
-                    {
-                        Console.WriteLine("Change to CaddieId: " + PacketResult.CaddieId ?? "NULL FOR CADDIEID");
-                        Player.UserEquip.CADDIE = PacketResult.CaddieId;
-                    }
+                {
+                    Console.WriteLine("Change to CaddieId: " + PacketResult.CaddieId ?? "NULL FOR CADDIEID");
+                    Player.UserEquip.CADDIE = PacketResult.CaddieId;
+                }
                     break;
                 case Packet_PLAYER_CHANGE_EQUIPMENTS.ChangeEquipmentEnum.SetItensPlay:
                     break;
@@ -45,18 +41,17 @@ namespace UGPangya.GameServer.Handles
                 case Packet_PLAYER_CHANGE_EQUIPMENTS.ChangeEquipmentEnum.SetIndexChar:
                     break;
                 case Packet_PLAYER_CHANGE_EQUIPMENTS.ChangeEquipmentEnum.SetIndexMascot:
-                    {
-                        Console.WriteLine("Change to MascotId: " + PacketResult.MascoteId ?? "NULL FOR MascotId");
+                {
+                    Console.WriteLine("Change to MascotId: " + PacketResult.MascoteId ?? "NULL FOR MascotId");
 
-                        Player.UserEquip.MASCOT_ID = PacketResult.MascoteId;
-                    }
+                    Player.UserEquip.MASCOT_ID = PacketResult.MascoteId;
+                }
                     break;
                 case Packet_PLAYER_CHANGE_EQUIPMENTS.ChangeEquipmentEnum.SetCharCutin:
                     break;
             }
 
             _repository.Update(Player.UserEquip);
-
         }
     }
 }

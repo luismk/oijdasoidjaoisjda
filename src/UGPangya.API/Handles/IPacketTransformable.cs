@@ -1,10 +1,4 @@
-﻿using UGPangya.API;
-using UGPangya.API.BinaryModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using UGPangya.API.BinaryModels;
 
 namespace Pangya_Season7_GS.Handles_Packet
 {

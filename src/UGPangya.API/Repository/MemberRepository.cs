@@ -1,12 +1,6 @@
-﻿using Dapper;
-using UGPangya.API.Repository.DapperExt;
-using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Dapper;
 using UGPangya.API.Repository.Models;
 
 namespace UGPangya.API.Repository
@@ -28,7 +22,7 @@ namespace UGPangya.API.Repository
 
                 var query = @" SELECT * FROM [dbo].[Pangya_Member] WHERE Username = @UserName";
 
-                return connection.QuerySingleOrDefault<Member>(query, new { UserName = userName });
+                return connection.QuerySingleOrDefault<Member>(query, new {UserName = userName});
             }
         }
 
@@ -38,9 +32,11 @@ namespace UGPangya.API.Repository
             {
                 connection.Open();
 
-                var query = "SELECT COUNT(1) FROM [Pangya].[dbo].[Pangya_Member] WHERE Username = @UserName AND SUBSTRING(sys.fn_sqlvarbasetostr(HASHBYTES('MD5', Password)), 3, 32) = @Password";
+                var query =
+                    "SELECT COUNT(1) FROM [Pangya].[dbo].[Pangya_Member] WHERE Username = @UserName AND SUBSTRING(sys.fn_sqlvarbasetostr(HASHBYTES('MD5', Password)), 3, 32) = @Password";
 
-                return connection.QuerySingle<int>(query, new { UserName = userName, Password = passwordMD5.ToLower() }) > 0;
+                return connection.QuerySingle<int>(query, new {UserName = userName, Password = passwordMD5.ToLower()}) >
+                       0;
             }
         }
 
@@ -50,7 +46,7 @@ namespace UGPangya.API.Repository
             {
                 connection.Open();
 
-                string query = @"UPDATE [dbo].[Pangya_Member] SET 
+                var query = @"UPDATE [dbo].[Pangya_Member] SET 
                 [AuthKey_Login] = @AuthKey_Login, 
                 [AuthKey_Game] = @AuthKey_Game, 
                 [IPAddress] = @IPAddress, 
@@ -69,10 +65,10 @@ namespace UGPangya.API.Repository
             {
                 connection.Open();
 
-                return (int)connection.QuerySingleOrDefault<dynamic>("USP_GAME_LOGIN", new { UID = uid, USERID = userName, Code1 = authKeyLogin, Code2 = authKeyGame },
+                return (int) connection.QuerySingleOrDefault<dynamic>("USP_GAME_LOGIN",
+                    new {UID = uid, USERID = userName, Code1 = authKeyLogin, Code2 = authKeyGame},
                     commandType: CommandType.StoredProcedure).Code;
             }
         }
-
     }
 }

@@ -1,13 +1,8 @@
-﻿using UGPangya.API;
+﻿using System.Linq;
+using UGPangya.API;
 using UGPangya.API.BinaryModels;
 using UGPangya.API.Models;
 using UGPangya.API.Repository.Models;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UGPangya.GameServer.Handles_Packet;
 
 namespace UGPangya.GameServer.Handles
@@ -33,24 +28,23 @@ namespace UGPangya.GameServer.Handles
             switch (game.Mode)
             {
                 case GameTypeEnum.VERSUS_STROKE:
-                    {
-                        game.Players.ForEach(p => p.SendResponse(game.CreateVS()));
-                    }
+                {
+                    game.Players.ForEach(p => p.SendResponse(game.CreateVS()));
+                }
                     break;
                 case GameTypeEnum.CHAT_ROOM:
-                    {
-                        game.CreateChatModeList(Player);
-                        game.Players.ForEach(p => p.SendResponse(game.CreateChatMode(Player)));
-                    }
+                {
+                    game.CreateChatModeList(Player);
+                    game.Players.ForEach(p => p.SendResponse(game.CreateChatMode(Player)));
+                }
                     break;
             }
-
         }
 
         private byte[] GameInformation(Game game)
         {
             var result = new PangyaBinaryWriter();
-            result.Write(new byte[] { 0x49, 0x00, 0x00, 0x00 });
+            result.Write(new byte[] {0x49, 0x00, 0x00, 0x00});
             result.Write(game.GetGameInformation());
             return result.GetBytes();
         }

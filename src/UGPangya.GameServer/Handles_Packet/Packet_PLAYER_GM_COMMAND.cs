@@ -23,7 +23,7 @@ namespace UGPangya.GameServer.Handles_Packet
             SetMission = 28,
             MathMap = 31,
             KickPlayer = 10,
-            Discon_Uid = 11,
+            Discon_Uid = 11
         }
 
         //Lista completa de comandos
@@ -57,7 +57,7 @@ namespace UGPangya.GameServer.Handles_Packet
 
         public override void Load(PangyaBinaryReader reader)
         {
-            Command = (GMCommandTypeEnum)reader.ReadUInt16();
+            Command = (GMCommandTypeEnum) reader.ReadUInt16();
         }
     }
 }

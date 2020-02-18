@@ -1,9 +1,4 @@
 ﻿using UGPangya.API;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UGPangya.GameServer.Handles_Packet;
 
 namespace UGPangya.GameServer.Handles
@@ -18,7 +13,7 @@ namespace UGPangya.GameServer.Handles
         private void Handle()
         {
             Player.Channel.Lobby.GameManager.Destroy(Player.Game);
-            Player.SendResponse(new byte[] { 0x4C, 0x00, 0xFF, 0xFF });
+            Player.SendResponse(new byte[] {0x4C, 0x00, 0xFF, 0xFF});
             Player.Game = null;
 
             Player.Channel.Lobby.GameManager.List(Player);

@@ -1,10 +1,5 @@
 ﻿using UGPangya.API;
 using UGPangya.API.BinaryModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UGPangya.GameServer.Handles_Packet;
 
 namespace UGPangya.GameServer.Handles
@@ -37,8 +32,8 @@ namespace UGPangya.GameServer.Handles
         {
             var response = new PangyaBinaryWriter();
 
-            response.Write(new byte[] { 0x68, 0x00 });
-            response.Write((int)Code); //Show Succeed
+            response.Write(new byte[] {0x68, 0x00});
+            response.Write((int) Code); //Show Succeed
 
             //if (Sucess)
             //{

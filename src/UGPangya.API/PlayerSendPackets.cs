@@ -1,13 +1,11 @@
-﻿using PangCrypt;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
+using PangCrypt;
 using UGPangya.API.BinaryModels;
 
 namespace UGPangya.API
 {
     public partial class Player
     {
-
         public void Send(byte[] message)
         {
             var buffer = ServerCipher.Encrypt(message, Key, 0);
@@ -24,6 +22,7 @@ namespace UGPangya.API
             Response.Close();
             Response = new PangyaBinaryWriter();
         }
+
         public void SendResponse(List<byte[]> list)
         {
             list.ForEach(item => Response.Write(item));
@@ -35,15 +34,16 @@ namespace UGPangya.API
             Response.Write(message);
             SendResponse();
         }
+
         /// <summary>
-        /// Envia para todos os players conectados
+        ///     Envia para todos os players conectados
         /// </summary>
         /// <param name="message"></param>
         public void SendToAll(byte[] message)
         {
             Server.SendToAll(message);
         }
-        
+
         public void SendBytes(byte[] send)
         {
             Tcp.GetStream().Write(send, 0, send.Length);

@@ -13,7 +13,7 @@ namespace UGPangya.GameServer.Handles
 
         private void Handle()
         {
-            Player.HolePos = new HolePos()
+            Player.HolePos = new HolePos
             {
                 X = PacketResult.X,
                 Z = PacketResult.Z
@@ -27,10 +27,10 @@ namespace UGPangya.GameServer.Handles
         {
             var response = new PangyaBinaryWriter();
 
-            response.Write(new byte[] { 0x5B, 0x00 });
+            response.Write(new byte[] {0x5B, 0x00});
             response.Write(windPower);
             response.Write(windDirection);
-            response.Write((byte)1);
+            response.Write((byte) 1);
 
             Player.Game.Players.ForEach(p => p.SendResponse(response.GetBytes()));
         }
@@ -39,8 +39,8 @@ namespace UGPangya.GameServer.Handles
         {
             var response = new PangyaBinaryWriter();
 
-            response.Write(new byte[] { 0x9E, 0x00 });
-            response.Write(new byte[] { 0x00, 0x00, 0x00 });
+            response.Write(new byte[] {0x9E, 0x00});
+            response.Write(new byte[] {0x00, 0x00, 0x00});
             //response.Write(0); //type
             //response.Write((byte)0);
 

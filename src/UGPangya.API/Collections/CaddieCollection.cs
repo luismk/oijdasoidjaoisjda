@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UGPangya.API.BinaryModels;
 using UGPangya.API.Repository;
 using UGPangya.API.Repository.Models;
@@ -11,24 +8,24 @@ namespace UGPangya.API.Collections
 {
     public class CaddieCollection : List<Caddie>
     {
-        private Player _player { get; set; }
-        private CaddieRepository _caddieRepository { get; set; }
-
         public CaddieCollection(Player player)
         {
             _player = player;
             _caddieRepository = new CaddieRepository();
-            this.AddRange(_caddieRepository.GetByUID(player.Member_Old.UID));
+            AddRange(_caddieRepository.GetByUID(player.Member_Old.UID));
         }
+
+        private Player _player { get; }
+        private CaddieRepository _caddieRepository { get; }
 
 
         public byte[] GetCaddieData()
         {
             var result = new PangyaBinaryWriter();
 
-            result.Write(new byte[] { 0x71, 0x00 });
-            result.Write((UInt16)Count); //Total Caddie
-            result.Write((UInt16)Count); //Total Caddie
+            result.Write(new byte[] {0x71, 0x00});
+            result.Write((ushort) Count); //Total Caddie
+            result.Write((ushort) Count); //Total Caddie
 
             foreach (var caddie in this)
             {
@@ -38,10 +35,10 @@ namespace UGPangya.API.Collections
                 result.Write(caddie.cLevel);
                 result.Write(caddie.EXP);
                 result.Write(caddie.RentFlag.Value);
-                result.Write((ushort)caddie.DAY_LEFT);
-                result.Write((ushort)caddie.SKIN_HOUR_LEFT);
-                result.Write((byte)0x00);   
-                result.Write((ushort)caddie.TriggerPay);
+                result.Write((ushort) caddie.DAY_LEFT);
+                result.Write((ushort) caddie.SKIN_HOUR_LEFT);
+                result.Write((byte) 0x00);
+                result.Write((ushort) caddie.TriggerPay);
             }
 
             return result.GetBytes();
@@ -55,7 +52,7 @@ namespace UGPangya.API.Collections
 
             if (data != null)
             {
-                result.Write(new byte[] { 0xD4, 0x00 });
+                result.Write(new byte[] {0xD4, 0x00});
                 result.Write(1); //Total Caddie
                 result.Write(data.CID);
                 result.Write(data.TYPEID);
@@ -64,11 +61,12 @@ namespace UGPangya.API.Collections
                 result.Write(data.EXP);
                 result.Write(data.RentFlag.Value);
                 result.Write(data.DAY_LEFT);
-                result.Write((ushort)data.SKIN_HOUR_LEFT);
-                result.Write((byte)0x00);
-                result.Write((ushort)data.TriggerPay);
+                result.Write((ushort) data.SKIN_HOUR_LEFT);
+                result.Write((byte) 0x00);
+                result.Write((ushort) data.TriggerPay);
                 return result.GetBytes();
             }
+
             return null;
         }
     }

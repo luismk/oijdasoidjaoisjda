@@ -1,10 +1,5 @@
-﻿using UGPangya.API;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
+using UGPangya.API;
 using UGPangya.GameServer.Handles_Packet;
 
 namespace UGPangya.GameServer.Handles
@@ -19,10 +14,7 @@ namespace UGPangya.GameServer.Handles
         private void Handle()
         {
             foreach (var file in Directory.GetFiles(@"C:\Users\Administrador\Desktop\Packets\PLAYER_MATCH_HISTORY"))
-            {
                 Player.SendResponse(File.ReadAllBytes(file));
-            }
-
         }
     }
 }

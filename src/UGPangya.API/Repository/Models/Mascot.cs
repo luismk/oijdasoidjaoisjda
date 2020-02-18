@@ -1,10 +1,6 @@
-﻿using UGPangya.API.Tools;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using UGPangya.API.BinaryModels;
+using UGPangya.API.Tools;
 
 namespace UGPangya.API.Repository.Models
 {
@@ -22,12 +18,12 @@ namespace UGPangya.API.Repository.Models
 
             result.Write(MID);
             result.Write(MASCOT_TYPEID);
-            result.Write(new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00 });
+            result.Write(new byte[] {0x00, 0x00, 0x00, 0x00, 0x00});
             result.WriteStr(MESSAGE, 16);
-            result.WriteEmptyBytes(length: 14);
-            result.Write((short)END_DATE_INT.Value);
+            result.WriteEmptyBytes(14);
+            result.Write((short) END_DATE_INT.Value);
             result.Write(DateEnd?.ToPangyaDateTime());
-            result.Write((byte)0);
+            result.Write((byte) 0);
 
             return result.GetBytes();
         }

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UGPangya.API.BinaryModels;
 using UGPangya.API.Repository;
 using UGPangya.API.Repository.Models;
@@ -11,9 +8,6 @@ namespace UGPangya.API.Collections
 {
     public class CardEquipCollection : List<CardEquip>
     {
-        private Player _player { get; set; }
-        private CardEquipRepository _cardEquipRepository { get; set; }
-
         public CardEquipCollection(Player player)
         {
             _player = player;
@@ -23,6 +17,9 @@ namespace UGPangya.API.Collections
         public CardEquipCollection(IEnumerable<CardEquip> collection) : base(collection)
         {
         }
+
+        private Player _player { get; }
+        private CardEquipRepository _cardEquipRepository { get; }
 
         //private void LoadByCharacterId(int characterId)
         //{
@@ -49,6 +46,7 @@ namespace UGPangya.API.Collections
                 result.WriteUInt32(0x00); //Cards.CardSlot[8]
                 result.WriteUInt32(0x00); //Cards.CardSlot[9]
             }
+
             return result.GetBytes();
         }
     }

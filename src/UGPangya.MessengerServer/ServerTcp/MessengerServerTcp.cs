@@ -1,21 +1,14 @@
-﻿using UGPangya.MessengerServer.DataBase;
+﻿using System;
+using System.Net.Sockets;
 using UGPangya.API;
 using UGPangya.API.Auth;
-using UGPangya.API.BinaryModels;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UGPangya.MessengerServer
 {
-   public class MessengerServerTcp : TcpServer
+    public class MessengerServerTcp : TcpServer
     {
         public MessengerServerTcp(string ip, int port, int maxConnections) : base(ip, port, maxConnections)
-         {
+        {
             Console.Title = "Pangya Fresh UP! Messenger Server";
         }
 
@@ -31,7 +24,7 @@ namespace UGPangya.MessengerServer
         protected override void SendKey(Player player)
         {
             //Gera Packet com chave de criptografia (posisão 7)
-            var packetKey = new byte[] { 0x00, 0x09, 0x00, 0x00, 0x2e, 0x00, 0x01, 0x01, player.Key, 0x00, 0x00, 0x00 };
+            var packetKey = new byte[] {0x00, 0x09, 0x00, 0x00, 0x2e, 0x00, 0x01, 0x01, player.Key, 0x00, 0x00, 0x00};
 
 
             if (player.Tcp.Connected)
@@ -40,7 +33,8 @@ namespace UGPangya.MessengerServer
 
         protected override AuthClient AuthServerConstructor()
         {
-            return new AuthClient(name: "Unogames", type: AuthClientTypeEnum.MessengerServer, port: 10111, key: "3493ef7ca4d69f54de682bee58be4f93");
+            return new AuthClient("Unogames", AuthClientTypeEnum.MessengerServer, 10111,
+                "3493ef7ca4d69f54de682bee58be4f93");
         }
     }
 }

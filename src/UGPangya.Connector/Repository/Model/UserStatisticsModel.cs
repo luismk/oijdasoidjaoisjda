@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UGPangya.Connector.Repository.Model
+﻿namespace UGPangya.Connector.Repository.Model
 {
     public class UserStatisticsModel
     {
@@ -104,7 +98,7 @@ namespace UGPangya.Connector.Repository.Model
 
         public int GameCountSeason { get; set; }
 
-        public Int64 SkinsPang { get; set; }
+        public long SkinsPang { get; set; }
 
         public int SkinsWin { get; set; }
 
@@ -195,7 +189,5 @@ namespace UGPangya.Connector.Repository.Model
 
         //    return result.GetBytes();
         //}
-
-
     }
 }

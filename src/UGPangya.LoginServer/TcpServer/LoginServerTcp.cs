@@ -1,26 +1,25 @@
-﻿using UGPangya.API;
+﻿using System;
+using UGPangya.API;
 using UGPangya.API.Auth;
-using UGPangya.API.Repository;
-using System;
-using System.Net.Sockets;
 
 namespace UGPangya.LoginServer
 {
     public class LoginServerTcp : TcpServer
     {
         /// <summary>
-        /// Construtor
+        ///     Construtor
         /// </summary>
         /// <param name="port">TH = 10201, US = 10103</param>
         public LoginServerTcp(string ip, int port, int maxConnections) : base(ip, port, maxConnections)
         {
-            Console.Title = $"Pangya Fresh UP ! LoginServer";
+            Console.Title = "Pangya Fresh UP ! LoginServer";
             IsOpen = true; //Define que o servidor está fechado
         }
 
         protected override AuthClient AuthServerConstructor()
         {
-            return new AuthClient(name: "Unogames", type: AuthClientTypeEnum.LoginServer, port: 30303, key: "3493ef7ca4d69f54de682bee58be4f93");
+            return new AuthClient("Unogames", AuthClientTypeEnum.LoginServer, 30303,
+                "3493ef7ca4d69f54de682bee58be4f93");
         }
 
         protected override void SendKey(Player player)
@@ -28,7 +27,8 @@ namespace UGPangya.LoginServer
             player.DuplicatedLogin = false;
 
             //Envia packet com a chave do Player
-            player.SendBytes(new byte[] { 0x00, 0x0B, 0x00, 0x00, 0x00, 0x00, player.Key, 0x00, 0x00, 0x00, 0x0F, 0x27, 0x00, 0x00 });
+            player.SendBytes(new byte[]
+                {0x00, 0x0B, 0x00, 0x00, 0x00, 0x00, player.Key, 0x00, 0x00, 0x00, 0x0F, 0x27, 0x00, 0x00});
         }
 
         public void ShowConsoleHelp()
@@ -55,12 +55,9 @@ namespace UGPangya.LoginServer
             switch (packet.Id)
             {
                 case AuthPacketEnum.SERVER_KEEPALIVE: //KeepAlive
-                    {
-                        //Console.WriteLine("KeepAlive");
-                    }
-                    break;
-                default:
-                    //Console.WriteLine("AuthPacketDefault: " + packet.Id);
+                {
+                    //Console.WriteLine("KeepAlive");
+                }
                     break;
             }
         }

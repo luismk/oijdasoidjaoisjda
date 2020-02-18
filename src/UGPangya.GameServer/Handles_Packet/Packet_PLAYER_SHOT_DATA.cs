@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UGPangya.API;
 using UGPangya.API.BinaryModels;
 
@@ -35,14 +31,16 @@ namespace UGPangya.GameServer.Handles_Packet
         public byte[] Unknown3 { get; set; } //11 bytes ou 17 bytes?  $10 = 16
 
 
-        public override void Load(PangyaBinaryReader reader) { }
+        public override void Load(PangyaBinaryReader reader)
+        {
+        }
 
         public void Load(PangyaBinaryReader reader, byte[] roomKey)
         {
             //var result = reader.ReadBytes(56);
 
             var decrypted = DecryptShot(
-                reader.ReadBytes((int)(reader.BaseStream.Length - reader.BaseStream.Position))
+                reader.ReadBytes((int) (reader.BaseStream.Length - reader.BaseStream.Position))
                 , roomKey);
 
             ResponseShot = decrypted.Take(38).ToArray();
@@ -54,7 +52,7 @@ namespace UGPangya.GameServer.Handles_Packet
             Y = readerDecripted.ReadInt32();
             Z = readerDecripted.ReadInt32();
 
-            ShotType = (ShotTypeEnum)readerDecripted.ReadByte();
+            ShotType = (ShotTypeEnum) readerDecripted.ReadByte();
             Unknown1 = readerDecripted.ReadInt16();
             Pang = readerDecripted.ReadUInt32();
             BonusPang = readerDecripted.ReadUInt32();
@@ -67,13 +65,9 @@ namespace UGPangya.GameServer.Handles_Packet
         {
             var decrypted = new byte[data.Length];
 
-            for (int i = 0; i < data.Length; i++)
-            {
-                decrypted[i] = (byte)(data[i] ^ gameKey[i % 16]);
-            }
+            for (var i = 0; i < data.Length; i++) decrypted[i] = (byte) (data[i] ^ gameKey[i % 16]);
 
             return decrypted;
         }
-
     }
 }

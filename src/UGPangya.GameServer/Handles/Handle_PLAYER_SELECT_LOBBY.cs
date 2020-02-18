@@ -1,9 +1,5 @@
-﻿using UGPangya.API;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
+using UGPangya.API;
 using UGPangya.GameServer.Handles_Packet;
 
 namespace UGPangya.GameServer.Handles
@@ -32,11 +28,9 @@ namespace UGPangya.GameServer.Handles
             else
             {
                 //Se o player já está em um canal
-                if(Player.Channel != null)
-                {
+                if (Player.Channel != null)
                     //Remove Player do canal
                     Player.Channel.Players.Model.Remove(Player);
-                }
 
                 channel.PlayerJoin(Player);
 

@@ -1,7 +1,7 @@
-﻿using UGPangya.API;
+﻿using System.Linq;
+using UGPangya.API;
 using UGPangya.API.BinaryModels;
 using UGPangya.API.Repository.Models;
-using System.Linq;
 using UGPangya.GameServer.Handles_Packet;
 
 namespace UGPangya.GameServer.Handles
@@ -17,11 +17,14 @@ namespace UGPangya.GameServer.Handles
         {
             HandleGameDropItem(Player.Game);
 
-            Player.Game.SendToAll(new byte[] { 0x5B, 0x00,
+            Player.Game.SendToAll(new byte[]
+            {
+                0x5B, 0x00,
                 0x01, //Alternável
                 0x00,
                 0xD3, 0x00, //Alternável
-                0x01 });
+                0x01
+            });
 
             //        res.WriteStr(#$5B#$00);
             //res.WriteUInt16(Wind.windpower);
@@ -29,7 +32,6 @@ namespace UGPangya.GameServer.Handles
             //        res.WriteStr(#$00#$01);
 
             HandleNextPlayer(Player.Game);
-
         }
 
         public void HandleGameDropItem(Game game)
@@ -38,7 +40,7 @@ namespace UGPangya.GameServer.Handles
             {
                 var response = new PangyaBinaryWriter();
 
-                response.Write(new byte[] { 0xCC, 0x00 });
+                response.Write(new byte[] {0xCC, 0x00});
                 response.Write(player.ConnectionId);
                 response.WriteByte(0);
 
@@ -53,7 +55,7 @@ namespace UGPangya.GameServer.Handles
             var connectionId = game.Players.First(p => p.ConnectionId != Player.ConnectionId).ConnectionId;
 
             var result = new PangyaBinaryWriter();
-            result.Write(new byte[] { 0x63, 0x00 });
+            result.Write(new byte[] {0x63, 0x00});
             result.Write(connectionId);
 
             game.SendToAll(result);

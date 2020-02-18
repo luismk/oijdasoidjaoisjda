@@ -1,50 +1,69 @@
 ﻿using System;
-using System.Data.SqlClient;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
-using Dapper;
-using System.Collections.Generic;
-using UGPangya.Connector.Repository.Model;
 using UGPangya.API.BinaryModels;
 using UGPangya.API.Collections;
 using UGPangya.API.Models;
 using UGPangya.API.Repository;
 using UGPangya.API.Repository.Models;
+using UGPangya.Connector.Repository.Model;
 
 namespace UGPangya.API
 {
     public partial class Player : IDisposeable
     {
-        private readonly string _connectionString;
-
-        public HolePos HolePos { get; set; }
-
-        public PlayerPosition Position = new PlayerPosition();
-
-        public ChatGameInfo ChatGameInfo = new ChatGameInfo();
-
-        #region Repositories
-
-        private MemberRepository _pangyaMemberRepository = new MemberRepository();
-        private UserEquipRepository _pangyaUserEquipRepository = new UserEquipRepository();
-        private GameMacroRepository _pangyaGameMacroRepository = new GameMacroRepository();
-        private UserStatisticsRepository _pangyaUserStatisticsRepository = new UserStatisticsRepository();
-        private GuildRepository _pangyaGuildRepository = new GuildRepository();
-        private CharacterRepository _characterRepository = new CharacterRepository();
-        private CaddieRepository _caddieRepository = new CaddieRepository();
-
-        #endregion
-
         #region Delegates
 
         public delegate void PacketChangedEvent();
 
         #endregion
 
+        private readonly string _connectionString;
+
+        public ChatGameInfo ChatGameInfo = new ChatGameInfo();
+
+        public PlayerPosition Position = new PlayerPosition();
+
+        #region Constructor
+
+        public Player(TcpClient tcp)
+        {
+            _connectionString = Settings.Default.ConnectionString;
+
+            Tcp = tcp;
+
+            //Gera uma chave dinâmica
+            Key = Convert.ToByte(new Random().Next(1, 17));
+
+            //Maximo hexadecimal value: FF (255)
+
+            ////Chave Fixa
+            Key = 0x0A; //chave 10
+
+            //_responseStream = new MemoryStream();
+            Response = new PangyaBinaryWriter(new MemoryStream());
+        }
+
+        #endregion
+
+        public HolePos HolePos { get; set; }
+
         #region Events
 
         public event PacketChangedEvent OnPacketChanged;
+
+        #endregion
+
+        #region Repositories
+
+        private readonly MemberRepository _pangyaMemberRepository = new MemberRepository();
+        private readonly UserEquipRepository _pangyaUserEquipRepository = new UserEquipRepository();
+        private readonly GameMacroRepository _pangyaGameMacroRepository = new GameMacroRepository();
+        private readonly UserStatisticsRepository _pangyaUserStatisticsRepository = new UserStatisticsRepository();
+        private readonly GuildRepository _pangyaGuildRepository = new GuildRepository();
+        private CharacterRepository _characterRepository = new CharacterRepository();
+        private CaddieRepository _caddieRepository = new CaddieRepository();
 
         #endregion
 
@@ -53,40 +72,40 @@ namespace UGPangya.API
         public bool DuplicatedLogin { get; set; }
 
         /// <summary>
-        /// Servidor em que o cliente está conectado
+        ///     Servidor em que o cliente está conectado
         /// </summary>
         public TcpServer Server { get; set; }
 
         /// <summary>
-        /// Canal
+        ///     Canal
         /// </summary>
         public Channel Channel { get; set; }
 
         public Game Game { get; set; }
 
         /// <summary>
-        /// Conexão do cliente
+        ///     Conexão do cliente
         /// </summary>
         public TcpClient Tcp { get; set; }
 
         /// <summary>
-        /// Chave de criptografia e decriptografia
+        ///     Chave de criptografia e decriptografia
         /// </summary>
-        public byte Key { get; private set; }
+        public byte Key { get; }
 
         public PangyaBinaryWriter Response { get; set; }
 
         /// <summary>
-        /// Packet Atual
+        ///     Packet Atual
         /// </summary>
         private Packet _currentPacket;
 
         /// <summary>
-        /// Packet Atual
+        ///     Packet Atual
         /// </summary>
         public Packet CurrentPacket
         {
-            get { return _currentPacket; }
+            get => _currentPacket;
             set
             {
                 _currentPacket = value;
@@ -95,12 +114,12 @@ namespace UGPangya.API
         }
 
         /// <summary>
-        /// Packet Anterior
+        ///     Packet Anterior
         /// </summary>
         public Packet PreviousPacket { get; set; }
 
         /// <summary>
-        /// Identificador da conexão
+        ///     Identificador da conexão
         /// </summary>
         public int ConnectionId { get; set; }
 
@@ -109,12 +128,14 @@ namespace UGPangya.API
         ///// </summary>
         //public PlayerMemberGuild GuildData { get; set; }
         /// <summary>
-        /// dados do record do player
+        ///     dados do record do player
         /// </summary>
         public PlayerMemberRecordInfo RecordData { get; set; }
+
         /// <summary>
-        /// obtem dados do macro do player F1 F2 F3
+        ///     obtem dados do macro do player F1 F2 F3
         /// </summary>
+
         #endregion
 
         #region Identity Fields
@@ -141,32 +162,11 @@ namespace UGPangya.API
 
         #endregion
 
-        #region Constructor
-
-        public Player(TcpClient tcp)
-        {
-            _connectionString = Settings.Default.ConnectionString;
-
-            Tcp = tcp;
-
-            //Gera uma chave dinâmica
-            Key = Convert.ToByte(new Random().Next(1, 17));
-
-            //Maximo hexadecimal value: FF (255)
-
-            ////Chave Fixa
-            Key = 0x0A; //chave 10
-
-            //_responseStream = new MemoryStream();
-            Response = new PangyaBinaryWriter(new MemoryStream());
-        }
-
-        #endregion
-
         #region Public Methods
+
         public string GetIpAdress()
         {
-            var ip = ((IPEndPoint)Tcp.Client.RemoteEndPoint).Address.ToString();
+            var ip = ((IPEndPoint) Tcp.Client.RemoteEndPoint).Address.ToString();
             return ip;
         }
 
@@ -175,6 +175,7 @@ namespace UGPangya.API
             var getip = new byte[GetIpAdress().Length];
             return getip;
         }
+
         public void Disconnect()
         {
             Server.DisconnectPlayer(this);
@@ -193,13 +194,11 @@ namespace UGPangya.API
         private void Dispose(bool disposing)
         {
             // Verifique se Dispose já foi chamado.
-            if (!this.Disposed)
+            if (!Disposed)
             {
                 if (disposing)
-                {
                     // Liberando recursos gerenciados
                     Tcp.Dispose();
-                }
 
                 // Seta a variável booleana para true,
                 // indicando que os recursos já foram liberados
@@ -217,13 +216,12 @@ namespace UGPangya.API
         }
 
         /// <summary>
-        /// Destrutor
+        ///     Destrutor
         /// </summary>
         ~Player()
         {
             Dispose(false);
         }
-
 
         #endregion
     }

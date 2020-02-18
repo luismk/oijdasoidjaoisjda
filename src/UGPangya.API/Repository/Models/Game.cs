@@ -6,11 +6,12 @@ namespace UGPangya.API.Repository.Models
 {
     public class Game
     {
-        public List<HoleInfo> HolesInfo { get; set; }
-
         public List<Player> Players = new List<Player>();
 
+        public List<HoleInfo> HolesInfo { get; set; }
+
         public byte Un { get; set; }
+
         /// <summary>
         /// Ocorre quando o player termina a partida por completo
         /// </summary>
@@ -20,6 +21,7 @@ namespace UGPangya.API.Repository.Models
         /// Nome da Sala
         /// </summary>
         public string RoomTitle { get; set; }
+
         //Senha da Sala
         public string Password { get; set; }
 
@@ -65,14 +67,17 @@ namespace UGPangya.API.Repository.Models
         /// 00 = Front, 01 = Back, 02 = Random, 03 = Suffle
         /// </summary>
         public GameModeTypeEnum HoleOrder { get; set; }
+
         /// <summary>
         /// Game_Key
         /// </summary>
         public byte[] RoomKey { get; set; }
+
         /// <summary>
         /// ID do proprietario da sala
         /// </summary>
         public int Owner_ID { get; set; }
+
         /// <summary>
         /// ?????
         /// </summary>
@@ -83,16 +88,21 @@ namespace UGPangya.API.Repository.Models
         /// Artefato> dar xp, pangs, aumenta chuva etc
         /// </summary>
         public uint Artifact { get; set; }
+
         public byte FIDle { get; internal set; } = 0;
+
         /// <summary>
         /// Fecha o Hole(Hole_Repeted)
         /// </summary>
         public uint LockHole { get; internal set; }
+
         /// <summary>
         /// Numero do hole, usado no practice
         /// </summary>
         public byte HoleNumber { get; internal set; } = 0;
+
         public uint Trophy { get; set; } = 0;
+
         /// <summary>
         /// Numero da Sala
         /// </summary>
@@ -106,7 +116,7 @@ namespace UGPangya.API.Repository.Models
         /// <summary>
         /// Sala Iniciou, true(sala ainda nao iniciou) false(sala iniciou)
         /// </summary>
-        public Boolean GameStarted { get; set; } = false;
+        public bool GameStarted { get; set; } = false;
 
         public bool GP { get; set; } = false;
 
@@ -115,10 +125,6 @@ namespace UGPangya.API.Repository.Models
         public uint GPTypeIDA { get; set; }
 
         public uint GPTime { get; set; }
-
-        public Game()
-        {
-        }
 
         /// <summary>
         /// Envia um packet para todos os Players
@@ -140,16 +146,16 @@ namespace UGPangya.API.Repository.Models
 
         public void BuildCreateHole()
         {
-            this.HolesInfo = new List<HoleInfo>(18);
+            HolesInfo = new List<HoleInfo>(18);
 
             for (var i = 0; i < 18; i++)
             {
-                int randNum = new Random().Next();
-                byte Pos = (byte)new Random().Next(1, 3);
-                ushort WP = (ushort)new Random().Next(0, 8);
-                ushort WD = (ushort)new Random().Next(255);
-                ushort WT = (ushort)(new Random().Next(0, 3));
-                var hole = new HoleInfo()
+                var randNum = new Random().Next();
+                var Pos = (byte)new Random().Next(1, 3);
+                var WP = (ushort)new Random().Next(0, 8);
+                var WD = (ushort)new Random().Next(255);
+                var WT = (ushort)new Random().Next(0, 3);
+                var hole = new HoleInfo
                 {
                     GameInfo = this,
                     Index = randNum,
@@ -222,7 +228,7 @@ namespace UGPangya.API.Repository.Models
                 (byte)Players.Count //PlayersCount
             });
 
-            int i = 1;
+            var i = 1;
             foreach (var player in Players)
             {
                 player.GameSlot.SlotNumber = i;
@@ -311,7 +317,7 @@ namespace UGPangya.API.Repository.Models
         public void CreateVSStroke()
         {
 
-            int i = 1;
+            var i = 1;
             foreach (var player in Players)
             {
                 var result = new PangyaBinaryWriter();
@@ -319,7 +325,7 @@ namespace UGPangya.API.Repository.Models
                 result.Write(new byte[]
                 {
                     0x48, 0x00,0x03,
-                    0xFF, 0xFF,
+                    0xFF, 0xFF
                 });
 
                 player.GameSlot.SlotNumber = i;
@@ -341,6 +347,5 @@ namespace UGPangya.API.Repository.Models
         //{
         //    Players.ForEach(p => p.SendResponse(message));
         //}
-
     }
 }

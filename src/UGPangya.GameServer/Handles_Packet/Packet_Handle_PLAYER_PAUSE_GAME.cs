@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UGPangya.API.BinaryModels;
+﻿using UGPangya.API.BinaryModels;
 
 namespace UGPangya.GameServer.Handles_Packet
 {
@@ -12,14 +7,14 @@ namespace UGPangya.GameServer.Handles_Packet
         public enum StatusEnum
         {
             Stop = 0x01,
-            Play = 0x00,
+            Play = 0x00
         }
 
         public StatusEnum Status { get; set; }
 
         public override void Load(PangyaBinaryReader reader)
         {
-            Status =  (StatusEnum)reader.ReadByte();
+            Status = (StatusEnum) reader.ReadByte();
         }
     }
 }

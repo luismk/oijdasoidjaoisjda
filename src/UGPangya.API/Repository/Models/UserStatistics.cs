@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UGPangya.API.BinaryModels;
+﻿using UGPangya.API.BinaryModels;
 
 namespace UGPangya.API.Repository.Models
 {
@@ -105,7 +100,7 @@ namespace UGPangya.API.Repository.Models
 
         public int GameCountSeason { get; set; }
 
-        public Int64 SkinsPang { get; set; }
+        public long SkinsPang { get; set; }
 
         public int SkinsWin { get; set; }
 
@@ -125,78 +120,76 @@ namespace UGPangya.API.Repository.Models
         {
             var result = new PangyaBinaryWriter();
 
-            result.Write((UInt32)Drive);
-            result.Write((UInt32)Putt);
-            result.Write((UInt32)Playtime);
-            result.Write((UInt32)ShotTime);
-            result.Write((Single)Longest);
-            result.Write((UInt32)Pangya);
-            result.Write((UInt32)Timeout);
-            result.Write((UInt32)OB);
-            result.Write((UInt32)Distance);
-            result.Write((UInt32)Hole);
-            result.Write((UInt32)TeamHole);
-            result.Write((UInt32)Holeinone);
-            result.Write((UInt16)Bunker);
-            result.Write((UInt32)Fairway);
-            result.Write((UInt32)Albatross);
-            result.Write((UInt32)Holein);
-            result.Write((UInt32)PuttIn);
-            result.Write((Single)LongestPuttIn);
-            result.Write((Single)LongestChipIn);
-            result.Write((UInt32)Game_Point);
-            result.Write((byte)Game_Level);
-            result.Write((ulong)Pang);//pangs inicias
-            result.Write((UInt32)TotalScore);
-            result.Write((byte)BestScore0);
-            result.Write((byte)BestScore1);
-            result.Write((byte)BestScore2);
-            result.Write((byte)BestScore3);
-            result.Write((byte)BESTSCORE4);
-            result.Write((byte)0x00);//unknow
-            result.Write((ulong)MaxPang0);
-            result.Write((ulong)MaxPang1);
-            result.Write((ulong)MaxPang2);
-            result.Write((ulong)MaxPang3);
-            result.Write((ulong)MAXPANG4);
-            result.Write((ulong)SumPang);
-            result.Write((UInt32)GameCount);
-            result.Write((UInt32)DisconnectGames);
-            result.Write((UInt32)wTeamWin);
-            result.Write((UInt32)wTeamGames);
-            result.Write((UInt32)LadderPoint);
-            result.Write((UInt32)LadderWin);
-            result.Write((UInt32)LadderLose);
-            result.Write((UInt32)LadderDraw);
-            result.Write((UInt32)LadderHole);
-            result.Write((UInt32)ComboCount);
-            result.Write((UInt32)MaxComboCount);
-            result.Write((UInt32)NoMannerGameCount);
-            result.Write((ulong)SkinsPang);
-            result.Write((UInt32)SkinsWin);
-            result.Write((UInt32)SkinsLose);
-            result.Write((UInt32)SkinsRunHoles);
-            result.Write((UInt32)SkinsStrikePoint);
-            result.Write((UInt32)SkinsAllinCount);
-            result.Write((byte)0x00); //Unknow2[0]
-            result.Write((byte)0x00); //Unknow2[1]
-            result.Write((byte)0x00); //Unknow2[2]
-            result.Write((byte)0x00); //Unknow2[3]
-            result.Write((byte)0x00); //Unknow2[4]
-            result.Write((byte)0x00); //Unknow2[5]
+            result.Write((uint) Drive);
+            result.Write((uint) Putt);
+            result.Write((uint) Playtime);
+            result.Write((uint) ShotTime);
+            result.Write((float) Longest);
+            result.Write((uint) Pangya);
+            result.Write((uint) Timeout);
+            result.Write((uint) OB);
+            result.Write((uint) Distance);
+            result.Write((uint) Hole);
+            result.Write((uint) TeamHole);
+            result.Write((uint) Holeinone);
+            result.Write((ushort) Bunker);
+            result.Write((uint) Fairway);
+            result.Write((uint) Albatross);
+            result.Write((uint) Holein);
+            result.Write((uint) PuttIn);
+            result.Write((float) LongestPuttIn);
+            result.Write((float) LongestChipIn);
+            result.Write((uint) Game_Point);
+            result.Write((byte) Game_Level);
+            result.Write((ulong) Pang); //pangs inicias
+            result.Write((uint) TotalScore);
+            result.Write((byte) BestScore0);
+            result.Write((byte) BestScore1);
+            result.Write((byte) BestScore2);
+            result.Write((byte) BestScore3);
+            result.Write((byte) BESTSCORE4);
+            result.Write((byte) 0x00); //unknow
+            result.Write((ulong) MaxPang0);
+            result.Write((ulong) MaxPang1);
+            result.Write((ulong) MaxPang2);
+            result.Write((ulong) MaxPang3);
+            result.Write((ulong) MAXPANG4);
+            result.Write((ulong) SumPang);
+            result.Write((uint) GameCount);
+            result.Write((uint) DisconnectGames);
+            result.Write((uint) wTeamWin);
+            result.Write((uint) wTeamGames);
+            result.Write((uint) LadderPoint);
+            result.Write((uint) LadderWin);
+            result.Write((uint) LadderLose);
+            result.Write((uint) LadderDraw);
+            result.Write((uint) LadderHole);
+            result.Write((uint) ComboCount);
+            result.Write((uint) MaxComboCount);
+            result.Write((uint) NoMannerGameCount);
+            result.Write((ulong) SkinsPang);
+            result.Write((uint) SkinsWin);
+            result.Write((uint) SkinsLose);
+            result.Write((uint) SkinsRunHoles);
+            result.Write((uint) SkinsStrikePoint);
+            result.Write((uint) SkinsAllinCount);
+            result.Write((byte) 0x00); //Unknow2[0]
+            result.Write((byte) 0x00); //Unknow2[1]
+            result.Write((byte) 0x00); //Unknow2[2]
+            result.Write((byte) 0x00); //Unknow2[3]
+            result.Write((byte) 0x00); //Unknow2[4]
+            result.Write((byte) 0x00); //Unknow2[5]
             result.Write(GameCountSeason);
-            result.Write((byte)0x00); //Unknow3[0]
-            result.Write((byte)0x00); //Unknow3[1]
-            result.Write((byte)0x00); //Unknow3[2]
-            result.Write((byte)0x00); //Unknow3[3]
-            result.Write((byte)0x00); //Unknow3[4]
-            result.Write((byte)0x00); //Unknow3[5]
-            result.Write((byte)0x00); //Unknow3[6]
-            result.Write((byte)0x08); //Unknow3[7]
+            result.Write((byte) 0x00); //Unknow3[0]
+            result.Write((byte) 0x00); //Unknow3[1]
+            result.Write((byte) 0x00); //Unknow3[2]
+            result.Write((byte) 0x00); //Unknow3[3]
+            result.Write((byte) 0x00); //Unknow3[4]
+            result.Write((byte) 0x00); //Unknow3[5]
+            result.Write((byte) 0x00); //Unknow3[6]
+            result.Write((byte) 0x08); //Unknow3[7]
 
             return result.GetBytes();
         }
-
-
     }
 }

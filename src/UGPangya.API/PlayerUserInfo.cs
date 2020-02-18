@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UGPangya.API
 {
@@ -75,7 +71,6 @@ namespace UGPangya.API
             public byte? GUILD_POSITION { get; set; }
             public byte? GUILD_VALID { get; set; }
             public DateTime? GUILD_CREATE_DATE { get; set; }
-
         }
 
         public class PlayerMemberRecordInfo

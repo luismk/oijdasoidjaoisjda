@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UGPangya.API.Auth
+﻿namespace UGPangya.API.Auth
 {
     public enum AuthPacketEnum
     {
@@ -19,5 +13,4 @@ namespace UGPangya.API.Auth
         GameServer = 1,
         MessengerServer = 2
     }
-
 }

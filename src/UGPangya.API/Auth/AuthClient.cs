@@ -1,29 +1,64 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Linq;
 using System.Net.Sockets;
+using System.Text;
 using System.Threading;
+using Newtonsoft.Json;
 
 namespace UGPangya.API.Auth
 {
     public class AuthClient : IDisposeable
     {
+        #region Private Methods
+
+        /// <summary>
+        ///     Verifica de tempo em tempo se o AuthServer ainda está conectado.
+        /// </summary>
+        private void KeepAlive()
+        {
+            while (true)
+            {
+                //Aguarda tempo
+                Thread.Sleep(TimeSpan.FromSeconds(5));
+
+                try
+                {
+                    //Send KeepAlive
+                    Send(new AuthPacket
+                    {
+                        Id = AuthPacketEnum.SERVER_KEEPALIVE
+                    });
+                }
+                catch
+                {
+                    //Dispara evento quando não há conexão
+                    OnDisconnect?.Invoke();
+                }
+            }
+        }
+
+        #endregion
+
         #region Delegates
+
         public delegate void DisconnectedEvent();
+
         public delegate void PacketReceivedEvent(AuthClient authClient, AuthPacket packet);
+
         #endregion
 
         #region Events
 
         /// <summary>
-        /// Este evento ocorre quando o ProjectG se conecta ao Servidor
+        ///     Este evento ocorre quando o ProjectG se conecta ao Servidor
         /// </summary>
         public event DisconnectedEvent OnDisconnect;
 
         /// <summary>
-        /// Este evento ocorre quando o client recebe um Packet do AuthServer
+        ///     Este evento ocorre quando o client recebe um Packet do AuthServer
         /// </summary>
         public event PacketReceivedEvent OnPacketReceived;
+
         #endregion
 
         #region Public Fields
@@ -48,10 +83,10 @@ namespace UGPangya.API.Auth
         public AuthClient(string name, AuthClientTypeEnum type, int port, string key)
         {
             Tcp = new TcpClient();
-            this.Name = name;
-            this.Type = type;
-            this.Port = port;
-            this.Key = key;
+            Name = name;
+            Type = type;
+            Port = port;
+            Key = key;
         }
 
         public AuthClient(TcpClient client)
@@ -61,46 +96,17 @@ namespace UGPangya.API.Auth
 
         #endregion
 
-        #region Private Methods
-        /// <summary>
-        /// Verifica de tempo em tempo se o AuthServer ainda está conectado.
-        /// </summary>
-        private void KeepAlive()
-        {
-            while (true)
-            {
-                //Aguarda tempo
-                Thread.Sleep(TimeSpan.FromSeconds(5));
-
-                try
-                {
-                    //Send KeepAlive
-                    Send(new AuthPacket()
-                    {
-                        Id = AuthPacketEnum.SERVER_KEEPALIVE
-                    });
-                }
-                catch
-                {
-                    //Dispara evento quando não há conexão
-                    OnDisconnect?.Invoke();
-                }
-            }
-        }
-
-        #endregion
-
         #region Public Methods
 
         /// <summary>
-        /// Conecta-se ao AuthServer
+        ///     Conecta-se ao AuthServer
         /// </summary>
         /// <returns></returns>
         public bool Connect()
         {
             Tcp.Connect("127.0.0.1", Port);
 
-            var packet = new AuthPacket()
+            var packet = new AuthPacket
             {
                 Id = AuthPacketEnum.SERVER_CONNECT,
                 Message = new
@@ -108,7 +114,7 @@ namespace UGPangya.API.Auth
                     ServerName = Name,
                     ServerType = Type,
                     Key
-                },
+                }
             };
 
             var response = SendAndReceive(packet);
@@ -116,28 +122,25 @@ namespace UGPangya.API.Auth
             if (response.Message.Success == true)
             {
                 //Inicia Thread KeepAlive
-                var authClienthread = new Thread(new ThreadStart(HandleAuthClient));
+                var authClienthread = new Thread(HandleAuthClient);
                 authClienthread.Start();
 
                 Console.WriteLine("Autenticação AuthServer realizada com sucesso!");
 
                 return true;
             }
-            else
-            {
-                Console.WriteLine(response.Message.Exception);
-                return false;
-            }
+
+            Console.WriteLine(response.Message.Exception);
+            return false;
         }
 
         private void HandleAuthClient()
         {
             //Inicia Thread KeepAlive
-            var keepAliveThread = new Thread(new ThreadStart(KeepAlive));
+            var keepAliveThread = new Thread(KeepAlive);
             keepAliveThread.Start();
 
             while (Tcp.Connected)
-            {
                 try
                 {
                     var messageBufferRead = new byte[500000]; //Tamanho do BUFFER á ler
@@ -151,7 +154,7 @@ namespace UGPangya.API.Auth
                     //Copia mensagem recebida
                     Buffer.BlockCopy(messageBufferRead, 0, message, 0, bytesRead);
 
-                    var json = System.Text.Encoding.Default.GetString(message);
+                    var json = Encoding.Default.GetString(message);
 
                     var response = JsonConvert.DeserializeObject<AuthPacket>(json);
 
@@ -162,11 +165,10 @@ namespace UGPangya.API.Auth
                 {
                     OnDisconnect?.Invoke();
                 }
-            }
         }
 
         /// <summary>
-        /// Envia Packet sem aguardar uma Resposta
+        ///     Envia Packet sem aguardar uma Resposta
         /// </summary>
         public void Send(AuthPacket packet)
         {
@@ -179,7 +181,7 @@ namespace UGPangya.API.Auth
         }
 
         /// <summary>
-        /// Envia Packet aguardando uma resposta
+        ///     Envia Packet aguardando uma resposta
         /// </summary>
         /// <param name="packet"></param>
         /// <returns></returns>
@@ -198,7 +200,7 @@ namespace UGPangya.API.Auth
             //Copia mensagem recebida
             Buffer.BlockCopy(messageBufferRead, 0, message, 0, bytesRead);
 
-            var json = System.Text.Encoding.Default.GetString(message);
+            var json = Encoding.Default.GetString(message);
 
             var response = JsonConvert.DeserializeObject<AuthPacket>(json);
 
@@ -208,6 +210,7 @@ namespace UGPangya.API.Auth
         #endregion
 
         #region IDisposable
+
         // booleano para controlar se
         // o método Dispose já foi chamado
         public bool Disposed { get; set; }
@@ -217,13 +220,11 @@ namespace UGPangya.API.Auth
         private void Dispose(bool disposing)
         {
             // Verifique se Dispose já foi chamado.
-            if (!this.Disposed)
+            if (!Disposed)
             {
                 if (disposing)
-                {
                     // Liberando recursos gerenciados
                     Tcp.Dispose();
-                }
 
                 // Seta a variável booleana para true,
                 // indicando que os recursos já foram liberados
@@ -242,8 +243,7 @@ namespace UGPangya.API.Auth
         {
             Dispose(false);
         }
+
         #endregion
     }
-
-   
 }

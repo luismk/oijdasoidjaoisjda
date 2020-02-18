@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UGPangya.API
+﻿namespace UGPangya.API
 {
     public class HolePos
     {
@@ -14,7 +8,7 @@ namespace UGPangya.API
 
         public float GetDistance()
         {
-            return (X + Z);
+            return X + Z;
         }
     }
 }

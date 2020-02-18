@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UGPangya.API
+﻿namespace UGPangya.API
 {
     public enum ServerRegionTypeEnum
     {
@@ -62,7 +56,6 @@ namespace UGPangya.API
         GAME_MODE_SHUFFLE = 0x03,
         GAME_MODE_REPEAT = 0x04,
         GAME_MODE_SSC = 0x05
-
     }
 
     public enum GameTypeEnum
@@ -117,14 +110,13 @@ namespace UGPangya.API
         Unknown = 0x7F
     }
 
-    public enum ChannelTypeEnum : int
+    public enum ChannelTypeEnum
     {
-        All = 1,//todos os players
-        Rookie = 2048,//somente rockie's
-        Test = 512,//nao sei
-        Beginer = 16,//somente beginner's
-        Junior = 32//somente juniors
-
+        All = 1, //todos os players
+        Rookie = 2048, //somente rockie's
+        Test = 512, //nao sei
+        Beginer = 16, //somente beginner's
+        Junior = 32 //somente juniors
     }
 
     public enum LobbyActionEnum
@@ -136,7 +128,7 @@ namespace UGPangya.API
     }
 
     /// <summary>
-    /// Ação de gerenciamento de salas
+    ///     Ação de gerenciamento de salas
     /// </summary>
     public enum GameActionEnum
     {
@@ -146,7 +138,7 @@ namespace UGPangya.API
         UPDATE = 3
     }
 
-    public enum GameShopFlagEnum : int
+    public enum GameShopFlagEnum
     {
         BUY_SUCCESS = 0,
         BUY_FAIL = 1,
@@ -196,12 +188,13 @@ namespace UGPangya.API
         RecycleSystemOFF = 17179869184
     }
 
-    public enum ServerProperty : int
+    public enum ServerProperty
     {
         Normal = 0,
         GP = 2048,
+
         /// <summary>
-        /// Versão US, não funciona
+        ///     Versão US, não funciona
         /// </summary>
         Natural = 128
     }
@@ -209,11 +202,11 @@ namespace UGPangya.API
     public enum GameShopEnum : byte
     {
         /// <summary>
-        /// Itens normais
+        ///     Itens normais
         /// </summary>
         Normal = 0,
+
         /// <summary>
-        /// 
         /// </summary>
         Rental = 1
     }

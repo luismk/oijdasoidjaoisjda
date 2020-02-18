@@ -1,26 +1,14 @@
-﻿using UGPangya.API;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using UGPangya.API;
 using UGPangya.DataConnector.DataBase;
 
 namespace UGPangya.DataConnector
 {
     public class PlayerConnector
     {
-        public PangyaEntities _db { get; set; }
-
-        private Player _player { get; set; }
-
-        public Pangya_Member Member { get; set; }
-
-        public Pangya_User_Statistics User_Statistics { get; set; }
-
-        public ProcGuildGetPlayerData_Result GuilData { get; set; }
-
-        public USP_GAME_LOGIN_Result GameLoginData { get; set; }
-
         /// <summary>
-        /// Construtor
+        ///     Construtor
         /// </summary>
         public PlayerConnector(Player player)
         {
@@ -38,6 +26,18 @@ namespace UGPangya.DataConnector
                 GuilData = _db.Database.SqlQuery<ProcGuildGetPlayerData_Result>(guild).FirstOrDefault();
             }
         }
+
+        public PangyaEntities _db { get; set; }
+
+        private Player _player { get; }
+
+        public Pangya_Member Member { get; set; }
+
+        public Pangya_User_Statistics User_Statistics { get; set; }
+
+        public ProcGuildGetPlayerData_Result GuilData { get; set; }
+
+        public USP_GAME_LOGIN_Result GameLoginData { get; set; }
 
         ///// <summary>
         ///// Verifica se o usuário está Banido
@@ -65,11 +65,14 @@ namespace UGPangya.DataConnector
         //}
 
         /// <summary>
-        /// Verifica se o Username existe
+        ///     Verifica se o Username existe
         /// </summary>
         public bool AccountInUse()
         {
-            return _db.Database.SqlQuery<int>($"SELECT COUNT(1) FROM [Pangya].[dbo].[Pangya_Member] WHERE Username = '{_player.Username}' AND Logon = '1'").First() == 1;
+            return _db.Database
+                       .SqlQuery<int>(
+                           $"SELECT COUNT(1) FROM [Pangya].[dbo].[Pangya_Member] WHERE Username = '{_player.Username}' AND Logon = '1'")
+                       .First() == 1;
         }
 
         //public bool IsFirstSet()
@@ -78,7 +81,7 @@ namespace UGPangya.DataConnector
         //}
 
         /// <summary>
-        /// Saves all changes made in this context to the underlying database.
+        ///     Saves all changes made in this context to the underlying database.
         /// </summary>
         /// <returns></returns>
         public int SaveChanges()
@@ -120,31 +123,35 @@ namespace UGPangya.DataConnector
         #region Set
 
         /// <summary>
-        /// Seta novo nickname
+        ///     Seta novo nickname
         /// </summary>
         public void SetNickName(string nickname)
         {
             Member.Nickname = nickname;
             SaveChanges();
         }
+
         /// <summary>
-        /// Altera para 0
+        ///     Altera para 0
         /// </summary>
         public void SetLogon()
         {
-            _db.Database.SqlQuery<PangyaEntities>($"UPDATE [dbo].Pangya_Member SET Logon = 0 WHERE Username = {_player.Username}'");
+            _db.Database.SqlQuery<PangyaEntities>(
+                $"UPDATE [dbo].Pangya_Member SET Logon = 0 WHERE Username = {_player.Username}'");
         }
 
         public void SetAuthKey_Login(string key)
         {
-            _db.Database.SqlQuery<PangyaEntities>($"UPDATE [dbo].Pangya_Member SET AuthKey_Login = {key} WHERE Username = {_player.Username}'");
+            _db.Database.SqlQuery<PangyaEntities>(
+                $"UPDATE [dbo].Pangya_Member SET AuthKey_Login = {key} WHERE Username = {_player.Username}'");
         }
+
         #endregion
 
         #region Get
 
         /// <summary>
-        /// Obtém 
+        ///     Obtém
         /// </summary>
         /// <returns></returns>
         public Pangya_Game_Macro GetMacros()
@@ -154,13 +161,12 @@ namespace UGPangya.DataConnector
 
         public void GetGameLogin()
         {
-            var data = $"Exec [dbo].[USP_GAME_LOGIN] @USERID = '{Member.Username}', @UID = '{Member.UID}', @CODE1 = '{Member.AuthKey_Login}', @CODE2 = '{Member.AuthKey_Game}'";
+            var data =
+                $"Exec [dbo].[USP_GAME_LOGIN] @USERID = '{Member.Username}', @UID = '{Member.UID}', @CODE1 = '{Member.AuthKey_Login}', @CODE2 = '{Member.AuthKey_Game}'";
 
             GameLoginData = _db.Database.SqlQuery<USP_GAME_LOGIN_Result>(data).FirstOrDefault();
-        }    
+        }
 
         #endregion
     }
-
-
 }

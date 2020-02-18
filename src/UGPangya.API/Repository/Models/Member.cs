@@ -1,21 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UGPangya.API.Repository.Models
 {
     public class Member
     {
-        private MemberRepository _pangyaMemberRepository { get; set; }
-
-        public string UsernameDomain { get { return Username + "@NT"; } }
-
         public Member()
         {
             _pangyaMemberRepository = new MemberRepository();
         }
+
+        private MemberRepository _pangyaMemberRepository { get; }
+
+        public string UsernameDomain => Username + "@NT";
 
         public int UID { get; set; }
 
@@ -31,7 +27,7 @@ namespace UGPangya.API.Repository.Models
 
         public byte? Logon { get; set; }
 
-        public string Nickname { get; set;  }
+        public string Nickname { get; set; }
 
         public byte? Sex { get; set; }
 

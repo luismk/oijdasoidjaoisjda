@@ -1,11 +1,6 @@
-﻿using Dapper;
-using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Dapper;
 using UGPangya.Connector.Properties;
 
 namespace UGPangya.Connector.Repository
@@ -26,7 +21,7 @@ namespace UGPangya.Connector.Repository
             {
                 connection.Open();
 
-                return connection.QuerySingleOrDefault<int?>("USP_NICKNAME_CHECK", new { NICKNAME = nickName },
+                return connection.QuerySingleOrDefault<int?>("USP_NICKNAME_CHECK", new {NICKNAME = nickName},
                     commandType: CommandType.StoredProcedure);
             }
         }
@@ -38,12 +33,11 @@ namespace UGPangya.Connector.Repository
                 connection.Open();
 
                 var result = connection.QuerySingleOrDefault<byte?>("USP_FIRST_CREATION",
-                    new { UID = uid, CHAR_TYPEID = char_typeId, HAIRCOLOUR = hairColor, NICKNAME = nickName },
+                    new {UID = uid, CHAR_TYPEID = char_typeId, HAIRCOLOUR = hairColor, NICKNAME = nickName},
                     commandType: CommandType.StoredProcedure);
 
                 return result;
             }
         }
-
     }
 }

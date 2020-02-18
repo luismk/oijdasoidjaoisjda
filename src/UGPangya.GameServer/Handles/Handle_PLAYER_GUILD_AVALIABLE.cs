@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UGPangya.API;
+﻿using UGPangya.API;
 using UGPangya.API.BinaryModels;
 using UGPangya.API.Repository;
 using UGPangya.GameServer.Handles_Packet;
@@ -19,11 +14,11 @@ namespace UGPangya.GameServer.Handles
 
         private void Handle()
         {
-            bool guildNameDisponivel = new GuildRepository().GuildNameAvaliable(PacketResult.GuildName);
+            var guildNameDisponivel = new GuildRepository().GuildNameAvaliable(PacketResult.GuildName);
 
             var response = new PangyaBinaryWriter();
 
-            response.Write(new byte[] { 0xB6, 0x01 });
+            response.Write(new byte[] {0xB6, 0x01});
 
             if (guildNameDisponivel)
             {

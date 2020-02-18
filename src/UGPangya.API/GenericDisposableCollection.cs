@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace UGPangya.API
 {
@@ -10,7 +6,12 @@ namespace UGPangya.API
     {
         private List<T> _model;
 
-        public int Count { get { return _model.Count; } }
+        public GenericDisposableCollection()
+        {
+            Model = new List<T>();
+        }
+
+        public int Count => _model.Count;
 
         public List<T> Model
         {
@@ -21,24 +22,13 @@ namespace UGPangya.API
 
                 return _model;
             }
-            set { _model = value; }
+            set => _model = value;
         }
 
         public T this[int index]
         {
-            get
-            {
-                return Model[index];
-            }
-            set
-            {
-                Model[index] = value;
-            }
-        }
-
-        public GenericDisposableCollection()
-        {
-            Model = new List<T>();
+            get => Model[index];
+            set => Model[index] = value;
         }
 
         public void Add(T pessoa)

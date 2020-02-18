@@ -1,15 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UGPangya.API.Managers;
+﻿using UGPangya.API.Managers;
 
 namespace UGPangya.API.Repository.Models
 {
     public class Channel
     {
+        #region Construtor
+
+        public Channel(string name, ushort maxPlayers, ChannelTypeEnum typechannel, byte id)
+        {
+            Name = name;
+            MaxPlayers = maxPlayers;
+            Id = id;
+            Flag = typechannel;
+
+            //Games = new GameCollection(this);
+            Players = new GenericDisposableCollection<Player>();
+            Lobby = new LobbyManager(this);
+        }
+
+        #endregion
+
         #region Public Fields
+
         public GenericDisposableCollection<Player> Players { get; set; }
 
         public LobbyManager Lobby { get; set; }
@@ -25,27 +37,13 @@ namespace UGPangya.API.Repository.Models
         public ushort MaxPlayers { get; set; }
 
         public ChannelTypeEnum Flag { get; set; }
-        #endregion
 
-        #region Construtor
-
-        public Channel(string name, ushort maxPlayers, ChannelTypeEnum typechannel, byte id)
-        {
-            Name = name;
-            MaxPlayers = maxPlayers;
-            Id = id;
-            Flag = typechannel;
-
-            //Games = new GameCollection(this);
-            Players = new GenericDisposableCollection<Player>();
-            Lobby = new LobbyManager(this);
-        }
         #endregion
 
         #region Private Methods
 
         /// <summary>
-        /// Verifica se o Canal está cheio
+        ///     Verifica se o Canal está cheio
         /// </summary>
         public bool IsFull()
         {

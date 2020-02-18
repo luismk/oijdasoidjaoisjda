@@ -9,26 +9,26 @@ namespace UGPangya.API.Collections
 {
     public class WarehouseCollection : List<Warehouse>
     {
-        private Player _player { get; set; }
-        private WarehouseRepository _warehouseRepository { get; set; }
-
         public WarehouseCollection(Player player)
         {
             _player = player;
             _warehouseRepository = new WarehouseRepository();
-            this.AddRange(_warehouseRepository.GetByUID(player.Member_Old.UID));
+            AddRange(_warehouseRepository.GetByUID(player.Member_Old.UID));
         }
+
+        private Player _player { get; }
+        private WarehouseRepository _warehouseRepository { get; }
 
         public byte[] GetWarehouseData()
         {
             var result = new PangyaBinaryWriter();
 
-            result.Write(new byte[] { 0x73, 0x00 });
-            result.Write((UInt16)Count);//desnecessario conta +1 por causa do ticker report
-            result.Write((UInt16)Count);
+            result.Write(new byte[] {0x73, 0x00});
+            result.Write((ushort) Count); //desnecessario conta +1 por causa do ticker report
+            result.Write((ushort) Count);
             foreach (var warehouse in this)
             {
-                var time_left = Time_Left(warehouse.RegDate, warehouse.DateEnd);//esta errado, as veze buga a lista
+                var time_left = Time_Left(warehouse.RegDate, warehouse.DateEnd); //esta errado, as veze buga a lista
 
                 result.Write(warehouse.IDX);
                 result.Write(warehouse.TYPEID);
@@ -38,18 +38,18 @@ namespace UGPangya.API.Collections
                 result.Write(warehouse.C2 ?? 0);
                 result.Write(warehouse.C3 ?? 0);
                 result.Write(warehouse.C4 ?? 0);
-                result.Write((byte)0);
+                result.Write((byte) 0);
                 result.Write(warehouse.Flag ?? 0);
                 result.Write(UnixTimeConvert(warehouse.RegDate)); //UNIXTIME campo RegDate
                 result.Write(0); //UnKnown
                 result.Write(UnixTimeConvert(warehouse.DateEnd)); //UNIXTIME campo EndDate
                 result.WriteEmptyBytes(4);
-                result.Write((byte)2);
+                result.Write((byte) 2);
                 result.WriteStr(warehouse.UCC_NAME, 16);
                 result.WriteEmptyBytes(25);
                 result.WriteStr(warehouse.UCC_UNIQE, 9);
                 result.Write(warehouse.UCC_STATUS ?? 0);
-                result.Write((ushort?)warehouse.UCC_COPY_COUNT ?? 0);
+                result.Write((ushort?) warehouse.UCC_COPY_COUNT ?? 0);
                 result.WriteStr(warehouse.UCC_DRAWER, 16);
                 result.WriteEmptyBytes(60);
                 result.Write(warehouse.C0_SLOT ?? 0);
@@ -59,9 +59,10 @@ namespace UGPangya.API.Collections
                 result.Write(warehouse.C4_SLOT ?? 0);
                 result.Write(warehouse.CLUB_POINT ?? 0);
                 result.Write(warehouse.CLUB_SLOT_CANCEL ?? 0);
-                result.Write(1);//(CLUB_COUNT) > coloque dentro da classe ;)
-                result.Write((UInt32)0);
+                result.Write(1); //(CLUB_COUNT) > coloque dentro da classe ;)
+                result.Write((uint) 0);
             }
+
             return result.GetBytes();
         }
 
@@ -85,11 +86,11 @@ namespace UGPangya.API.Collections
             result.Write(club.C2 ?? 0);
             result.Write(club.C3 ?? 0);
             result.Write(club.C4 ?? 0);
-            result.Write((ushort?)PowerSlot ?? 0);
-            result.Write((ushort?)ControlSlot ?? 0);
-            result.Write((ushort?)ImpactSlot ?? 0);
-            result.Write((ushort?)SpinSlot ?? 0);
-            result.Write((ushort?)CurveSlot ?? 0);
+            result.Write((ushort?) PowerSlot ?? 0);
+            result.Write((ushort?) ControlSlot ?? 0);
+            result.Write((ushort?) ImpactSlot ?? 0);
+            result.Write((ushort?) SpinSlot ?? 0);
+            result.Write((ushort?) CurveSlot ?? 0);
 
             return result.GetBytes();
         }
@@ -99,10 +100,10 @@ namespace UGPangya.API.Collections
             if (Date.HasValue == false || Date?.Ticks == 0 && EndDate.HasValue == false || EndDate?.Ticks == 0)
                 return uint.MaxValue; //caso a data for zerada
 
-            var totalDias = (DateTime.Parse(EndDate.ToString()).Subtract(DateTime.Parse(Date.ToString()))).Days;
+            var totalDias = DateTime.Parse(EndDate.ToString()).Subtract(DateTime.Parse(Date.ToString())).Days;
 
 
-            return (uint)totalDias;
+            return (uint) totalDias;
         }
 
         public static uint UnixTimeConvert(DateTime? date)
@@ -112,10 +113,10 @@ namespace UGPangya.API.Collections
 
             uint unixTimeStamp;
 
-            DateTime currentTime = (DateTime)date;
-            DateTime zuluTime = currentTime.ToUniversalTime();
-            DateTime unixEpoch = new DateTime(1970, 1, 1);
-            unixTimeStamp = (uint)(zuluTime.Subtract(unixEpoch)).TotalSeconds;
+            var currentTime = (DateTime) date;
+            var zuluTime = currentTime.ToUniversalTime();
+            var unixEpoch = new DateTime(1970, 1, 1);
+            unixTimeStamp = (uint) zuluTime.Subtract(unixEpoch).TotalSeconds;
             return unixTimeStamp;
         }
     }

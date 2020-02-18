@@ -1,7 +1,6 @@
-﻿using PangCrypt;
-using System;
+﻿using System;
 using System.IO;
-using System.Text;
+using PangCrypt;
 using UGPangya.API.BinaryModels;
 
 namespace UGPangya.API
@@ -10,28 +9,7 @@ namespace UGPangya.API
     {
         #region Private Fields
 
-        private MemoryStream _stream;
-
-        #endregion
-
-        #region Public Fields
-
-        /// <summary>
-        /// Leitor do packet
-        /// </summary>
-        public PangyaBinaryReader Reader;
-
-        /// <summary>
-        /// Id do Packet
-        /// </summary>
-        public short Id { get; set; }
-
-        /// <summary>
-        /// Mensagem do Packet
-        /// </summary>
-        public byte[] Message { get; set; }
-
-        public byte[] MessageCrypted { get; set; }
+        private readonly MemoryStream _stream;
 
         #endregion
 
@@ -39,7 +17,7 @@ namespace UGPangya.API
 
         public Packet(byte[] message, byte key)
         {
-            Id = BitConverter.ToInt16(new byte[] { message[5], message[6] }, 0);
+            Id = BitConverter.ToInt16(new[] {message[5], message[6]}, 0);
 
             MessageCrypted = new byte[message.Length];
             Buffer.BlockCopy(message, 0, MessageCrypted, 0, message.Length); //Copia mensagem recebida criptografada
@@ -51,6 +29,27 @@ namespace UGPangya.API
             _stream.Seek(2, SeekOrigin.Current); //Seek Inicial
             Reader = new PangyaBinaryReader(_stream);
         }
+
+        #endregion
+
+        #region Public Fields
+
+        /// <summary>
+        ///     Leitor do packet
+        /// </summary>
+        public PangyaBinaryReader Reader;
+
+        /// <summary>
+        ///     Id do Packet
+        /// </summary>
+        public short Id { get; set; }
+
+        /// <summary>
+        ///     Mensagem do Packet
+        /// </summary>
+        public byte[] Message { get; set; }
+
+        public byte[] MessageCrypted { get; set; }
 
         #endregion
     }

@@ -1,10 +1,5 @@
-﻿using Dapper;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.SqlClient;
+using Dapper;
 using UGPangya.API.Repository.Models;
 
 namespace UGPangya.API.Repository
@@ -26,7 +21,7 @@ namespace UGPangya.API.Repository
 
                 var query = @" SELECT * FROM [Pangya_Character_Equip] WHERE CHAR_IDX = @CHAR_IDX";
 
-                return connection.QuerySingleOrDefault<CharacterEquip>(query, new { CHAR_IDX = characterId });
+                return connection.QuerySingleOrDefault<CharacterEquip>(query, new {CHAR_IDX = characterId});
             }
         }
     }

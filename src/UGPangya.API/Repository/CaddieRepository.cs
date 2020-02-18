@@ -1,11 +1,7 @@
-﻿using Dapper;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Dapper;
 using UGPangya.API.Repository.Models;
 
 namespace UGPangya.API.Repository
@@ -25,7 +21,7 @@ namespace UGPangya.API.Repository
             {
                 connection.Open();
 
-                return connection.Query<Caddie>("ProcGetCaddies", new { UID = uid },
+                return connection.Query<Caddie>("ProcGetCaddies", new {UID = uid},
                     commandType: CommandType.StoredProcedure);
             }
         }
