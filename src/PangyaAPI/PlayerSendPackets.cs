@@ -1,4 +1,4 @@
-﻿using PangyaCryptography;
+﻿using PangCrypt;
 using PangyaAPI.BinaryModels;
 using System.Collections.Generic;
 using System.IO;

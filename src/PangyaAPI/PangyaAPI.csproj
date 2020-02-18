@@ -128,15 +128,14 @@
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.2</Version>
     </PackageReference>
+    <PackageReference Include="PangCrypt">
+      <Version>1.0.0-beta</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PangyaConnector\PangyaConnector.csproj">
       <Project>{22691628-2468-4457-82a0-454d947fad94}</Project>
       <Name>PangyaConnector</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PangyaCryptography\PangyaCryptography.csproj">
-      <Project>{2c236628-8225-4342-804c-8ddeb5ce1f69}</Project>
-      <Name>PangyaCryptography</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

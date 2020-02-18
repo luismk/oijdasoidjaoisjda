@@ -1,6 +1,5 @@
-﻿using PangyaCryptography;
+﻿using PangCrypt;
 using PangyaAPI.BinaryModels;
-//using PangyaCryptography;
 using System;
 using System.IO;
 using System.Text;

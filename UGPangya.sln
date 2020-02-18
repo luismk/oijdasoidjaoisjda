@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PangyaAPI", "src\PangyaAPI\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PangyaConnector", "src\PangyaConnector\PangyaConnector.csproj", "{22691628-2468-4457-82A0-454D947FAD94}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PangyaCryptography", "src\PangyaCryptography\PangyaCryptography.csproj", "{2C236628-8225-4342-804C-8DDEB5CE1F69}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pangya_Season7_LS", "src\Pangya_Season7_LS\Pangya_Season7_LS.csproj", "{D2335D00-A738-440C-A374-F78F4A236E1F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pangya_Season7_GS", "src\Pangya_Season7_GS\Pangya_Season7_GS.csproj", "{54383325-24CF-4395-BC3F-D0E6338BD1D7}"
@@ -37,10 +35,6 @@ Global
 		{22691628-2468-4457-82A0-454D947FAD94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22691628-2468-4457-82A0-454D947FAD94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22691628-2468-4457-82A0-454D947FAD94}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2C236628-8225-4342-804C-8DDEB5CE1F69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2C236628-8225-4342-804C-8DDEB5CE1F69}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2C236628-8225-4342-804C-8DDEB5CE1F69}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2C236628-8225-4342-804C-8DDEB5CE1F69}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D2335D00-A738-440C-A374-F78F4A236E1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D2335D00-A738-440C-A374-F78F4A236E1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2335D00-A738-440C-A374-F78F4A236E1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
